@@ -6,5 +6,6 @@ This will ultimately contain syllabus information, lecture notes and slides, req
 
 ## Manifest
 - `getting-started.md`: (will) provide information on basic software requirements for the class and where to get started
-- `175`: PharmSci 175-specific materials (e.g. assignments)
-- `275`: PharmSci 275-specific materials (e.g. assignments)
+- `syllabus.md`: Syllabus for PharmSci 175/275
+- `175`: Undergraduate course (PharmSci 175)-specific materials (e.g. assignments)
+- `275`: Graduate course (PharmSci 275)-specific materials (e.g. assignments)
