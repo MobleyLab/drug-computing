@@ -12,7 +12,7 @@ This will ultimately contain syllabus information, lecture notes and slides, req
 
 ## Getting Started
 - **[How to use Jupyter Notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)**
-- **[Setup and Installation](docs/installation.md)**
+- **[Setup and Installation](getting-started.md)**
 
 ## Requirements
 - [Anaconda Python](https://www.continuum.io/downloads): Anaconda is the leading open data science platform powered by Python.
