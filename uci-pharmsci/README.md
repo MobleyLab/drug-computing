@@ -29,10 +29,6 @@ This will ultimately contain syllabus information, lecture notes and slides, req
   - [Atom](https://atom.io/): Github's official text editor with so many plugins.
   - [VIDA](https://www.eyesopen.com/vida): Molecular viewer for OEB files.
 
-
-### Account Access:
-- [Greenplanet](https://ps.uci.edu/greenplanet/): UCI's Physical Sciences computing cluster.
-
 #### Cheatsheets and dotfiles
 Under the **uci-pharmasci/docs/** directory, I've included some useful command cheat sheets for [BASH](https://github.com/nathanmlim/blues-apps/tree/master/docs/bash_cheatsheet.jpg) and [vi](https://github.com/nathanmlim/blues-apps/tree/master/docs/vi_cheatsheet.pdf).
 

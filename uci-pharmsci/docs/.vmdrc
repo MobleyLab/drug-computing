@@ -63,7 +63,7 @@ proc reset_viz {molid} {
     # Add rep of sidechain
     mol representation VDW
     mol selection {protein and (not hydrophobic) and (not name "H.*")}
-    mol material AOEdgy
+    mol material Opaque
     mol color Name
     mol addrep $molid
 
