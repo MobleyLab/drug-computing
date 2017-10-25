@@ -11,7 +11,7 @@ The instructor is David L. Mobley, and his office is 3134B Natural Sciences 1.
 
 **No textbook is currently required**; however, we *strongly recommend* Leach's Molecalar Modelling book, which all of you should have on hand or have access to (such as in the library):
     Molecular Modelling: Principles and Applications, 2nd Edition
-    Andrew R. Leach, Prentice Hall, London, 2001 
+    Andrew R. Leach, Prentice Hall, London, 2001
     ISBN: 0-582-38210-6
 
 Allen & Tildesley's Computer Simulations of Liquids and Frenkel and Smit's Understanding Molecular Simulation are also both standard and valuable reference texts.
@@ -27,7 +27,7 @@ If you have concerns, see me early to find out whether your laptop will suffice.
 
 ### Undergraduate level (175) prerequisites
 - Two quarters of Calculus
-- At least one quarter of programming experience (CSE 41 or I&C SCI 31 or equivalent) required; a second quarter is recommended (CSE 42 or I&C SCI 32 or equivalent) 
+- At least one quarter of programming experience (CSE 41 or I&C SCI 31 or equivalent) required; a second quarter is recommended (CSE 42 or I&C SCI 32 or equivalent)
 - Some familiarity with Linux
 - Some experience with Python programming
 
@@ -63,7 +63,8 @@ Students choose assignments from a menu appropriate for their level, with underg
 The vast majority of your course grade is based on your performance on these assignments.
 
 Homework assignments can be discussed with other students, but you each must submit your own independent work (and for assignments involving coding, you must each write your own unique code, which should be submitted with your assignments).
-If you utilize code obtained elsewhere (such as online) you must explicitly credit the source in your submissions, and this should not constitute the majority of your submission. 
+If you utilize code obtained elsewhere (such as online) you must explicitly credit the source in your submissions, and this should not constitute the majority of your submission.
+Submitting the work of others, copying code from others, or reusing code from elsewhere without attribution constitutes [academic dishonesty](#academic-integrity-and-academic-dishonesty) and will result in a failing grade.
 
 ### Homework at the undergraduate (175) level
 1.  **(required)** Energy minimization – simple energy minimization in Python on Lennard-Jones clusters. Not directly relevant to drug discovery – but provides a foundation for understanding many of the other techniques we talk about.
@@ -84,7 +85,7 @@ If you utilize code obtained elsewhere (such as online) you must explicitly cred
 6.  Advanced visualization – movie-making in PyMol
 7.  Making and testing an empirical model for physical property (solubility) prediction
 
-Really, these should typically be completed in one of two sequences: (a) 1, 2, 3, 4 and (choose one of the remaining), or (b) 1, 4, 5, 6, 7. At the very least, you do not want to jump to assignments 5 or 7 without having done assignment 4, nor do you want to jump to assignment 3 without having done assignment 2. 
+Really, these should typically be completed in one of two sequences: (a) 1, 2, 3, 4 and (choose one of the remaining), or (b) 1, 4, 5, 6, 7. At the very least, you do not want to jump to assignments 5 or 7 without having done assignment 4, nor do you want to jump to assignment 3 without having done assignment 2.
 
 
 ## Final
@@ -94,3 +95,29 @@ The final exam is a written report analyzing a paper you select from the literat
 ## Grading
 
 Grading will be based on your homework assignments (75%), final report (15%) and participation (5%).
+In the undergraduate version of this course the grading scheme will be roughly as follows:
+- 90% and up: A
+- 80% to 90%: B
+- 70% to 80%: C
+- 60% to 70%: D
+- 60% and below: F
+Note that because the number of assignments vary between the undergraduate and graduate version, each assignment is worth a different percentage in the two cases.
+
+## Academic Integrity and Academic Dishonesty
+
+
+### Official UCI policy
+Academic honesty is a requirement for passing this class.
+Any student who compromises the academic integrity of this course is subject to a failing grade.
+The work you submit must be your own.
+Academic dishonesty includes, but is not limited to copying answers from another student, allowing another student to copy your answers, communicating exam answers to other students during an exam, attempting to use notes or other aids during an exam, or tampering with an exam after it has been corrected and then returning it for more credit.
+If you do so, you will be in violation of the UCI Policies on Academic Honesty (see [https://aisc.uci.edu/](https://aisc.uci.edu/)).
+It is your responsibility to read and understand these policies.
+Note that any instance of academic dishonesty will be reported to the Academic Integrity Administrative Office for disciplinary action and is cause for a failing grade in the course.
+
+### Notes relating to this course
+
+As noted above, it is expected that students in this course will have some degree of collaboration on and discussion of homework assignments, but each student must submit (for all homework assignments, assigned problems, etc.) their own code, their own results, and their own discussion of these results.
+Copying the work of others is not permitted, though *discussion* of results, code, and results is permitted.
+One practical place to draw the line is that if you are reading from someone else's screen, e-mail, or other communication while you are writing code/completing your assignment, you are in violation of this policy, and likewise if someone is typing code for you.
+In contrast, if you look at someone else's code briefly, discuss it with them, then return to working on your own code without copying or memorizing their work, you are not violating this policy.
