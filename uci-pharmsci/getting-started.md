@@ -2,16 +2,21 @@
 
 This document, which is a work in progress (contributions welcome), provides information on what you need to install and how in order for your computer to be ready for PharmSci 175/275.
 
-# Setup and Installation
+## Prerequisites
 
-## **(WINDOWS ONLY)** Install BASH on Windows
+Before getting started, note that the below assumes at least some modest familiarity with the BASH shell and the idea of paths, file names, and basic Linux commands.
+If you do not have this familiarity, you may need to consult the [BASH cheat sheet](docs/bash_cheatsheet.jpg) and other sources of information before proceeding.
+
+## Setup and Installation
+
+### **(WINDOWS ONLY)** Install BASH on Windows
 Follow the official guide linked [here](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
 
 If the BASH terminal guide works and you can successfully use BASH commands (i.e `cd`, `ls`). Now, try performing the installation steps to see if we can get Anaconda/OpenEye installed on your local machine too.
 
 This feature is still in BETA and I have not tried it out myself. So I'm really hoping it works out on your machine. This is meant to replace command terminals like PuTTY so that your terminal can more closely mimic the command terminal found on Linux/MacOS machines or when you login to remote clusters.
 
-## Anaconda Python
+### Anaconda Python
 Download the Anaconda installation file or Download it from the [website](https://www.continuum.io/downloads)
 > wget https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh
 
@@ -31,7 +36,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
-## Conda install requirements
+### Conda install requirements
 
 Anaconda includes with it the conda environment/package manager, meaning that it can also install other software which you need. So once Anaconda is installed, run the following on the command-prompt
 ```bash
@@ -40,7 +45,7 @@ cd drug-computing
 ```
 This checks out (obtains) a copy of this repository so you can work with it and the files in it, if you like (you'll be using this to access lecture content and other materials from this class.)
 
-Then also do the following additional installs:
+Then do the following additional installs:
 ```bash
 #Install the gcc and gfortran compilers
 conda install gcc libgfortran
@@ -54,8 +59,13 @@ conda install -c conda-forge nb_conda mpld3 scikit-learn seaborn
 
 
 
-## Install OpenEye toolkits
+### Install OpenEye toolkits
 *While still in your drugcomp virtualenv*
+
+Download a copy of the `oe_license.txt` OpenEye license file from the course website, as you will need it for what follows.
+Put this somewhere safe, where you can find it again, and note the path (directory location) where you put it.
+Then do the following:
+
 
 ```bash
 #Add the OE_LICENSE to your ~/.bash_profile

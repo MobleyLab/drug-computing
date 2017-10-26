@@ -7,6 +7,7 @@ This will ultimately contain syllabus information, lecture notes and slides, req
 ## Manifest
 - [`getting-started.md`](getting-started.md): provides information on basic software requirements for the class and where to get started
 - [`syllabus.md`](syllabus.md): Syllabus for PharmSci 175/275
+- [`assigned_materials.md`](assigned_materials.md): Assigned reading/instructional materials for the course, for use with the detailed schedule as posted on Canvas.
 - [`docs`](docs): Directory containing documentation/background reading relating to the course, which are usually linked to from elsewhere in this material.
 - `175`: Undergraduate course (PharmSci 175)-specific materials (e.g. assignments)
 - `275`: Graduate course (PharmSci 275)-specific materials (e.g. assignments)
@@ -16,6 +17,8 @@ This will ultimately contain syllabus information, lecture notes and slides, req
 - **[How to use Jupyter Notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)**
 
 ## Requirements
+
+Exact steps for installing the software you need are detailed in [`getting-started.md`](getting-started.md), but for the ambitious, note you will want the following installed and working among other things:
 - [Anaconda Python](https://www.continuum.io/downloads): Anaconda is the leading open data science platform powered by Python.
 - [VMD](http://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD): VMD is a molecular visualization program for displaying, animating, and analyzing large biomolecular systems using 3-D graphics and built-in scripting.
   - Recommended Tutorials:
