@@ -18,9 +18,6 @@ au FileType python,sh,slurm,tcl,namd,inp call matchadd('ColorColumn', '\%80v', 1
 " Strip trailing whitespace from lines in programs
 autocmd FileType c,cpp,java,php,python autocmd BufWritePre <buffer> %s/\s\+$//e
 
-
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-
 " Always show statusline
 set laststatus=2
 

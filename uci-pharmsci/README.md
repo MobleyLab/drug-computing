@@ -23,15 +23,14 @@ This will ultimately contain syllabus information, lecture notes and slides, req
     - [Trajectories and Movie Making](http://www.ks.uiuc.edu/Training/Tutorials/vmd/tutorial-html/node3.html)
 - [OpenEye-toolkits](https://www.eyesopen.com/toolkit-development)
   - [Documentation](https://docs.eyesopen.com/toolkits/python/index.html)
-- [XQuartz](https://www.xquartz.org/) - X11 for MacOS
 
 - **Optionals:**
   - [Atom](https://atom.io/): Github's official text editor with so many plugins.
-  - [VIDA](https://www.eyesopen.com/vida): Molecular viewer for OEB files.
+  - [VIDA](https://www.eyesopen.com/vida): Molecular viewer for OEB files. (Requires OpenEye license)
 
 #### Cheatsheets and dotfiles
 Under the **uci-pharmasci/docs/** directory, I've included some useful command cheat sheets for [BASH](https://github.com/nathanmlim/blues-apps/tree/master/docs/bash_cheatsheet.jpg) and [vi](https://github.com/nathanmlim/blues-apps/tree/master/docs/vi_cheatsheet.pdf).
 
 We also have a [Github](https://www.evernote.com/shard/s26/sh/ae73a67b-4d7a-4e97-a896-cef5473db895/178762935c73b559) cheat sheet/tutorial on our group Evernote. I also recommend checking out the [CodeAcademy Github](https://www.codecademy.com/learn/learn-git) tutorial.
 
-I've included some of my _dotfiles_ which may come in handy. Copy these to your HOME directory in GreenPlanet (and your local machine if needed).
+I've included some of my _dotfiles_ (configuration files) for VMD and Vim to set some common default settings.
