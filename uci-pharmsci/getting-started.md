@@ -1,6 +1,6 @@
 # Getting your computer ready for PharmSci 175/275
 
-This document [WIP] will provide information on what you need to install and how in order for your computer to be ready for PharmSci 175/275.
+This document, which is a work in progress (contributions welcome), provides information on what you need to install and how in order for your computer to be ready for PharmSci 175/275.
 
 # Setup and Installation
 

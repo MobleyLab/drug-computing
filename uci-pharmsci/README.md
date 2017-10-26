@@ -11,8 +11,8 @@ This will ultimately contain syllabus information, lecture notes and slides, req
 - `275`: Graduate course (PharmSci 275)-specific materials (e.g. assignments)
 
 ## Getting Started
-- **[How to use Jupyter Notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)**
 - **[Setup and Installation](getting-started.md)**
+- **[How to use Jupyter Notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)**
 
 ## Requirements
 - [Anaconda Python](https://www.continuum.io/downloads): Anaconda is the leading open data science platform powered by Python.
