@@ -15,7 +15,7 @@ However, a goal is that this repository may also broaden to encompass material n
 ## Organization
 
 In keeping with the two goals above, this repository is broadly organized to clearly delineate materials which students specifically need for UCI's PharmSci 175/275 from those which are here for other purposes, such as background material or tutorials on related or peripheral topics which are not specifically needed for the course.
-Usually each level of organization will have a `README.md` file, like this one, which explains what you can find there and how to navigate around. 
+Usually each level of organization will have a `README.md` file, like this one, which explains what you can find there and how to navigate around.
 
 ### Overall layout
 Current organization is simple: At the base level is `uci-pharmsci` which provides materials relating to UCI's PharmSci 175/275 courses, and `other-materials` which contain other content.
@@ -25,6 +25,9 @@ Current organization is simple: At the base level is `uci-pharmsci` which provid
 - `LICENSE`: A CC-BY 4.0 license giving others to reuse this content and do a variety of other things with it as long as credit is given.
 - `other-materials`: A directory which will contain materials not explicitly used in/required for UCI's PharmSci 175/275 course, but which may be referenced from there or from other courses.
 - `uci-pharmsci`: Content directly utilized in and (usually) required for UCI's PharmSci 175/275 course.
+
+## PharmSci 175/275
+If you're here for UCI's PharmSci 175/275, please proceed directly to the `uci-pharmsci` directory and use the materials there.
 
 ## Requirements
 
@@ -53,7 +56,7 @@ We would like to particularly acknowledge:
 - OpenEye Scientific Software for extending a free academic license (which much of our content relies heavily on)
 - The previous students of PharmSci 275 for their contributions to this content and notes on what was unclear, etc.
 - James Haigh at OpenEye Scientific Software for answering many support questions over the years which helped me, both directly and indirectly, in developing the portions o fthis content utilizing OpenEye tools
-- John Chodera (MSKCC), from whom I (Mobley) learned a great deal when we were both at UCSF and afterwards. His contribution here is hard to quantify or even identify directly -- I've used so much of his code over the years, reading it, modifying it, repurposing it, and moving it around from one place to another that possibly some snippets from his code occur in some of the materials here without me realizing it. Certainly some of this material draws heavily on [openmoltools](http://github.com/choderalab/openmoltools) which Chodera and I and others have both contributed substantially to, and which draws on even earlier material we began preparing when we were both at UCSF. 
+- John Chodera (MSKCC), from whom I (Mobley) learned a great deal when we were both at UCSF and afterwards. His contribution here is hard to quantify or even identify directly -- I've used so much of his code over the years, reading it, modifying it, repurposing it, and moving it around from one place to another that possibly some snippets from his code occur in some of the materials here without me realizing it. Certainly some of this material draws heavily on [openmoltools](http://github.com/choderalab/openmoltools) which Chodera and I and others have both contributed substantially to, and which draws on even earlier material we began preparing when we were both at UCSF.
 - The many contributors to [openmoltools](http://github.com/choderalab/openmoltools)
 
-Additional acknowledgments will be given in specific content. 
+Additional acknowledgments will be given in specific content.
