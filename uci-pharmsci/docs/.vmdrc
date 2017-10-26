@@ -1,0 +1,83 @@
+############################################################################
+# DESCRIPTION:
+#
+# VMD startup script.  The commands here are executed as soon as VMD starts up
+############################################################################
+# turn on lights 0 and 1
+light 0 on
+light 1 off
+light 2 on
+light 3 off
+# position the stage and axes
+axes location lowerleft
+stage location off
+# position and turn on menus
+menu main     move 5   225
+menu display  move 395 30
+menu graphics move 395 500
+menu color    move 125 225
+menu files    move 125 325
+menu labels   move 125 525
+menu render   move 125 525
+menu main      on
+#menu display  on
+#menu graphics on
+#menu color    on
+#menu labels   on
+#menu render   on
+#menu files    on
+color Display Background silver
+display projection orthographic
+display depthcue on
+display culling off
+#Atom Selection macros
+atomselect macro lipid "resname DLPE DMPC DPPC GPC LPPC PALM PC PGCL POPC POPE DPOF DOPC DTAP CHL1 POPA POPG POPS"
+atomselect macro choline "name C11 C12 C13 C14 C15 H11 H12 H21 H22 H23 H31 H32 H33 H41 H42 H43 H51 H52 H12A H12B H13A H13B H13C H14A H14B H14C H15A H15B H15C H11A H11B N"
+atomselect macro ethanolamine "name C11 C12 H11A H12A H11B H12B HN1 HN2 HN3 N"
+atomselect macro phosphate "name P1 O1 O2 O3 O4 P O13 O14 O11 O12"
+atomselect macro glycerol "name C1 C2 C3 HA HB HS HX HY"
+atomselect macro carbonyl "name C21 O21 O22 C31 O31 O32"
+atomselect macro headgroup "phosphate or (choline or ethanolamine)"
+# Load default representations of molecules
+# Executed after VMD initialization.
+proc reset_viz {molid} {
+  # operate only on existing molecules
+  if {[lsearch [molinfo list] $molid] >= 0} {
+    # delete all representations
+    set numrep [molinfo $molid get numreps]
+    for {set i 0} {$i < $numrep} {incr i} {
+      mol delrep $i $molid
+    }
+    # Add rep of protein
+    mol color {ColorID 7}
+    mol representation NewCartoon
+    mol selection protein
+    mol material Opaque
+    mol addrep $molid
+    # Add rep of ligand
+    mol representation VDW
+    mol selection {segname "HET.*"}
+    mol material Opaque
+    mol color Name
+    mol addrep $molid
+    # Add rep of sidechain
+    mol representation VDW
+    mol selection {protein and (not hydrophobic) and (not name "H.*")}
+    mol material Opaque
+    mol color Name
+    mol addrep $molid
+
+    mol smoothrep top 0 3
+    mol smoothrep top 1 3
+    mol smoothrep top 2 3
+  }
+}
+proc reset_viz_proxy {args} {
+  foreach {fname molid rw} $args {}
+  eval "after idle {reset_viz $molid}"
+}
+## hook up the function.
+trace variable vmd_initialize_structure w reset_viz_proxy
+# take care of molecule loaded at st
+after idle { reset_viz 0}
+##END
