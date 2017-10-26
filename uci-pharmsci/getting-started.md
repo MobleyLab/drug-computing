@@ -37,6 +37,13 @@ Anaconda includes with it the conda environment/package manager, meaning that it
 ```bash
 git clone git@github.com:MobleyLab/drug-computing.git
 cd drug-computing
+```
+This checks out (obtains) a copy of this repository so you can work with it and the files in it, if you like (you'll be using this to access lecture content and other materials from this class.)
+
+Then also do the following additional installs:
+```bash
+#Install the gcc and gfortran compilers
+conda install gcc libgfortran
 
 #Create a new local conda environment (virtual environment) called drugcomp and install software to it
 conda create -n drugcomp python=3.5
@@ -44,6 +51,8 @@ source activate drugcomp
 conda install -c omnia openmm==7.1.0rc1 parmed openmoltools numpy matplotlib
 conda install -c conda-forge nb_conda mpld3 scikit-learn seaborn
 ```
+
+
 
 ## Install OpenEye toolkits
 *While still in your drugcomp virtualenv*
