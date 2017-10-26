@@ -18,12 +18,12 @@ Download the Anaconda installation file or Download it from the [website](https:
 Install Anaconda (this may take 15-30mins)
 > bash Anaconda3-4.4.0-Linux-x86_64.sh -b
 
-Make sure the anaconda3 path is added to your `~/.bash_profile`
+Make sure the anaconda3 path is added to your `~/.bash_profile` (often this is automatically added by the installer, but make sure it ends up there), e.g. via:
 >echo export PATH="$HOME/anaconda3/bin:$PATH" >> ~/.bash_profile
 
 When it asks you to add Anaconda to your bash shell PATH, select **YES**.
 
-Check that Anaconda installed properly by running the command `python`. It's output should look something like:
+Check that Anaconda installed properly by running the command `python`. Its output should look something like:
 ```
 Python 3.6.0 |Anaconda 4.3.0 (64-bit)| (default, Dec 23 2016, 12:22:00)
 [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
@@ -31,13 +31,14 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
-## Conda install Requirements
+## Conda install requirements
 
+Anaconda includes with it the conda environment/package manager, meaning that it can also install other software which you need. So once Anaconda is installed, run the following on the command-prompt
 ```bash
 git clone git@github.com:MobleyLab/drug-computing.git
 cd drug-computing
 
-#Create a new local conda environment
+#Create a new local conda environment (virtual environment) called drugcomp and install software to it
 conda create -n drugcomp python=3.5
 source activate drugcomp
 conda install -c omnia openmm==7.1.0rc1 parmed openmoltools numpy matplotlib
@@ -49,9 +50,10 @@ conda install -c conda-forge nb_conda mpld3 scikit-learn seaborn
 
 ```bash
 #Add the OE_LICENSE to your ~/.bash_profile
+# (Here, replace <PATHTOFILE> with the path of the place you have put this file)
 echo export OE_LICENSE="<PATHTOFILE>/oe_license.txt" >> ~/.bash_profile
 
-#Install the OpenEye-floe package and toolkits
+#Install the OpenEye package and toolkits and the oenotebook Jupyter helper
 pip install -i https://pypi.anaconda.org/OpenEye/simple OpenEye-toolkits
 pip install --pre --extra-index-url https://pypi.anaconda.org/OpenEye/channel/beta/simple OpenEye-oenotebook
 ```
@@ -92,3 +94,9 @@ code| ext           | description                      |read? |write?
  23 | json          | JavaScript Object Notation       | yes  | yes
 ----+---------------+----------------------------------+------+------
 ```
+
+You should doublecheck that the OpenEye installation is working corectly by opening python (on the command prompt) or a [Jupyter notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html) and typing:
+```python
+from openeye.oechem import *
+mol = OEMol()```
+and you should get no errors.

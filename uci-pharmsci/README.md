@@ -5,8 +5,9 @@ This will provide course materials for UCI's PharmSci 175 and 275 courses, which
 This will ultimately contain syllabus information, lecture notes and slides, required reading, sandboxes and examples used in class, and assignments.
 
 ## Manifest
-- `getting-started.md`: (will) provide information on basic software requirements for the class and where to get started
-- `syllabus.md`: Syllabus for PharmSci 175/275
+- [`getting-started.md`](getting-started.md): provides information on basic software requirements for the class and where to get started
+- [`syllabus.md`](syllabus.md): Syllabus for PharmSci 175/275
+- [`docs`](docs): Directory containing documentation/background reading relating to the course, which are usually linked to from elsewhere in this material.
 - `175`: Undergraduate course (PharmSci 175)-specific materials (e.g. assignments)
 - `275`: Graduate course (PharmSci 275)-specific materials (e.g. assignments)
 
