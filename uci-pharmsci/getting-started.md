@@ -17,7 +17,7 @@ If the BASH terminal guide works and you can successfully use BASH commands (i.e
 This feature is still in BETA and I have not tried it out myself. So I'm really hoping it works out on your machine. This is meant to replace command terminals like PuTTY so that your terminal can more closely mimic the command terminal found on Linux/MacOS machines or when you login to remote clusters.
 
 ### Anaconda Python
-Download the Anaconda installation file or Download it from the [website](https://www.continuum.io/downloads)
+Download the Anaconda installation file or Download it from the [website](https://www.continuum.io/downloads) or use (from the command prompt)
 > wget https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh
 
 Install Anaconda (this may take 15-30mins)
@@ -56,7 +56,9 @@ source activate drugcomp
 conda install -c omnia openmm==7.1.0rc1 parmed openmoltools numpy matplotlib
 conda install -c conda-forge nb_conda mpld3 scikit-learn seaborn
 ```
+The above installs quite a variety of software packages and may take a reasonable chunk of time to complete, even on a fairly fast connection.
 
+Specific notebooks/assignments used in class may have additional requirements and in general these will be mentioned at the top of the notebook; you should set aside some extra time to install before using a particular notebook.
 
 
 ### Install OpenEye toolkits
