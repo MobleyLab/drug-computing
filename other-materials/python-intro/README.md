@@ -13,7 +13,7 @@ They were ported to the Jupyter notebook format by Kevin Hoang, an undergraduate
 The python crash course material provided here was written by David Mobley.
 
 ## Manifest
-- [`python_crashcourse.md`](python_crashcourse.md): Written material providing some basics of Python
+- [`python_crashcourse.md`](python_crashcourse.md): Written material providing some basics of Python, `numpy`, `matplotlib`, etc.
 - [`Intro_1.ipynb`](Intro_1.ipynb): Jupyter notebook Chapter 1.
 
 ## Authors
