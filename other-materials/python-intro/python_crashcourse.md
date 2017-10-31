@@ -6,6 +6,7 @@ Here, I aim to provide some absolute essentials on Python to supplement the Jupy
 
 One useful reference is the [Non-Programmer’s Tutorial for Python](https://en.wikibooks.org/wiki/Non-Programmer%27s_Tutorial_for_Python_3), which some of my students have found useful.
 It is written geared towards someone who has done no programming before, and does not provide a complete overview of the language.
+Another good source is [Python 3 Object Oriented Programming - Second Edition](https://www.amazon.com/dp/1784398780/ref=cm_sw_r_cp_api_7o79zbP8G8WYY) by Dusty Phillips
 
 The Python introduction Jupyter notebooks also provided in this directory (from M. Scott Shell) are more appropriate for people who have at least some background in programming.
 These notebooks provide a lot of examples and give a much more complete introduction to the language than this materia.
