@@ -15,7 +15,8 @@ import subprocess
 
 ## TO DO: ADD OPTION PARSING
 
-input_molecule = 'mobley_9979854.mol2' #temporary example from FreeSolv
+#input_molecule = 'mobley_3359593_tripos.mol2' #temporary example from FreeSolv
+input_molecule = 'test.smi'
 
 # Key settings to fill in in the template
 timestep = 2 #femtoseconds
@@ -31,7 +32,8 @@ solvent = 'gbsa' # gbsa or tip3p
 
 # Copy input molecule to output directory
 if not os.path.isdir(output_dir): os.mkdir(output_dir)
-shutil.copy(input_molecule, os.path.join(output_dir, 'input.mol2'))
+#shutil.copy(input_molecule, os.path.join(output_dir, 'input.mol2'))
+shutil.copy(input_molecule, os.path.join(output_dir, 'input.smiles'))
 # TO DO: DECIDE IF WE SHOULD BE CHARGING THIS molecule
 #(Check for charges first and charge if uncharged? Prompt user to provide charges?)
 
@@ -71,7 +73,7 @@ options:
 
 molecules:
   input_molecule:
-    filepath: %(output_dir)s/input.mol2
+    filepath: %(output_dir)s/input.smiles
     antechamber:
       charge_method: null
 
