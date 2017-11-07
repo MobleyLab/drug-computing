@@ -8,7 +8,7 @@ Demonstrations are set up for hydration free energy calculations on FreeSolv and
 - mobley_9979854.mol2: A selected molecule from the FreeSolv database for testing purposes
 
 ## Requirements
-Ensure you have a working installation of anaconda python (or miniconda); see [getting started](../../getting-started.md) if you do not.
+Ensure you have a working installation of anaconda python (or miniconda); see [getting started](../../uci-pharmsci/getting-started.md) if you do not.
 Then use `conda install -c omnia yank` to ensure you have the `yank` package installed.
 
 ## Acknowledgments
