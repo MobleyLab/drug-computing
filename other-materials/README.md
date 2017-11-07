@@ -1,9 +1,8 @@
 # Other Materials
 
 ## What's here
-
-Currently, nothing
+This contains material that is useful as background or in support of content elsewhere in this repository.
+It may be crosslinked from course content, etc.
 
 ## Manifest
-
-- (empty)
+- `python-intro`: Directory containing introductory material on Python; see `python-intro/README.md`

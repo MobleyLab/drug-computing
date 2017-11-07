@@ -51,6 +51,7 @@ There are no formal prerequisites for the course, and in principle, a motivated 
 - Working with proteins, homology modeling, the PDB
 - A bit on scientific computing practicalities and outlook
 
+A detailed schedule (by date) will be posted on the course website, and [assigned materials](assigned_materials.md) (by lecture number) are available in [`assigned_materials.md`](assigned_materials.md).
 
 ## Class structure
 
