@@ -15,6 +15,7 @@ It was ported to the Jupyter notebook format by Kevin Hoang, an undergraduate in
 - [`Intro_3.ipynb`](Intro_3.ipynb): Jupyter notebook Chapter 3.
 - [`Intro_4.ipynb`](Intro_4.ipynb): Jupyter notebook Chapter 4.
   - [`primes.py`](primes.py): Sample script utilized in Chapter 4.
+  - [`test.py`](test.py): Example module utilized in Chapter 4.
 - [`Intro_5.ipynb`](Intro_5.ipynb): Jupyter notebook Chapter 5.
 
 ## Authors
