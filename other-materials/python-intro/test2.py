@@ -1,6 +1,6 @@
 def multiply(x, y):
     try:
         ret = x * y
-    except StandardError:
+    except TypeError:
         ret = 0
     return ret

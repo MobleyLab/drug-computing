@@ -19,6 +19,7 @@ It was ported to the Jupyter notebook format by Kevin Hoang, an undergraduate in
 - [`Intro_5.ipynb`](Intro_5.ipynb): Jupyter notebook Chapter 5.
   - [`data.txt`](data.txt): Supporting data file utilized in Chapter 5.
   - [`program.py`](program.py): Very simple test program from Chapter 5.
+  - [`test2.py`](test2.py): Excetion handling example from Chapter 5.
 
 ## Authors
 - M. Scott Shell (UCSB)
