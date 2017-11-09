@@ -8,10 +8,8 @@ It was ported to the Jupyter notebook format by Kevin Hoang, an undergraduate in
 
 ## Manifest
 
-- [`Intro_1.ipynb`](Intro_1.ipynb): Jupyter notebook Chapter 1.
-
-### Manifest of material being updated in this PR
-- [`Intro_2.ipynb`](Intro_2.ipynb): Jupyter notebook Chapter 2.
+- [`Intro_1.ipynb`](Intro_1.ipynb): Jupyter notebook Chapter 1. Getting started, Jupyter notebooks, and the interactive interpreter.
+- [`Intro_2.ipynb`](Intro_2.ipynb): Jupyter notebook Chapter 2. Common object types in Python; basic math; strings and lists, list operations.
 - [`Intro_3.ipynb`](Intro_3.ipynb): Jupyter notebook Chapter 3.
 - [`Intro_4.ipynb`](Intro_4.ipynb): Jupyter notebook Chapter 4.
   - [`primes.py`](primes.py): Sample script utilized in Chapter 4.
