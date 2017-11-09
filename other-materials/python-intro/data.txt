@@ -1,0 +1,5 @@
+#pressure temperature average_energy
+1.0 1.0 -50.0
+1.0 1.5 -27.8
+2.0 1.0 -14.5
+2.0 1.5 -11.2
