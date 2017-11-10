@@ -53,7 +53,7 @@ conda install gcc libgfortran
 #Create a new local conda environment (virtual environment) called drugcomp and install software to it
 conda create -n drugcomp python=3.5
 source activate drugcomp
-conda install -c omnia openmm==7.1.0rc1 parmed openmoltools numpy matplotlib
+conda install -c omnia openmm==7.1.0rc1 openforcefield parmed openmoltools numpy matplotlib
 conda install -c conda-forge nb_conda mpld3 scikit-learn seaborn
 ```
 The above installs quite a variety of software packages and may take a reasonable chunk of time to complete, even on a fairly fast connection.
