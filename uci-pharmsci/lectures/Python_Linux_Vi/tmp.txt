@@ -1,0 +1,5 @@
+# Data might go below
+# It might have comma separated columns with comments first
+# atomname, xcoordinate, y coordinate, z coordinate
+C1, 0.0, 0.0, 0.0
+C2, 1.4, 0.0, 0.0

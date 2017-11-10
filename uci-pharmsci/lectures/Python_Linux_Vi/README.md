@@ -3,7 +3,10 @@
 This directory contains lecture/course material for the first class of PharmSci 175/275.
 
 ## Manifest
-- [`Lec1_Python_Linux_vi.ipynb`](Lec1_Python_Linux_vi.ipynb): Jupyter notebook with lecture slides and interactive Python content; utilizes [RISE](https://damianavila.github.io/RISE/) for live rendering of python content.
+- [`Lec1_Python_Linux_vi.ipynb`](Lec1_Python_Linux_vi.ipynb): Jupyter notebook with *interactive* lecture slides and interactive Python content; utilizes [RISE](https://damianavila.github.io/RISE/) for live rendering of python content.
+- [`Lec1_Python_Linux_Vi.html`](Lec1_Python_Linux_vi.html): HTML version of the Jupyter notebook for quicker viewing, but is non-interactive and no longer uses slide format.
+- `*.png`: Various supporting graphics utilized by the lecture
+- `tmp.txt`: Text file utilized by the lecture
 
 ## Software requirements
 **To run** the notebook you will need the standard course materials detailed in [getting started](../getting-started.md).
