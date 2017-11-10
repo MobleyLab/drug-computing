@@ -7,7 +7,7 @@ This directory contains lecture/course material for the first class of PharmSci 
 
 ## Software requirements
 **To run** the notebook you will need the standard course materials detailed in [getting started](../getting-started.md).
-**To present** the notebook as in class, you will need to install [RISE](https://damianavila.github.io/RISE/)
+**To present** the notebook as in class, you will need to install [RISE](https://damianavila.github.io/RISE/). *Note: Appears to be some incompatibility with some nbpresent features and nbextension features with RISE; it may need a relatively clean/fresh conda env to behave.*
 
 ## Usage information
 
