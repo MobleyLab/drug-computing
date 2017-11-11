@@ -27,7 +27,7 @@ temperature = 298.15 # kelvin
 pressure = 1 #atmosphere
 output_dir = 'data'
 verbose = 'yes' # yes or no
-solvent = 'gbsa' # gbsa or tip3p
+solvent = 'tip3p' # gbsa or tip3p; needs to be lowercase
 
 # Copy input molecule to output directory
 if not os.path.isdir(output_dir): os.mkdir(output_dir)
@@ -89,15 +89,9 @@ solvents:
     nonbonded_method: NoCutoff
 
 systems:
-  hydration-tip3p:
+  hydration:
     solute: input_molecule
-    solvent1: tip3p
-    solvent2: vacuum
-    leap:
-      parameters: [leaprc.gaff, leaprc.protein.ff14SB, leaprc.water.tip3p]
-  hydration-gbsa:
-    solute: input_molecule
-    solvent1: gbsa
+    solvent1: %(solvent)s
     solvent2: vacuum
     leap:
       parameters: [leaprc.gaff, leaprc.protein.ff14SB, leaprc.water.tip3p]
@@ -125,7 +119,7 @@ protocols:
         lambda_sterics:        [1.00, 0.00]
 
 experiments:
-  system: hydration-%(solvent)s
+  system: hydration
   protocol: protocol-%(solvent)s
 """ % options
 
