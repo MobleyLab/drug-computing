@@ -79,14 +79,14 @@ pip install -i https://pypi.anaconda.org/OpenEye/simple OpenEye-toolkits
 pip install --pre --extra-index-url https://pypi.anaconda.org/OpenEye/channel/beta/simple OpenEye-oenotebook
 ```
 Verify the installation with:
-> python oecheminfo.py
+> oecheminfo.py
 
 The output should look something like:
 ```
 Installed OEChem version: 2.1.1 platform: linux-g++4.x-x64 built: 20170210
 
-Examples: /home/limn1/anaconda3/envs/dev/lib/python3.5/site-packages/openeye/examples
-Doc Examples: /home/limn1/anaconda3/envs/dev/lib/python3.5/site-packages/openeye/docexamples
+Examples: /home/limn1/anaconda3/envs/drugcomp/lib/python3.5/site-packages/openeye/examples
+Doc Examples: /home/limn1/anaconda3/envs/drugcomp/lib/python3.5/site-packages/openeye/docexamples
 
 code| ext           | description                      |read? |write?
 ----+---------------+----------------------------------+------+------
