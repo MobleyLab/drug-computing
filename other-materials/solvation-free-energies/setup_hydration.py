@@ -13,21 +13,43 @@ from yank.experiment import *
 import textwrap
 import subprocess
 
-## TO DO: ADD OPTION PARSING
+# Set up option parsing
+from optparse import OptionParser
+parser = OptionParser()
+parser.add_option('-f', '--file', dest='input_molecule',
+                    help = "Input mol2 file containing molecule", metavar="File")
+parser.add_option('-s', '--solvent', dest="solvent", metavar='String', type="string",
+                    help = "Solvent model: tip3p or gbsa; default=gbsa", default ='gbsa' )
+parser.add_option('-i', '--iterations', dest="iterations", metavar = "integer", type="int",
+                    help = "Number of iterations (each is 500 steps); default = 5000.", default=5000)
+parser.add_option('-t', '--dt', dest="timestep", metavar = "integer", type="int",
+                    help = "Timestep in femtoseconds; default = 2.", default = 2)
+parser.add_option('-o', '--out', dest="output_dir", metavar = "String", type="string",
+                    help = "Output directory; default 'data'.", default ='data')
+parser.add_option('-T', '--temperature', dest='temperature', metavar = "float", type="float",
+                    help = "Temperature in Kelvin; default = 298.15", default = 298.15)
 
-input_molecule = 'mobley_9979854.mol2' #temporary example from FreeSolv
+(options, args) = parser.parse_args()
+
+
+input_molecule = options.input_molecule
+if not os.path.isfile(input_molecule) or not input_molecule[-5:]=='.mol2':
+    parser.error("Error: `input_molecule` must be an accessible mol2 file.")
+if not options.solvent.lower()=='tip3p' and not options.solvent.lower()=='gbsa':
+    parser.error("Error: Solvent must be tip3p or gbsa.")
+
 
 # Key settings to fill in in the template
-timestep = 2 #femtoseconds
+timestep = options.timestep #femtoseconds
 nsteps_per_iteration = 500 #Number of timesteps per iteration
 # Will use 5000, but use 100 now for testing purposes...
 #number_of_iterations = 5000 #How many iterations
-number_of_iterations = 100 #How many iterations
-temperature = 298.15 # kelvin
+number_of_iterations = options.iterations #How many iterations
+temperature = options.temperature # kelvin
 pressure = 1 #atmosphere
-output_dir = 'data'
+output_dir = options.output_dir
 verbose = 'yes' # yes or no
-solvent = 'gbsa' # gbsa or tip3p
+solvent = options.solvent.lower() # gbsa or tip3p; needs to be lowercase
 
 # Copy input molecule to output directory
 if not os.path.isdir(output_dir): os.mkdir(output_dir)
@@ -89,15 +111,9 @@ solvents:
     nonbonded_method: NoCutoff
 
 systems:
-  hydration-tip3p:
+  hydration:
     solute: input_molecule
-    solvent1: tip3p
-    solvent2: vacuum
-    leap:
-      parameters: [leaprc.gaff, leaprc.protein.ff14SB, leaprc.water.tip3p]
-  hydration-gbsa:
-    solute: input_molecule
-    solvent1: gbsa
+    solvent1: %(solvent)s
     solvent2: vacuum
     leap:
       parameters: [leaprc.gaff, leaprc.protein.ff14SB, leaprc.water.tip3p]
@@ -125,7 +141,7 @@ protocols:
         lambda_sterics:        [1.00, 0.00]
 
 experiments:
-  system: hydration-%(solvent)s
+  system: hydration
   protocol: protocol-%(solvent)s
 """ % options
 
