@@ -15,7 +15,7 @@ Since the material will typically draw from external files, you are recommended 
 ## Instructional content
 
 1. Python, Linux, and vi(m): [Python_Linux_Vi](Python_linux_Vi)
-2. Energy minimization
+2. Energy minimization: [energy_minimization](energy_minimization)
 3. 3D structure and shape methods: [3D_structure_shape](3D_structure_shape)
 4. Quantum mechanics (QM)
 5. Molecular dynamics (MD)
