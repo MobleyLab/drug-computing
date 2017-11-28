@@ -26,7 +26,7 @@ parser.add_option('--name', dest = 'name', help='IUPAC name of desired molecule'
 parser.add_option('-s', '--solvent', dest="solvent", metavar='String', type="string",
                     help = "Solvent model: tip3p or gbsa; default=gbsa", default ='gbsa' )
 parser.add_option('-i', '--iterations', dest="iterations", metavar = "integer", type="int",
-                    help = "Number of iterations (each is 500 steps); default = 5000.", default=5000)
+                    help = "Number of iterations (each is 500 steps); default = 5000 in explicit solvent, 500 in implicit.", default=None)
 parser.add_option('-t', '--dt', dest="timestep", metavar = "integer", type="int",
                     help = "Timestep in femtoseconds; default = 2.", default = 2)
 parser.add_option('-o', '--out', dest="output_dir", metavar = "String", type="string",
@@ -49,6 +49,12 @@ if input_molecule is None and options.smiles is None and options.name is None:
         parser.error("Error: Must provide a solute molcule via the --file, --smiles, or --name options.")
 if not options.solvent.lower()=='tip3p' and not options.solvent.lower()=='gbsa':
     parser.error("Error: Solvent must be tip3p or gbsa.")
+if options.iterations is None:
+    # Set default iterations
+    if options.solvent.lower()=='gbsa':
+        options.iterations = 500
+    else:
+        options.iterations = 5000
 
 
 # Key settings to fill in in the template
