@@ -4,7 +4,7 @@ This provides example materials for solvation free energy calculations with impl
 Demonstrations are set up for hydration free energy calculations on FreeSolv and/or FreeSolvMini.
 
 ## Manifest
-- setup_hydration.py: Sets up Yank hydration free energy calculations for implicit or explicit solvent
+- run_hydration.py: Sets up and runs a Yank hydration free energy calculation in implicit or explicit solvent, for a single molecule. Can use mol2/pdb/sdf input, or SMILES/name. Basically provides an interface to set up Yank YAML input. For usage info, see `python run_hydration.py -h`
 - mobley_9979854.mol2: A selected molecule from the FreeSolv database for testing purposes
 
 ## Requirements
