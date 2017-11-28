@@ -40,7 +40,7 @@ parser.add_option('-T', '--temperature', dest='temperature', metavar = "float", 
 # Do some error checking on input options
 input_molecule = options.input_molecule
 if input_molecule is not None:
-    if not os.path.isfile(input_molecule) or not input_molecule[-5:]=='.mol2' or not input_molecule[-5:]=='.pdb' or not input_molecule[-5:]=='.sdf':
+    if not os.path.isfile(input_molecule) or not (input_molecule[-5:]=='.mol2' or input_molecule[-5:]=='.pdb' or input_molecule[-5:]=='.sdf'):
         parser.error("Error: `input_molecule` must be an accessible mol2, sdf, or pdb file.")
     input_source = 'File'
 else:
