@@ -9,12 +9,14 @@ If you do not have this familiarity, you may need to consult the [BASH cheat she
 
 ## Setup and Installation
 
-### **(WINDOWS ONLY)** Install BASH on Windows
+### **(WINDOWS ONLY -- Skip to the next section if you're not on Windows)** Install BASH on Windows
 Follow the official guide linked [here](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
 
 If the BASH terminal guide works and you can successfully use BASH commands (i.e `cd`, `ls`). Now, try performing the installation steps to see if we can get Anaconda/OpenEye installed on your local machine too.
 
-This feature is still in BETA and I have not tried it out myself. So I'm really hoping it works out on your machine. This is meant to replace command terminals like PuTTY so that your terminal can more closely mimic the command terminal found on Linux/MacOS machines or when you login to remote clusters.
+This feature is still in BETA and wee have not tested extensively; we hope it will work on your machine. This is meant to replace command terminals like PuTTY so that your terminal can more closely mimic the command terminal found on Linux/MacOS machines or when you login to remote clusters.
+
+An alternative approach we are exploring is to distribute USB drives (e.g. thumb drives) with a persistent Linux distribution available pre-installed and you can boot from these/do your work from these for the purposes of this class.
 
 ### Anaconda Python
 Download the Anaconda installation file or Download it from the [website](https://www.continuum.io/downloads) or use (from the command prompt)
@@ -53,8 +55,15 @@ conda install gcc libgfortran
 #Create a new local conda environment (virtual environment) called drugcomp and install software to it
 conda create -n drugcomp python=3.5
 source activate drugcomp
-conda install -c omnia openmm==7.1.0rc1 openforcefield parmed openmoltools numpy matplotlib
-conda install -c conda-forge nb_conda mpld3 scikit-learn seaborn
+
+# Install OpenMM, openforcefield, yank, parmed, and openmoltools
+conda install -c omnia openmm openforcefield parmed yank openmoltools pdbfixer solvationtoolkit
+# Install oeommtools for interfacing OpenEye and OpenMM
+conda install -c OpenEye/label/Orion -c omnia oeommtools
+# Install plotting stuff and other prerequisites such as numerical libraries
+conda install -c conda-forge nb_conda mpld3 scikit-learn seaborn numpy matplotlib bokeh
+# Interactive visualization in jupyter notebooks
+conda install -c bioconda nglview
 ```
 The above installs quite a variety of software packages and may take a reasonable chunk of time to complete, even on a fairly fast connection.
 
