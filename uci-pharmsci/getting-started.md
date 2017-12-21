@@ -40,7 +40,20 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 ### Conda install requirements
 
-Anaconda includes with it the conda environment/package manager, meaning that it can also install other software which you need. So once Anaconda is installed, run the following on the command-prompt
+Anaconda includes with it the `conda` environment/package manager, meaning that it can also install other software which you need.
+Here we will use the `conda` package manager to install the software you need.
+
+**First, you need to decide whether or not to use a conda environment (`env`) for the course**:
+- If you have no idea what this means, only just installed anaconda, and do not have an existing set of conda packages you use extensively, you probably do not want to use an `env`
+- If you already have an extensive set of packages managed with `conda` and you want to ensure you do not break or modify your existing installation, you probably DO want to create a custom environment (`env`) for this course.
+
+If you are do not need an `env`, just proceed straight to installation.
+If you do need an `env`, [use this info](https://conda.io/docs/user-guide/tasks/manage-environments.html) to create a new Python 3.6 conda environment called `drugcomp` (e.g. `conda create -n drugcomp python=3.5`) and activate this environment (`source activate drugcomp`) before doing the installs discussed below.
+Whenever you do work for the class, you will need to activate this environment.
+
+**Then proceed to installation**:
+
+Once Anaconda is installed, run the following on the command-prompt
 ```bash
 git clone git@github.com:MobleyLab/drug-computing.git
 cd drug-computing
@@ -51,10 +64,6 @@ Then do the following additional installs:
 ```bash
 #Install the gcc and gfortran compilers
 conda install gcc libgfortran
-
-#Create a new local conda environment (virtual environment) called drugcomp and install software to it
-conda create -n drugcomp python=3.5
-source activate drugcomp
 
 # Install OpenMM, openforcefield, yank, parmed, and openmoltools
 conda install -c omnia openmm openforcefield parmed yank openmoltools pdbfixer solvationtoolkit
