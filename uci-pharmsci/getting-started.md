@@ -9,12 +9,13 @@ If you do not have this familiarity, you may need to consult the [BASH cheat she
 
 ## Setup and Installation
 
-### **(WINDOWS ONLY -- Skip to the next section if you're not on Windows)** Install BASH on Windows
+### **(WINDOWS ONLY -- Skip to the "Anaconda Python" section if you're not on Windows)** Install BASH on Windows
 Follow the official guide linked [here](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
 
 If the BASH terminal guide works and you can successfully use BASH commands (i.e `cd`, `ls`). Now, try performing the installation steps to see if we can get Anaconda/OpenEye installed on your local machine too.
 
-This feature is still in BETA and wee have not tested extensively; we hope it will work on your machine. This is meant to replace command terminals like PuTTY so that your terminal can more closely mimic the command terminal found on Linux/MacOS machines or when you login to remote clusters.
+This feature is still in BETA and we have not tested extensively; we hope it will work on your machine.
+This is meant to replace command terminals like PuTTY so that your terminal can more closely mimic the command terminal found on Linux/MacOS machines or when you login to remote clusters.
 
 An alternative approach we are exploring is to distribute USB drives (e.g. thumb drives) with a persistent Linux distribution available pre-installed and you can boot from these/do your work from these for the purposes of this class.
 
