@@ -80,7 +80,6 @@ Specific notebooks/assignments used in class may have additional requirements an
 
 
 ### Install OpenEye toolkits
-*While still in your drugcomp virtualenv*
 
 Download a copy of the `oe_license.txt` OpenEye license file from the course website, as you will need it for what follows.
 Put this somewhere safe, where you can find it again, and note the path (directory location) where you put it.
@@ -137,5 +136,6 @@ code| ext           | description                      |read? |write?
 You should doublecheck that the OpenEye installation is working corectly by opening python (on the command prompt) or a [Jupyter notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html) and typing:
 ```python
 from openeye.oechem import *
-mol = OEMol()```
+mol = OEMol()
+```
 and you should get no errors.
