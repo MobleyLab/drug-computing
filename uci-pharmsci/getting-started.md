@@ -17,7 +17,13 @@ If the BASH terminal guide works and you can successfully use BASH commands (i.e
 This feature is still in BETA and we have not tested extensively; we hope it will work on your machine.
 This is meant to replace command terminals like PuTTY so that your terminal can more closely mimic the command terminal found on Linux/MacOS machines or when you login to remote clusters.
 
+**ALTERNATIVE**:
+
 An alternative approach we are exploring is to distribute USB drives (e.g. thumb drives) with a persistent Linux distribution available pre-installed and you can boot from these/do your work from these for the purposes of this class.
+If needed, these should be available from Dr. Mobley for booting your own computer or for use on the computers in our classroom.
+Because of hardware differences, it is unlikely that the same installation (below) will work both on a personal laptop and on the computers in the classroom, so you would need to pick one or the other and coordinate with Dr. Mobley.
+If using this approach, see [`persistent-usb.md`] for additional information.
+
 
 ### Anaconda Python
 Download the Anaconda installation file or Download it from the [website](https://www.continuum.io/downloads) or use (from the command prompt)
@@ -140,3 +146,5 @@ from openeye.oechem import *
 mol = OEMol()
 ```
 and you should get no errors.
+
+After the above, please also use `jupyter-nbextension enable nglview --py --sys-prefix` on the command-line to enable the `nglview` extension for interactive visualization in Jupyter notebooks.
