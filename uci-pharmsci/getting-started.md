@@ -22,7 +22,7 @@ This is meant to replace command terminals like PuTTY so that your terminal can 
 An alternative approach we are exploring is to distribute USB drives (e.g. thumb drives) with a persistent Linux distribution available pre-installed and you can boot from these/do your work from these for the purposes of this class.
 If needed, these should be available from Dr. Mobley for booting your own computer or for use on the computers in our classroom.
 Because of hardware differences, it is unlikely that the same installation (below) will work both on a personal laptop and on the computers in the classroom, so you would need to pick one or the other and coordinate with Dr. Mobley.
-If using this approach, see [`persistent-usb.md`] for additional information.
+If using this approach, see [`docs/persistent-usb.md`](docs/persistent-usb.md) for additional information.
 
 
 ### Anaconda Python
