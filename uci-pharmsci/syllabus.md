@@ -51,7 +51,8 @@ There are no formal prerequisites for the course, and in principle, a motivated 
 - Working with proteins, homology modeling, the PDB
 - A bit on scientific computing practicalities and outlook
 
-A detailed schedule (by date) will be posted on the course website, and [assigned materials](assigned_materials.md) (by lecture number) are available in [`assigned_materials.md`](assigned_materials.md).
+A detailed schedule (by date) will be posted on the course website on Canvas, and [assigned materials](assigned_materials.md) (by lecture number) are available in [`assigned_materials.md`](assigned_materials.md).
+Exact due dates for assigned materials, and the schedule of lectures, will be posted on Canvas.
 
 ## Class structure
 
@@ -68,6 +69,8 @@ The vast majority of your course grade is based on your performance on these ass
 Homework assignments can be discussed with other students, but you each must submit your own independent work (and for assignments involving coding, you must each write your own unique code, which should be submitted with your assignments).
 If you utilize code obtained elsewhere (such as online) you must explicitly credit the source in your submissions, and this should not constitute the majority of your submission.
 Submitting the work of others, copying code from others, or reusing code from elsewhere without attribution constitutes [academic dishonesty](#academic-integrity-and-academic-dishonesty) and will result in a failing grade.
+
+Exact due dates for homework are posted on Canvas.
 
 ### Homework at the undergraduate (175) level: Three of the following
 1.  **(required)** Energy minimization – simple energy minimization in Python on Lennard-Jones clusters. Not directly relevant to drug discovery – but provides a foundation for understanding many of the other techniques we talk about.
