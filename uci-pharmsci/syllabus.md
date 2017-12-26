@@ -55,19 +55,21 @@ A detailed schedule (by date) will be posted on the course website, and [assigne
 
 ## Class structure
 
-You should bring a laptop computer to class to allow for hands-on work and troubleshooting relating to the content being covered. We will be using numerous Jupyter notebooks in class to allow you to try things out, including working on "sandboxes" and examples in class, so it is important you have a computer with you in class. Normally a table will NOT suffice.
+You should bring a laptop computer to class to allow for hands-on work and troubleshooting relating to the content being covered, unless you plan on using one of the computers in the classroom (in which case you should make prior arrangements with your instructor to ensure you have all the required software available).
+We will be using numerous Jupyter notebooks in class to allow you to try things out, including working on "sandboxes" and examples in class, so it is important you have a computer with you in class.
+Normally a tablet will NOT suffice.
 
 
 ## Homework
 
-Students choose assignments from a menu appropriate for their level, with undergraduate students choosing three assignments and graduate students choosing five assignments.
+Students choose assignments from a menu appropriate for their level, with undergraduate students choosing **three** assignments and graduate students choosing **five** assignments.
 The vast majority of your course grade is based on your performance on these assignments.
 
 Homework assignments can be discussed with other students, but you each must submit your own independent work (and for assignments involving coding, you must each write your own unique code, which should be submitted with your assignments).
 If you utilize code obtained elsewhere (such as online) you must explicitly credit the source in your submissions, and this should not constitute the majority of your submission.
 Submitting the work of others, copying code from others, or reusing code from elsewhere without attribution constitutes [academic dishonesty](#academic-integrity-and-academic-dishonesty) and will result in a failing grade.
 
-### Homework at the undergraduate (175) level
+### Homework at the undergraduate (175) level: Three of the following
 1.  **(required)** Energy minimization – simple energy minimization in Python on Lennard-Jones clusters. Not directly relevant to drug discovery – but provides a foundation for understanding many of the other techniques we talk about.
 2.  Implementing basic molecular dynamics simulations in Python on a simple model of a polymer. Helpful if you plan on using molecular dynamics simulations for your research – you’ll have a much better idea how they work.
 3.  Basic Monte Carlo in Python on the same system as #2.
@@ -77,7 +79,7 @@ Submitting the work of others, copying code from others, or reusing code from el
 
 
 
-### Homework at the graduate (275) level
+### Homework at the graduate (275) level: Five of the following
 1.  **(required)** Energy minimization – simple energy minimization in Python on Lennard-Jones clusters. Not directly relevant to drug discovery – but provides a foundation for understanding many of the other techniques we talk about.
 2.  Implementing basic molecular dynamics simulations in Python on a simple model of a polymer. Helpful if you plan on using molecular dynamics simulations for your research – you’ll have a much better idea how they work.
 3.  Basic Monte Carlo in Python on the same system as #2.
@@ -86,7 +88,8 @@ Submitting the work of others, copying code from others, or reusing code from el
 6.  Advanced visualization – movie-making in PyMol
 7.  Making and testing an empirical model for physical property (solubility) prediction
 
-Really, these should typically be completed in one of two sequences: (a) 1, 2, 3, 4 and (choose one of the remaining), or (b) 1, 4, 5, 6, 7. At the very least, you do not want to jump to assignments 5 or 7 without having done assignment 4, nor do you want to jump to assignment 3 without having done assignment 2.
+Really, these should typically be completed in consecutive order, though skips are allowed.
+At the very least, you do not want to jump to the docking/scoring assignment or the physical property assignment without having done 3D structure generation and shape overlays, nor do you want to do the Monte Carlo assignment without having done the molecular dynamics assignment.
 
 
 ## Final
