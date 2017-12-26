@@ -49,7 +49,7 @@ Here we will use the `conda` package manager to install the software you need.
 - If you already have an extensive set of packages managed with `conda` and you want to ensure you do not break or modify your existing installation, you probably DO want to create a custom environment (`env`) for this course.
 
 If you are do not need an `env`, just proceed straight to installation.
-If you do need an `env`, [use this info](https://conda.io/docs/user-guide/tasks/manage-environments.html) to create a new Python 3.6 conda environment called `drugcomp` (e.g. `conda create -n drugcomp python=3.5`) and activate this environment (`source activate drugcomp`) before doing the installs discussed below.
+If you do need an `env`, [use this info](https://conda.io/docs/user-guide/tasks/manage-environments.html) to create a new Python 3.6 conda environment called `drugcomp` (e.g. `conda create -n drugcomp python=3.6`) and activate this environment (`source activate drugcomp`) before doing the installs discussed below.
 Whenever you do work for the class, you will need to activate this environment.
 
 **Then proceed to installation**:
