@@ -19,7 +19,7 @@ Allen & Tildesley's Computer Simulations of Liquids and Frenkel and Smit's Under
 ## Other requirements
 
 A laptop computer running a recent version of OS X, Linux, or Windows (with the first two being preferable) on which you can install Anaconda's [Python distribution](https://www.anaconda.com/download) as well as other software tools, and get Jupyter notebooks working with the OpenEye toolkits.
-Basically, you should be able to successfully follow the instructions in `getting-started.md` or you will have problems.
+Basically, you should be able to successfully follow the instructions in [`getting-started.md`](getting_started.md) or you will have problems.
 If you have concerns, see me early to find out whether your laptop will suffice.
 **Do not wait until you are attempting to work on the first assignment.**
 
