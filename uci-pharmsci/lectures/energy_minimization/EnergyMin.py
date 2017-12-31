@@ -4,14 +4,20 @@ class EnergyMin():
         import matplotlib.pyplot as plt
         import scipy.optimize as opt
 
+        self.x_min = x_min
+        self.x_max = x_max
+
+        self.y_min = y_min
+        self.y_max = y_max
+
+        self.x_range = x_max - x_min
+        self.y_range = y_max - y_min
+
         self.grid_spacing = grid_spacing
 
         self.x = np.arange(x_min, x_max, grid_spacing)
         self.y = np.arange(x_min, y_max, grid_spacing)
         self.z = None
-
-        self.x_range = x_max-x_min
-        self.y_range = y_max-y_min
 
         self.wells = []
 
@@ -32,12 +38,13 @@ class EnergyMin():
 
         ball_pos_x = [el[0] for el in self.ball_pos]
         ball_pos_y = [el[1] for el in self.ball_pos]
+
         colors = np.linspace(0,1,len(self.ball_pos))
+        plt.figure(figsize=(9, 7))
         plt.contourf(self.x, self.y, self.z, contours)
         plt.colorbar()
         if not len(self.ball_pos) == 0:
             plt.scatter(ball_pos_x, ball_pos_y, c=colors, cmap='Greys', s=2)
-
         plt.show()
 
     def add_ball(self, xb=1, yb=1):
