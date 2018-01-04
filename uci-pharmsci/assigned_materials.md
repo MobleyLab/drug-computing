@@ -23,4 +23,4 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 ### Before Lecture 2 ([Energy landscapes and energy minimization](lectures/energy_minimization))
 
 ### Before Lecture 3 ([3D structure and shape](lectures/3D_structure_shape))
-- If you don't already have a chemistry drawing tool like ChemDraw that you like, download and install [MarvinSketch](https://www.chemaxon.com/products/marvin) for free from ChemAxon.
+- If you don't already have a chemistry drawing tool like ChemDraw that you like, you may wish to download and install [MarvinSketch](https://www.chemaxon.com/products/marvin) for free from ChemAxon. (Though in a pinch, you can use the web demo version linked from the lecture slides if you need.)
