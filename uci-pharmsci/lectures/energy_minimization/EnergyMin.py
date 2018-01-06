@@ -217,12 +217,3 @@ class EnergyMin():
                 ct += 1
                 #print(ct)
 
-minimization = EnergyMin()
-minimization.add_well(45, 50, 100, 150)
-minimization.add_well(25, 25, 10, 75)
-minimization.add_well(35, 30, 50,100)
-minimization.add_ball(40,20)
-minimization.line_search()
-#minimization.steepest_descent(max_iter=40)
-#minimization.conjugate_gradient(max_iter=30)
-minimization.plot_landscape()
