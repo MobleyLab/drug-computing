@@ -1,5 +1,5 @@
 class EnergyMin():
-    def __init__(self, x_min=0, x_max=100, y_min=0, y_max=100, grid_spacing=0.1):
+    def __init__(self, x_min=0, x_max=100, y_min=0, y_max=100, grid_spacing=0.2):
         import numpy as np
         import matplotlib.pyplot as plt
         import scipy.optimize as opt
@@ -10,8 +10,8 @@ class EnergyMin():
         self.y_min = y_min
         self.y_max = y_max
 
-        self.x_range = x_max - x_min
-        self.y_range = y_max - y_min
+        self.x_range = abs(x_max - x_min)
+        self.y_range = abs(y_max - y_min)
 
         self.grid_spacing = grid_spacing
 
@@ -25,7 +25,6 @@ class EnergyMin():
 
     def add_well(self, x0, y0, width=10, depth=10):
         import numpy as np
-        width = width
         xx, yy = np.meshgrid(self.x, self.y)
         z = -depth*(np.power(np.e,-((xx-x0)**2 + (yy-y0)**2)/(2*width)))
         self.wells.append(z)
@@ -121,7 +120,7 @@ class EnergyMin():
     def line_search(self, tolerance=0.01):
         import numpy as np
 
-        self.ball_pos = [self.ball_pos[0]]
+        #self.ball_pos = [self.ball_pos[0]]
 
         self.combine_wells()
 
@@ -136,13 +135,13 @@ class EnergyMin():
         step_dir = np.array([NegGradX[init_y_idx][init_x_idx], NegGradY[init_y_idx][init_x_idx]])
         step_dir = (1//np.linalg.norm(step_dir))*step_dir
         #Generating the first pair of points
-        dist = float(min(self.x_range, self.y_range)/20.0)
+        ##dist = abs(float(min(self.x_range, self.y_range)*(1/20.0)))
         #Set the initial point for the line search
         init_pt = self.ball_pos[-1]
         keep_going = True
         while keep_going:
-            test_pts = [np.sum([init_pt, dist*step_dir], axis=0),
-                        np.sum([init_pt, 2.0*dist*step_dir], axis=0)]
+            test_pts = [np.sum([init_pt, step_dir], axis=0),
+                        np.sum([init_pt, 2.0*step_dir], axis=0)]
             test_x_idx_1, test_y_idx_1 = [int(test_pts[0][0]/self.grid_spacing),
                                           int(test_pts[0][1]/self.grid_spacing)]
             test_x_idx_2, test_y_idx_2 = [int(test_pts[1][0]/self.grid_spacing),
@@ -218,12 +217,12 @@ class EnergyMin():
                 ct += 1
                 #print(ct)
 
-#minimization = EnergyMin()
-#minimization.add_well(45, 50, 100, 150)
-#minimization.add_well(25, 25, 10, 75)
-#minimization.add_well(35, 30, 50,100)
-#minimization.add_ball(30,45)
-#minimization.line_search()
+minimization = EnergyMin()
+minimization.add_well(45, 50, 100, 150)
+minimization.add_well(25, 25, 10, 75)
+minimization.add_well(35, 30, 50,100)
+minimization.add_ball(40,20)
+minimization.line_search()
 #minimization.steepest_descent(max_iter=40)
 #minimization.conjugate_gradient(max_iter=30)
-#minimization.plot_landscape()
+minimization.plot_landscape()
