@@ -65,7 +65,7 @@ Once Anaconda is installed, run the following on the command-prompt
 git clone git@github.com:MobleyLab/drug-computing.git
 cd drug-computing
 ```
-This checks out (obtains) a copy of this repository so you can work with it and the files in it, if you like (you'll be using this to access lecture content and other materials from this class.)
+This checks out (obtains) a copy of this repository so you can work with it and the files in it, if you like (you'll be using this to access lecture content and other materials from this class.) (If you have trouble with this, you may want to try the https version of the command, `git clone https://github.com/MobleyLab/drug-computing.git`)
 
 Then do the following additional installs:
 ```bash
