@@ -32,12 +32,12 @@ class EnergyMin():
         #Add the well to the Energy Landscape Array
         self.wells.append(z)
 
-    def add_landscape_feature(self):
+    def add_landscape_feature(self, function):
         import numpy as np
         #Set xx and yy as the energy landscape plane variables
         xx, yy = np.meshgrid(self.x, self.y)
         #Define the function on top of the plane according to user input
-        z = eval(input("Enter a function of numpy arrays `xx` and `yy`: "))
+        z = eval(function)
         self.wells.append(z)
 
     def plot_landscape(self, contours=10):
@@ -80,7 +80,7 @@ class EnergyMin():
         #Set the Total Energy Lanscape Values to z
         self.z = z_tot
 
-    def steepest_descent(self, step_size=1, max_iter=100):
+    def steepest_descent(self, step_size=0.8, max_iter=100, tolerance=0.0001):
         import numpy as np
         #Reset the ball position
         self.ball_pos = [self.ball_pos[0]]
@@ -106,8 +106,10 @@ class EnergyMin():
             trial_pos = np.sum([self.ball_pos[-1], step_dir], axis=0)
             trial_idx = [int(round(trial_pos[0]/self.grid_spacing)),
                         int(round(trial_pos[1]/self.grid_spacing))]
+            trial_en = self.z[trial_idx[1]][trial_idx[0]]
+            prev_en = self.z[prev_y_idx][prev_x_idx]
             #Check to see if minimum reached
-            if self.z[trial_idx[1]][trial_idx[0]] < self.z[prev_y_idx][prev_x_idx]:
+            if trial_en < prev_en:
                 #If so, append the new ball position and at to count:
                 self.ball_pos.append(trial_pos)
                 ct += 1
@@ -119,7 +121,9 @@ class EnergyMin():
                 trial_pos = np.sum([self.ball_pos[-1], perp_dir], axis=0)
                 trial_idx = [int(round(trial_pos[0]/self.grid_spacing)),
                             int(round(trial_pos[1]/self.grid_spacing))]
-                if self.z[trial_idx[1]][trial_idx[0]] < self.z[prev_y_idx][prev_x_idx]:
+                trial_en = self.z[trial_idx[1]][trial_idx[0]]
+                prev_en = self.z[prev_y_idx][prev_x_idx]
+                if trial_en < prev_en:
                     #If so, append the new ball position:
                     self.ball_pos.append(trial_pos)
                     step_dir = perp_dir
@@ -131,6 +135,11 @@ class EnergyMin():
                     self.ball_pos.append(np.sum([self.ball_pos[-1], perp_dir], axis=0))
                     step_dir = perp_dir
                     ct +=1
+            #Now check to see if the pecentage change in energy is
+            #less than the tolerance
+            if (trial_en - prev_en)/prev_en < tolerance:
+                print("Steps needed to reach minimum: {}".format(str(ct)))
+                break
 
     def line_search(self, tolerance=0.01):
         import numpy as np
@@ -191,11 +200,11 @@ class EnergyMin():
         for i in range(len(x_pts)):
             self.ball_pos.append(np.array([x_pts[i], y_pts[i]]))
 
-    def conjugate_gradient(self, max_iter=100):
+    def conjugate_gradient(self, max_iter=100, init_step_size=1, tolerance=0.0001):
         import numpy as np
-
+        #Reset the ball position
         self.ball_pos = [self.ball_pos[0]]
-
+        #Reconstruct the eneryg landscape
         self.combine_wells()
 
         #Initializing the counter
@@ -207,7 +216,7 @@ class EnergyMin():
                                   int(round(self.ball_pos[-1][1]/self.grid_spacing))]
         #The step direction is determined by the (normalized) negative gradient
         step_dir = [NegGradX[prev_y_idx][prev_x_idx], NegGradY[prev_y_idx][prev_x_idx]]
-        step_dir = step_dir/np.linalg.norm(step_dir)
+        step_dir = init_step_size*(step_dir/np.linalg.norm(step_dir))
         self.ball_pos.append(np.sum([self.ball_pos[-1], step_dir], axis=0))
         while ct < max_iter:
             #Propose new move in the same direction as before
@@ -216,11 +225,17 @@ class EnergyMin():
             trial_pos = np.sum([self.ball_pos[-1], step_dir], axis=0)
             trial_idx = [int(round(trial_pos[0]/self.grid_spacing)),
                          int(round(trial_pos[1]/self.grid_spacing))]
+            trial_en = self.z[trial_idx[1]][trial_idx[0]]
+            prev_en = self.z[prev_y_idx][prev_x_idx]
             #Check to see if minimum reached
-            if self.z[trial_idx[1]][trial_idx[0]] < self.z[prev_y_idx][prev_x_idx]:
+            if trial_en < prev_en:
                 #If not, append the new ball position and at to count:
                 self.ball_pos.append(trial_pos)
                 ct += 1
+                #Check to see if the percentage energy change is less than the tolerance
+                if (trial_en - prev_en)/prev_en < tolerance:
+                    print("Steps needed to reach minimum: {}".format(str(ct)))
+                    break
             #If so, go in the direction determined by gamma
             else:
                 #See lecture notebook for information on how gamma is defined
