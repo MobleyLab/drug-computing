@@ -32,6 +32,14 @@ class EnergyMin():
         #Add the well to the Energy Landscape Array
         self.wells.append(z)
 
+    def add_landscape_feature(self):
+        import numpy as np
+        #Set xx and yy as the energy landscape plane variables
+        xx, yy = np.meshgrid(self.x, self.y)
+        #Define the function on top of the plane according to user input
+        z = eval(input("Enter a function of numpy arrays `xx` and `yy`: "))
+        self.wells.append(z)
+
     def plot_landscape(self, contours=10):
         import numpy as np
         import matplotlib.pyplot as plt
@@ -53,7 +61,7 @@ class EnergyMin():
         plt.colorbar()
         #Plot the Path of the Ball if it exists
         if not len(self.ball_pos) == 0:
-            plt.scatter(ball_pos_x, ball_pos_y, c=colors, cmap='Greys', s=2)
+            plt.scatter(ball_pos_x, ball_pos_y, c=colors, cmap='spring', s=2)
         plt.show()
 
     def add_ball(self, xb=1, yb=1):
