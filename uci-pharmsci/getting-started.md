@@ -26,11 +26,19 @@ If using this approach, see [`docs/persistent-usb.md`](docs/persistent-usb.md) f
 
 
 ### Anaconda Python
-Download the Anaconda installation file or Download it from the [website](https://www.continuum.io/downloads) or use (from the command prompt)
-> wget https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh
+Download the Anaconda installation file or Download it from the [website](https://www.continuum.io/downloads) or use (from the command prompt):
+Linux Intel:
+> wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 
-Install Anaconda (this may take 15-30mins)
-> bash Anaconda3-4.4.0-Linux-x86_64.sh -b
+Linux AMD:
+> wget https://repo.continuum.io/archive/Anaconda3-5.0.0-Linux-ppc64le.sh
+
+OS X:
+> wget https://repo.continuum.io/archive/Anaconda3-5.0.1-MacOSX-x86_64.sh
+
+
+Install Anaconda (this may take 15-30mins), filling in the "fill in the rest here" part with the appropriate name of the file you downloaded above (or run the interactive installer if you downloaded that):
+> bash Anaconda_fillintheresthere.sh -b
 
 Make sure the anaconda3 path is added to your `~/.bash_profile` (often this is automatically added by the installer, but make sure it ends up there), e.g. via:
 >echo export PATH="$HOME/anaconda3/bin:$PATH" >> ~/.bash_profile
