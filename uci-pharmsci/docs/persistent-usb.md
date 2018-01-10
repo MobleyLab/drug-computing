@@ -19,7 +19,7 @@ To use a persistent live USB stick and boot to Linux, insert it into the compute
 To boot from the USB stick, hold down F12 (typically) as you restart, then (on most laptops) select the UEFI BOOT option to boot from the USB in question (in my case "UEFI: SanDisk"), as shown here. ![boot selection](boot_screenshot.jpg)
 Select the "Persistent live" option when prompted, then wait for it to boot.
 I often see an error or warning message or two while it is booting (at least on the computers in the classroom) but it usually works without problems anyway, even if it takes a minute or two.
-You should then be running a full distribution of Ubuntu Linux (though with relatively minimal storage, since the USB stick is carrying the operating system, plus any files and sofware you install).
+You should then be running a full distribution of Ubuntu Linux (though with relatively minimal storage, since the USB stick is carrying the operating system, plus any files and software you install).
 
 Once you are up and running, install git (`sudo apt-get install git`) and then proceed with the instructions in the "getting started" documentation, **except for 2018 see [Troubleshooting](#troubleshooting), below**.
 
