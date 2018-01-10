@@ -204,7 +204,7 @@ class EnergyMin():
         import numpy as np
         #Reset the ball position
         self.ball_pos = [self.ball_pos[0]]
-        #Reconstruct the eneryg landscape
+        #Reconstruct the energy landscape
         self.combine_wells()
 
         #Initializing the counter
