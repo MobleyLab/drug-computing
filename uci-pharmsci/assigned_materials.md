@@ -21,3 +21,6 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 - Ideally create a (free) GitHub account in case there are issues with the course materials that you want to bring up on the GitHub repository, which houses most of our course materials.
 
 ### Before Lecture 2 ([Energy landscapes and energy minimization](lectures/energy_minimization))
+
+### Before Lecture 3 ([3D structure and shape](lectures/3D_structure_shape))
+- If you don't already have a chemistry drawing tool like ChemDraw that you like, you may wish to download and install [MarvinSketch](https://www.chemaxon.com/products/marvin) for free from ChemAxon. (Though in a pinch, you can use the web demo version linked from the lecture slides if you need.)
