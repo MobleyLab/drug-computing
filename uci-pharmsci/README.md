@@ -6,6 +6,7 @@ This will ultimately contain syllabus information, lecture notes and slides, req
 
 ## Manifest
 - [`getting-started.md`](getting-started.md): provides information on basic software requirements for the class and where to get started
+- [`continuing.md`](continuing.md): Helpful tips for continuing on AFTER having followed getting started information
 - [`syllabus.md`](syllabus.md): Syllabus for PharmSci 175/275
 - [`assigned_materials.md`](assigned_materials.md): Assigned reading/instructional materials for the course, for use with the detailed schedule as posted on Canvas.
 - [`docs`](docs): Directory containing documentation/background reading relating to the course, which are usually linked to from elsewhere in this material.
