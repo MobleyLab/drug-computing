@@ -10,8 +10,8 @@ This will ultimately contain syllabus information, lecture notes and slides, req
 - [`syllabus.md`](syllabus.md): Syllabus for PharmSci 175/275
 - [`assigned_materials.md`](assigned_materials.md): Assigned reading/instructional materials for the course, for use with the detailed schedule as posted on Canvas.
 - [`docs`](docs): Directory containing documentation/background reading relating to the course, which are usually linked to from elsewhere in this material.
-- `175`: Undergraduate course (PharmSci 175)-specific materials (e.g. assignments)
-- `275`: Graduate course (PharmSci 275)-specific materials (e.g. assignments)
+- [`lectures`](lectures): Course lectures and interactive in-class examples/sandboxes
+- [`assignments`](assignments): Assignments for the course.
 
 ## Getting Started
 - **[Setup and Installation](getting-started.md)**

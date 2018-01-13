@@ -159,6 +159,11 @@ and you should get no errors.
 
 If you have errors with your OpenEye installation and have verified that you have an OpenEye license file, it is in the correct place, and properly listed in your `~\.bash_profile` file, you may need to edit your `~/.bashrc` file to point to your `~/.bash_profile` file. Particularly, I have noticed that on USB installations of Ubuntu in some cases this step may be necessary. You would just add a line to the end of your `~/.bashrc` file that says `source ~/.bash_profile`
 
+### Additions for Macintosh (OS X)
+For some of our assignments (energy minimization, MD, MC) we will use `f2py` to compile some fortran code for use in Python (to make some numerical operations fast).
+To use this on OS X, you will need to install XCode (developer tools) from the Mac App Store, and then on the terminal, execute `xcode-select --install` to install the XCode command-line tools.
+Without this you will get an error message relating to `limits.h` when attempting to execute f2py.
+
 ### One additional step
 
 After the above, please also use `jupyter-nbextension enable nglview --py --sys-prefix` on the command-line to enable the `nglview` extension for interactive visualization in Jupyter notebooks.
