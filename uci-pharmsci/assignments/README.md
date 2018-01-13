@@ -6,4 +6,4 @@ Assignments are as detailed in the [syllabus](../syllabus.md), with PharmSci 175
 This directory provides the assignments in subdirectories.
 
 ## Manifest
-- [`energy_minimization`](energy_minimization): Content for the energy minimization assignment; the key aspects are in a Jupyter notebook (`energy_minimization_assignment.ipynb`), but supporting files are also provided. 
+- [`energy_minimization`](energy_minimization): Content for the energy minimization assignment; the key aspects are in a Jupyter notebook (`energy_minimization_assignment.ipynb`), but supporting files are also provided. An HTML version of the notebook for viewing ease is also provided, though it is not functional. 
