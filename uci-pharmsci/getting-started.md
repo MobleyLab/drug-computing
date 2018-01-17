@@ -22,7 +22,7 @@ This is meant to replace command terminals like PuTTY so that your terminal can 
 An alternative approach we are exploring is to distribute USB drives (e.g. thumb drives) with a persistent Linux distribution available pre-installed and you can boot from these/do your work from these for the purposes of this class.
 If needed, these should be available from Dr. Mobley for booting your own computer or for use on the computers in our classroom.
 Because of hardware differences, it is unlikely that the same installation (below) will work both on a personal laptop and on the computers in the classroom, so you would need to pick one or the other and coordinate with Dr. Mobley.
-If using this approach, see [`docs/persistent-usb.md`](docs/persistent-usb.md) for additional information.
+**If using the USB drive approach**, see [`docs/persistent-usb.md`](docs/persistent-usb.md) for additional information and instructions *before following the below instructions*.
 
 
 ### Anaconda Python
@@ -75,7 +75,7 @@ cd drug-computing
 ```
 This checks out (obtains) a copy of this repository so you can work with it and the files in it, if you like (you'll be using this to access lecture content and other materials from this class.) (If you have trouble with this, you may want to try the https version of the command, `git clone https://github.com/MobleyLab/drug-computing.git`)
 
-Then do the following additional installs:
+Then do the following additional installs (**except** if you are using a USB stick Ubuntu installation in 2018, in which case you should replace the first `conda install gcc libgfortran` command with the information [here](docs/persistent-usb.md/#troubleshooting), then follow the rest of the commands after it):
 ```bash
 #Install the gcc and gfortran compilers
 conda install gcc libgfortran

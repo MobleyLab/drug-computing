@@ -12,7 +12,7 @@ I basically follow the workshop instructions linked above, select none of the th
 
 ## Configuring for the course
 
-When setting up persistent USB sticks for people, I will configure with a `miniconda` installation for you, as in [getting-started.md](../getting-started.md).
+When setting up persistent USB sticks for people, I may configure with a `miniconda` installation for you, as in the first steps of [getting-started.md](../getting-started.md) (but if typing `which conda` in the terminal doesn't show anything found, then you will need to do it yourself).
 However, I will NOT install all of the course prerequisites; it is important that you **complete the installation on the computer you intend to run on** as some of the tools are compiled software which is architecture-dependent and will not run properly unless it is installed on the computer you want to use.
 
 To use a persistent live USB stick and boot to Linux, insert it into the computer you wish to use, restart the computer, and boot from the USB stick.
