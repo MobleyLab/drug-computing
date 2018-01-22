@@ -30,4 +30,7 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 ## Before Lecture 4 ([QM](lectures/QM))
 - Skim through the PDF of the slides, noting any questions (though these provide theoretical background for subsequent classes so they are unfortunately not interactive)
 - If you desire to try a sample QM calculation, open up the Psi4 example (`psi4_example.html` or `psi4_example.ipynb`) and get psi4 installed in a suitable virtual environment as per the instructions there.
-- 
+
+## Before Lecture 5 ([MD](lectures/MD)):
+- Skim through PDF of the slides, noting any questions for discussion in class
+- Review MD sandbox Jupyter notebook in the same directory
