@@ -26,3 +26,8 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 ### Before Lecture 3 ([3D structure and shape](lectures/3D_structure_shape))
 - If you don't already have a chemistry drawing tool like ChemDraw that you like, you may wish to download and install [MarvinSketch](https://www.chemaxon.com/products/marvin) for free from ChemAxon. (Though in a pinch, you can use the web demo version linked from the lecture slides if you need.)
 - Read the 3D structure/shape Jupyter notebook [`uci-pharmsci/lectures/3D_structure_shape/3D_Structure_Shape.ipynb`](uci-pharmsci/lectures/3D_structure_shape/3D_Structure_Shape.ipynb)
+
+## Before Lecture 4 ([QM](lectures/QM))
+- Skim through the PDF of the slides, noting any questions (though these provide theoretical background for subsequent classes so they are unfortunately not interactive)
+- If you desire to try a sample QM calculation, open up the Psi4 example (`psi4_example.html` or `psi4_example.ipynb`) and get psi4 installed in a suitable virtual environment as per the instructions there.
+- 
