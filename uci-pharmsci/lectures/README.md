@@ -14,13 +14,13 @@ Since the material will typically draw from external files, you are recommended 
 
 ## Instructional content
 
-1. Python, Linux, and vi(m): [Python_Linux_Vi](Python_linux_Vi)
-2. Energy minimization: [energy_minimization](energy_minimization)
-3. 3D structure and shape methods: [3D_structure_shape](3D_structure_shape)
-4. Quantum mechanics (QM)
-5. Molecular dynamics (MD)
-   - Supplementary material: [MD_sandbox](MD_sandbox)
-6. MD and Monte Carlo (MC)
+1. Python, Linux, and vi(m): [Python_Linux_Vi](Python_linux_Vi): Lecture is Jupyter notebook (with RISE format slides)
+2. Energy minimization: [energy_minimization](energy_minimization): Lecture is Jupyter notebook (with RISE format slides)
+3. 3D structure and shape methods: [3D_structure_shape](3D_structure_shape): Lecture is Jupyter notebook (with RISE format slides)
+4. Quantum mechanics (QM): [QM](QM): Lecture is Powerpoint format, with a [supplemental Jupyter notebook](QM/psi4_example.ipynb) with example Psi4 usage.
+5. Molecular dynamics (MD): [MD](MD): Lecture is Keynote/PDF format
+   - Supplementary material: [MD/MD Sandbox.ipynb](MD/MMD Sandbox.ipynb) Jupyter notebook
+6. MD (part 2) and Monte Carlo (MC): [MC](MC): Lecture is Keynote/PDF format
    - Supplementary material: [MC_sandbox](MC_sandbox)
 7. Solvation models
 8. Docking, scoring, and pose prediction
