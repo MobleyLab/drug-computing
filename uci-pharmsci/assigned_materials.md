@@ -34,3 +34,10 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 ## Before Lecture 5 ([MD](lectures/MD)):
 - Skim through PDF of the slides, noting any questions for discussion in class
 - Review MD sandbox Jupyter notebook in the same directory
+
+## Before Lecture 6 ([MC](lectures/MC)):
+- Spend some time with the MD sandbox from Lecture 5
+- Skim through the PDF of the MD (part II)/MC slides in the `MC` directory, noting any questions for discussion in class
+- Review the MC sandbox Jupyter notebook in the same directory
+
+
