@@ -1,5 +1,4 @@
-#MD Exercise Template for PharmSci 275
-#This is just MD.py with the prototypes for InitVelocities and RescaleVelocities removed so that these can be defined within the iPython notebook.
+#MD Exercise Template for PharmSci 175/275
 
 #import python modules
 import numpy as np
