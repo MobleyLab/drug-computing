@@ -5,6 +5,7 @@ This provides materials for the lecture on solvation models.
 ## Manifest
 ### Primary files
 - [`solvation.ipynb`](solvation.ipynb): Jupyter notebook giving some concepts about solvation models and demonstrating some analysis/working with them.
+- `solvation.html`: HTML version of the above notebook, for visualization purposes.
 
 ### Supporting files
 - `images/image_charge.png`: From Wikimedia, https://commons.wikimedia.org/wiki/File:VFPt_imagecharge_plane_horizontal_plusminus.svg, by `Geek3`, under CC-BY 3.0.
