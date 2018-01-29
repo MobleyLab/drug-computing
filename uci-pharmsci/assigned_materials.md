@@ -40,4 +40,5 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 - Skim through the PDF of the MD (part II)/MC slides in the `MC` directory, noting any questions for discussion in class
 - Review the MC sandbox Jupyter notebook in the same directory
 
-
+## Before Lecture 7 ([Solvation](lectures/solvation)):
+- Read the Jupyter notebook in the `solvation` directory under lectures.
