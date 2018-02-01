@@ -42,3 +42,6 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 
 ## Before Lecture 7 ([Solvation](lectures/solvation)):
 - Read the Jupyter notebook in the `solvation` directory under lectures.
+
+## Before Lecture 8 ([Docking, scoring and pose prediction](lectures/docking_scoring_pose)):
+- Read the `docking.ipynb` Jupyter notebook in the relevant directory and `old_slides.pdf` there, from the slide numbered 11 (bottom left corner) onwards.
