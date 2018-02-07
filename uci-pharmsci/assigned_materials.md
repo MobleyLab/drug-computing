@@ -45,3 +45,7 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 
 ## Before Lecture 8 ([Docking, scoring and pose prediction](lectures/docking_scoring_pose)):
 - Read the `docking.ipynb` Jupyter notebook in the relevant directory and `old_slides.pdf` there, from the slide numbered 11 (bottom left corner) onwards.
+
+## Before Lecture 9 ([Library searching](library_searching)):
+- Skim the [PDF of the slides](library_searching/Library_lingo_lecture.pdf)
+- Check out the relevant sandbox, `Library_searching_and_lingo_sandbox.ipynb`, in the relevant directory.
