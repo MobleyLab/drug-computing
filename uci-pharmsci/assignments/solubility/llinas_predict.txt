@@ -1,0 +1,32 @@
+acebutolol
+amoxicillin
+bendroflumethiazide
+benzocaine
+benzthiazide
+2-chloromandelic acid
+clozapine
+dibucaine
+diethylstilbestrol
+diflunisal
+dipyridamole
+(1R,2S)-Ephedrine
+folic acid
+furosemide
+hydrochlorothiazide
+imipramine
+indomethacin
+ketoprofen
+lidocaine
+marbofloxacin
+meclofenamic acid
+napthoic acid
+(1R,2R)-pseudoephedrine
+probenecid
+pyrimethamine
+salicylic acid
+sulfamerazine
+sulfamethiazole
+terfenadine
+thiabendazole
+tolbutanamide
+trazodone

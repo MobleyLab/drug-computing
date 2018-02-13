@@ -1,0 +1,30 @@
+acebutolol;      711
+amoxicillin;     3900
+bendroflumethiazide; 21.2
+benzocaine;      780
+2-chloromandelic acid;  ts
+clozapine;      188.9
+dibucaine;  14
+diethylstilbestrol;     10
+diflunisal;             0.29
+dipyridamole;       3.46;  C1CCN(CC1)C2=NC(=NC3=C2N=C(N=C3N4CCCCC4)N(CCO)CCO)N(CCO)CCO
+1R-2S-ephedrine; ts
+folic acid; 2.5
+furosemide; 19.6
+hydrochlorothiazide;    625
+imipramine;     22
+indomethacin;   410
+ketoprofen;     157
+lidocaine;  3130
+marbofloxacin;  ts
+meclofenamic acid;  0.16; CC1=C(C(=C(C=C1)Cl)NC2=CC=CC=C2C(=O)O)Cl
+1-napthoic acid;  28.96
+1R-2R-pseudoephedrine;  ts
+probenecid; 3.9
+pyrimethamine;  19.4
+salicylic acid; 1620
+sulfamerazine;  200
+terfenadine;    0.000856
+thiabendazole;  66
+tolbutamide;    93
+trazodone;  127

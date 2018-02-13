@@ -1,0 +1,105 @@
+#Name               #MW         #pKa        #Solubility (ug/ml)
+acetaminophen;       151.17;      9.52;        13000
+acetazolamide;       222.25;      8.75;        816
+alprenolol;            249.36;      9.47;        580
+amantadine;          151.25;      10.48;       2120
+2-amino-3-bromobenzoic acid; 216.04;    4.215;  182
+amiodarone;         645.32;     8.73;           0.0043
+amitriptyline;      277.41;       9.46;         7.8
+amodiaquine;        355.87;         7.4;        0.57; CCN(CC)Cc1cc(ccc1O)Nc2ccnc3c2ccc(c3)Cl;
+aspirin;            180.16;       3.50;         n/a
+atropine;           289.38;       9.790;        2880
+azathioprine;       277.27;       7.834;        172; Cn1cnc(c1Sc2c3c(nc[nH]3)ncn2)N(=O)=O
+1-benzylimidazole;    158.20;       6.70;         874
+5-bromo-2,4-dihydroxy-benzoic acid;  233.02; 7.138;  559;   OC(=O)c1cc(Br)c(O)cc1O;
+bromogramine;   253.14;           9.469;        22.3;  CN(C)CC1=CNC2=C1C=C(Br)C=C2
+bupivacaine;        288.44;       7.952;        172
+carprofen;          273.72;     4.247;          5.5; CC(c1ccc2c3cc(ccc3[nH]c2c1)Cl)C(=O)O
+carvedilol;         406.49;     7.97;           22.6; COc1ccccc1OCCNCC(COc2cccc3c2c4ccccc4[nH]3)O
+cephalothin;        396.44;     1.963;          457;   CC(=O)OCC1=C(N2C(C(C2=O)NC(=O)Cc3cccs3)SC1)C(=O)O
+chlorpheniramine;       274.80; 3.819;          590;
+chlorpromazine;     318.87;     9.24;           2.70
+chlorpropamide;     276.74;     4.669;          156
+chlorprothixene;    315.87;     9.520;          0.056;
+#Skipped chlorprothixene form 2 here
+cimetidine;         252.34;     6.998;          5130;
+ciprofloxacin;      331.35;     8.579;          84; c1c2c(cc(c1F)N3CCNCC3)n(cc(c2=O)C(=O)O)C4CC4
+danofloxacin;       357.38;     8.727;          450.4; CN1CC2CC1CN2c3cc4c(cc3F)c(=O)c(cn4C5CC5)C(=O)O
+deprenyl;           187.29;     7.48;           575; C[C@H](CC1=CC=CC=C1)N(C)CC#C
+desipramine;        266.39;     10.26;          63;
+diazoxide;          230.67;     8.629;          100;
+diclofenac;         296.16;     4.081;          1.036;
+difloxacin;         399.40;     7.287;          100; CN1CCN(CC1)c2cc3c(cc2F)c(=O)c(cn3c4ccc(cc4)F)C(=O)O
+diltiazem;          414.53;     8.02;           287;
+diphenhydramine;    255.26;     9.08;           289;
+5,5-diphenylhydantoin;  252.268;    8.215;      35;
+enrofloxacin;       359.40;     7.794;          237;
+famotidine;         337.45;       1.80;           760;
+fenoprofen;         242.28;     3.79;           48
+flufenamic acid;    281.24;     3.97;           1.24;       
+flumequine;         261.26;     6.514;          45;     CC1CCC2=C3N1C=C(C(=O)C3=CC(=C2)F)C(=O)O;
+5-fluorouracil;     130.08;     7.806;          153000
+flurbiprofen;       244;        3.98;           17.2
+glipizide;          445.54;     5.13;           1.45
+guanine;            151.13;     3.181;          5.6
+hexobarbital;       236.27;     8.30;           500; CC1(C(=O)NC(=O)N(C1=O)C)C2=CCCCC2
+hydroflumethiazide; 331.29;     9.750;          360
+4-hydroxybenzoic acid;  138.12;     8.952;      4740
+ibuprofen;          206.29;     4.46;           52
+4-iodophenol;       220.01;     9.073;          4250
+levofloxacin;       361.38;     8.263;          50000; C[C@H]1COC2=C3N1C=C(C(=O)C3=CC(=C2N4CCN(CC4)C)F)C(=O)O
+lomefloxacin;       351.36;     9.100;          1631; CCN1C=C(C(=O)C2=CC(=C(C(=C21)F)N3CCNC(C3)C)F)C(=O)O
+loperamide;         477.05;     8.90;           0.0402; CN(C)C(=O)C(CCN1CCC(CC1)(c2ccc(cc2)Cl)O)(c3ccccc3)c4ccccc4
+l-proline;          115.13;     10.468;         61500;   C1C[C@H](NC1)C(=O)O
+maprotiline;        277.43;     10.330;         5.6; CNCCCC12CCC(C3=CC=CC=C31)C4=CC=CC=C24
+meclizine;          390.96;     7.28;           0.13;  CC1=CC(=CC=C1)CN2CCN(CC2)C(C3=CC=CC=C3)C4=CC=C(C=C4)Cl
+mefenamic acid;     241.29;     4.22;           0.0442;
+metoclopramide;     299.80;     9.240;          82;
+metronidazole;      171.16;     2.476;          10280
+micronazole;        416.14;     6.135;          3.5; C1=CC(=C(C=C1Cl)Cl)COC(CN2C=CN=C2)C3=C(C=C(C=C3)Cl)Cl
+nalidixic acid;     232.24;     6.036;          57
+naloxone;           327.38;     9.129;          414
+1-naphthol;         144.17;     9.17;           1500
+naproxen;           230.27;     4.18;           7.3
+niflumic acid;      282.22;     2.26;           7
+nitrofurantoin;     238.16;     7.050;          137
+norfloxacin;        319.34;     8.575;          559
+nortriptyline;      263.29;     10.21;          25
+ofloxacin;          361.38;     8.193;          19600
+orbifloxacin;       295.38;      8.822;          10600;  CC1CN(CC(N1)C)c2c(c3c(c(=O)c(cn3C4CC4)C(=O)O)c(c2F)F)F
+oxytetracycline;    460.44;     12.6;           380
+papaverine;          339.39;     5.95;           46
+benzylpenicillin;   334.40;     2.519;          n/a
+#phenanthroline;      180.21;     4.94;           4342
+1,10-phenanthroline;      180.21;     4.94;           4342
+phenazopyridine;    213.24;     5.154;          13.7
+phenobarbital;      232.24;     7.187;          1180
+phenylbutazone;     303.38;     4.35;           12.54
+phthalic acid;      166.13;     4.84;           5350
+#Skipped form 2
+pindolol;           248.33;     9.54;           40
+piroxicam;          331.35;     1.87;           5.2
+procainamide;       235.33;     2.83;           10300
+procaine;           236.32;     2.29;           4500
+propranolol;        259.35;     9.54;           83
+quinine;            324.43;     4.26;           530
+ranitidine;         314.41;     8.423;          990
+sarafloxacin;       385.37;     8.5;            280; c1cc(ccc1n2cc(c(=O)c3c2cc(c(c3)F)N4CCNCC4)C(=O)O)F
+sertraline;         306.24;     9.628;          4.5
+sparfloxacin;       392.41;     6.403;          167
+sulfacetamide;      214.24;     5.318;          6470; CC(=O)NS(=O)(=O)c1ccc(cc1)N
+sulfamethazine;     278.33;     7.64;           508
+sulfathiazole;      255.32;     7.14;           522
+sulindac;           356.42;     4.08;           75
+#Skipped form 2
+tetracaine;         264.37;     8.49;           258
+tetracycline;       444.45;     9.149;          527
+thymol;             150.22;     10.344;         979
+tolmetin;           257.29;     3.522;          21
+trichlormethiazide; 30.66;      6.69;           251; c1c2c(cc(c1Cl)S(=O)(=O)N)S(=O)(=O)NC(N2)C(Cl)Cl
+#Skipped form 2
+trimethoprim;       290.32;     7.21;           325
+trimipramine;       294.44;     9.34;           4.8
+tryptamine;         160.22;     10.108;         80
+verapamil;          454.61;     8.72;           48.1
+warfarin;           308.34;     4.94;           5.1
