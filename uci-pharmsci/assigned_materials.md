@@ -53,3 +53,7 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 ## Before Lecture 10 ([Ligand-based design](ligand_based_design)):
 - Skim the [PDF of the slides](ligand_based_design/ligand_based_design_slides.pdf)
 - Try out the Jupyter notebook, `ligand_based_design.ipynb`, in teh relevant directory.
+
+## Before Lecture 11 ([Empirical models/physical properties/QSAR](empirical_physical_properties)):
+- Skim the [PDF of the slides](empirical_physical_properties/physprops.pdf) and come with questions/comments
+- 
