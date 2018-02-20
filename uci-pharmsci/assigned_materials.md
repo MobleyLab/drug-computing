@@ -56,4 +56,11 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 
 ## Before Lecture 11 ([Empirical models/physical properties/QSAR](empirical_physical_properties)):
 - Skim the [PDF of the slides](empirical_physical_properties/physprops.pdf) and come with questions/comments
-- 
+
+## Before Lecture 12 ([Fluctuations, correlations, error analysis](fluctuations_correlations_error)):
+- Skim the PDF of the slides and come with questions/comments
+
+## Before Lecture 13 ([Fluctuations, correlations, error analysis](fluctuations_correlations_error)):
+- Skim through the [Jupyter notebook](error_anlaysis_OpenMM_convergence.ipynb)
+- Try to get a sample density calculation running on your computer
+- If time allows, think about the optional exercise just following the density calculation
