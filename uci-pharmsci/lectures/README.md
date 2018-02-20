@@ -22,16 +22,15 @@ Since the material will typically draw from external files, you are recommended 
    - Supplementary material: [MD/MD Sandbox.ipynb](MD/MMD Sandbox.ipynb) Jupyter notebook
 6. MD (part 2) and Monte Carlo (MC): [MC](MC): Lecture is Keynote/PDF format
    - Supplementary material: [MC_sandbox](MC_sandbox)
-7. Solvation models
-8. Docking, scoring, and pose prediction
-9. Library searching
-   - Supplementary material: [library_searching_sandbox](library_searching_sandbox)
-10. Ligand based design
-11. Fluctuations, correlations and error analysis
-12. Error analysis, part 2
-13. Physical property estimation: [physicalprops](physicalprops)
-14. Proteins
-15. Molecular visualization
+7. Solvation models: [solvation](solvation): Lecture is a Jupyter notebook (with RISE format slides)
+8. Docking, scoring, and pose prediction: [docking_scoring_pose](docking_scoring_pose): Lecture is a Jupyter notebook, `docking.ipynb`, plus a PDF of old slides (which need some updating and provide the latter part of the content because conversion to Jupyter notebook format is not yet complete). An asssociated `OEDocking.ipynb` provides a docking example.
+9. Library searching: [library_searching](library_searching): Includes Keynote/PDF of lecture slides, and a sandbox on library and lingo searching (Jupyter notebook format).
+10. Ligand based design: [ligand_based_design](ligand_based_design): Includes a keynote/PDF of slides and a supplementary `ligand_based_design.ipynb` Jupyter notebook with supplemental materials.
+11. Physical property estimation: [empirical_physical_properties](empirical_physical_properties): Includes a Keynote/PDF of slides, as well as a minimal Jupyter notebook that sets the stage for the solubility prediction assignment. More extensive examples are provided in the solubility prediction assignment.
+12. Fluctuations, correlations and error analysis part 1: [fluctuations_correlations_error](fluctuations_correlations_error): Predominantly a lecture class; Keynote slides and a PDF are available.
+13. Error analysis, part 2: [fluctuations_correlations_error](fluctuations_correlations_error): Jupyter notebook format including activities and slides; alternate HTML format is also available. 
+14. Molecular visualization
+15. Proteins
 16. OpenMM, MDTraj, clustering and visualization: [cluster_and_visualize](cluster_and_visualize)
 17. (a) Normal modes and related models
 17. (b) Mixture simulations: [mixtures](mixtures)
