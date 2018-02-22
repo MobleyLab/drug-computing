@@ -11,3 +11,4 @@ This directory provides the assignments in subdirectories.
 - [`3D_structure_shape`](3D_structure_shape): Content for the 3D structure and shape assignment; the key aspect is the `3D_structure_shape_assignment.ipynb` file, but various supporting files are also present.
 - [`MC`](MC): Content for Monte Carlo assignment, an assignment which can be chosen after the energy minimization assignment AND the Molecular Dynamics (MD) assignment. The key aspect is a Jupyter notebook (`MC/MC.ipynb`), but supporting files are also provided.
 - [`library_searching`](library_searching): Content for library searching assignment, which builds on the 3D structure/shape assignment. The key material is a Jupyter notebook, but other files are also provided.
+- [`visualization`](visualization): Contains PyMol movie making tutorial and the PyMol visualization assignment. Can be completed in either VMD or PyMol.

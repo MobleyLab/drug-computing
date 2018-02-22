@@ -1,0 +1,99 @@
+#This file contains viewpoints for the VMD viewchangerender plugin.
+#Type 'source /Users/nathanlim/Research/Github/drug-computing/uci-pharmsci/lectures/VMD/view-change-render.vmd' from the VMD command window to load these viewpoints.
+
+proc viewchangerender_restore_my_state {} {
+  variable ::VCR::viewpoints
+
+  set ::VCR::viewpoints(1,3) { {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(1,4) { 0 }
+  set ::VCR::viewpoints(5,0) { {{-0.479945 -0.60433 0.635959 0} {-0.0973513 0.757115 0.64599 0} {-0.871884 0.248127 -0.422205 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(5,1) { {{1 0 0 -35.7719} {0 1 0 -35.6441} {0 0 1 -35.6857} {0 0 0 1}} }
+  set ::VCR::viewpoints(5,2) { {{0.0674688 0 0 0} {0 0.0674688 0 0} {0 0 0.0674688 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(5,3) { {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(5,4) { 0 }
+  set ::VCR::viewpoints(9,0) { {{0.528719 -0.466072 0.70939 0} {-0.267656 0.701576 0.660423 0} {-0.805496 -0.539051 0.246191 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(11,0) { {{-0.246234 -0.685521 0.685153 0} {-0.0404757 0.713578 0.699412 0} {-0.968367 0.144486 -0.203449 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(9,1) { {{1 0 0 -35.7714} {0 1 0 -35.6451} {0 0 1 -35.6858} {0 0 0 1}} }
+  set ::VCR::viewpoints(11,1) { {{1 0 0 -38.0227} {0 1 0 -35.331} {0 0 1 -48.3686} {0 0 0 1}} }
+  set ::VCR::viewpoints(9,2) { {{0.0674686 0 0 0} {0 0.0674686 0 0} {0 0 0.0674686 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(11,2) { {{0.111518 0 0 0} {0 0.111518 0 0} {0 0 0.111518 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(9,3) { {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(11,3) { {{1 0 0 -0.672731} {0 1 0 0.320594} {0 0 1 -0.413653} {0 0 0 1}} }
+  set ::VCR::viewpoints(9,4) { 0 }
+  set ::VCR::viewpoints(11,4) { 0 }
+  set ::VCR::viewpoints(2,0) { {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(2,1) { {{1 0 0 -35.7719} {0 1 0 -35.6441} {0 0 1 -35.6857} {0 0 0 1}} }
+  set ::VCR::viewpoints(2,2) { {{0.0271359 0 0 0} {0 0.0271359 0 0} {0 0 0.0271359 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(2,3) { {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(2,4) { 0 }
+  set ::VCR::viewpoints(6,0) { {{-0.578444 0.486192 -0.654998 0} {-0.537164 0.377257 0.754412 0} {0.613891 0.788227 0.0429432 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(6,1) { {{1 0 0 -35.7719} {0 1 0 -35.6441} {0 0 1 -35.6857} {0 0 0 1}} }
+  set ::VCR::viewpoints(6,2) { {{0.0674688 0 0 0} {0 0.0674688 0 0} {0 0 0.0674688 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(6,3) { {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(6,4) { 0 }
+  set ::VCR::viewpoints(12,0) { {{-0.246234 -0.685521 0.685153 0} {-0.0404757 0.713578 0.699412 0} {-0.968367 0.144486 -0.203449 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(12,1) { {{1 0 0 -38.0227} {0 1 0 -35.331} {0 0 1 -48.3686} {0 0 0 1}} }
+  set ::VCR::viewpoints(12,2) { {{0.111518 0 0 0} {0 0.111518 0 0} {0 0 0.111518 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(12,3) { {{1 0 0 -0.672731} {0 1 0 0.320594} {0 0 1 -0.413653} {0 0 0 1}} }
+  set ::VCR::viewpoints(12,4) { 0 }
+  set ::VCR::viewpoints(3,0) { {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(3,1) { {{1 0 0 -35.7719} {0 1 0 -35.6441} {0 0 1 -35.6857} {0 0 0 1}} }
+  set ::VCR::viewpoints(3,2) { {{0.0271359 0 0 0} {0 0.0271359 0 0} {0 0 0.0271359 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(3,3) { {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(3,4) { 0 }
+  set ::VCR::viewpoints(7,0) { {{0.461451 0.885224 -0.0587257 0} {-0.628609 0.372957 0.682466 0} {0.626034 -0.278006 0.728557 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(7,1) { {{1 0 0 -35.7719} {0 1 0 -35.6441} {0 0 1 -35.6857} {0 0 0 1}} }
+  set ::VCR::viewpoints(7,2) { {{0.0674688 0 0 0} {0 0.0674688 0 0} {0 0 0.0674688 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(7,3) { {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(7,4) { 0 }
+  set ::VCR::viewpoints(4,0) { {{0.669031 -0.315343 0.673022 0} {-0.286542 0.726089 0.625052 0} {-0.68578 -0.611028 0.395417 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(4,1) { {{1 0 0 -35.7719} {0 1 0 -35.6441} {0 0 1 -35.6857} {0 0 0 1}} }
+  set ::VCR::viewpoints(4,2) { {{0.0674688 0 0 0} {0 0.0674688 0 0} {0 0 0.0674688 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(4,3) { {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(4,4) { 0 }
+  set ::VCR::viewpoints(8,0) { {{0.528719 -0.466072 0.70939 0} {-0.267656 0.701576 0.660423 0} {-0.805496 -0.539051 0.246191 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(10,0) { {{-0.246234 -0.685521 0.685153 0} {-0.0404757 0.713578 0.699412 0} {-0.968367 0.144486 -0.203449 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(8,1) { {{1 0 0 -35.7714} {0 1 0 -35.6451} {0 0 1 -35.6858} {0 0 0 1}} }
+  set ::VCR::viewpoints(10,1) { {{1 0 0 -38.0227} {0 1 0 -35.331} {0 0 1 -48.3686} {0 0 0 1}} }
+  set ::VCR::viewpoints(8,2) { {{0.0674686 0 0 0} {0 0.0674686 0 0} {0 0 0.0674686 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(10,2) { {{0.111518 0 0 0} {0 0.111518 0 0} {0 0 0.111518 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(8,3) { {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(10,3) { {{1 0 0 -0.672731} {0 1 0 0.320594} {0 0 1 -0.413653} {0 0 0 1}} }
+  set ::VCR::viewpoints(8,4) { 0 }
+  set ::VCR::viewpoints(10,4) { 0 }
+  set ::VCR::viewpoints(1,0) { {{1 0 0 0} {0 1 0 0} {0 0 1 0} {0 0 0 1}} }
+  set ::VCR::viewpoints(1,1) { {{1 0 0 -35.7719} {0 1 0 -35.6441} {0 0 1 -35.6857} {0 0 0 1}} }
+  set ::VCR::viewpoints(1,2) { {{0.0271359 0 0 0} {0 0.0271359 0 0} {0 0 0.0271359 0} {0 0 0 1}} }
+  set ::VCR::representations(4,1P8_1.psf) [list NewCartoon-protein-ColorID_3-AOEdgy Licorice-resname_LIG_and_not_element_H-Name-AOEdgy Lines_1.000000-all-Name-AOEdgy ]
+  set ::VCR::representations(5,1P8_1.psf) [list NewCartoon-protein-ColorID_3-AOEdgy Licorice-resname_LIG_and_not_element_H-Name-AOEdgy Lines_1.000000-all-Name-AOEdgy ]
+  set ::VCR::representations(6,1P8_1.psf) [list NewCartoon-protein-ColorID_3-AOEdgy Licorice-resname_LIG_and_not_element_H-Name-AOEdgy Lines_1.000000-all-Name-AOEdgy ]
+  set ::VCR::representations(7,1P8_1.psf) [list NewCartoon-protein-ColorID_3-AOEdgy Licorice-resname_LIG_and_not_element_H-Name-AOEdgy Lines_1.000000-all-Name-AOEdgy ]
+  set ::VCR::representations(8,1P8_1.psf) [list NewCartoon-protein-ColorID_3-AOEdgy Licorice-resname_LIG_and_not_element_H-Name-AOEdgy Lines_1.000000-all-Name-AOEdgy ]
+  set ::VCR::representations(9,1P8_1.psf) [list NewCartoon-protein-ColorID_3-AOEdgy Licorice-resname_LIG_and_not_element_H-Name-AOEdgy Lines_1.000000-all-Name-AOEdgy VDW_1.000000_12.000000-resname_LIG_and_not_hydrogen-Name-AOEdgy ]
+  set ::VCR::representations(10,1P8_1.psf) [list NewCartoon-protein-ColorID_3-AOEdgy Licorice-resname_LIG_and_not_element_H-Name-AOEdgy Lines_1.000000-all-Name-AOEdgy VDW_1.000000_12.000000-resname_LIG_and_not_hydrogen-Name-AOEdgy ]
+  set ::VCR::representations(11,1P8_1.psf) [list NewCartoon-protein-ColorID_3-AOEdgy Licorice-resname_LIG_and_not_element_H-Name-AOEdgy Lines_1.000000-all-Name-AOEdgy VDW_1.000000_12.000000-resname_LIG_and_not_hydrogen-Charge-AOEdgy ]
+  set ::VCR::representations(12,1P8_1.psf) [list NewCartoon-protein-ColorID_3-AOEdgy Licorice-resname_LIG_and_not_hydrogen-Name-AOEdgy Lines_1.000000-all-Name-AOEdgy ]
+  set ::VCR::representations(1,1P8_1.psf) [list Lines_1.000000-all-Name-AOEdgy ]
+  set ::VCR::representations(2,1P8_1.psf) [list Licorice-resname_LIG_and_not_element_H-Name-AOEdgy Lines_1.000000-all-Name-AOEdgy ]
+  set ::VCR::representations(3,1P8_1.psf) [list NewCartoon-protein-ColorID_3-AOEdgy Licorice-resname_LIG_and_not_element_H-Name-AOEdgy Lines_1.000000-all-Name-AOEdgy ]
+  set ::VCR::movieList "1 2 3 4 5 6 7 8 9 10 11 12"
+  set ::VCR::movieTimeList "0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.0"
+  set ::VCR::movieTime 5.5
+  set ::VCR::movieDuration 24.00 
+  ::VCR::calctimescale 0
+  global PrevScreenSize
+  set PrevScreenSize [display get size]
+  proc RestoreScreenSize {} { global PrevScreenSize; display resize [lindex $PrevScreenSize 0] [lindex $PrevScreenSize 1] }
+  display resize 1552 967
+  if { [parallel noderank] == 0 } {
+    puts "Loaded viewchangerender viewpoints file /Users/nathanlim/Research/Github/drug-computing/uci-pharmsci/lectures/VMD/view-change-render.vmd "
+    puts "Note: The screen size has been changed to that stored in the viewpoints file."
+    puts "To restore it to its previous size type this into the Tcl console:\n  RestoreScreenSize"
+  }
+  return
+}
+
+
+viewchangerender_restore_my_state
+
+

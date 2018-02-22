@@ -29,7 +29,7 @@ Since the material will typically draw from external files, you are recommended 
 11. Physical property estimation: [empirical_physical_properties](empirical_physical_properties): Includes a Keynote/PDF of slides, as well as a minimal Jupyter notebook that sets the stage for the solubility prediction assignment. More extensive examples are provided in the solubility prediction assignment.
 12. Fluctuations, correlations and error analysis part 1: [fluctuations_correlations_error](fluctuations_correlations_error): Predominantly a lecture class; Keynote slides and a PDF are available.
 13. Error analysis, part 2: [fluctuations_correlations_error](fluctuations_correlations_error): Jupyter notebook format including activities and slides; alternate HTML format is also available. 
-14. Molecular visualization
+14. Molecular visualization [visualization](visualization): Includes a keynote/PDF of slides and VMD example files.
 15. Proteins
 16. OpenMM, MDTraj, clustering and visualization: [cluster_and_visualize](cluster_and_visualize)
 17. (a) Normal modes and related models
