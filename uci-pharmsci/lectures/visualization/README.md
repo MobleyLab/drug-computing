@@ -10,3 +10,4 @@ As of the 2017-2018 school year we are shifting to primarily instructing on use 
 - `PyMol`: Keynote and PDF; old lecture content relating to PyMol usage, by David Mobley.
 - `VMD`: Keynote and PDF; 2018 lecture content relating to VMD usage, by Nathan Lim.
 - `pymol_files`: Supplemental files relating to the PyMol lecture (e.g. sample movie files referenced therein)
+- `pymol_tutorial.md`: Tutorial content relating to PyMol, useful if you choose to use PyMol rather than VMD for the visualization assignment.
