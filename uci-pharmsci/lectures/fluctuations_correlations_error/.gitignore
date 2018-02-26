@@ -1,2 +1,6 @@
 phenol.*
 mixtures/*
+sample_files/*.csv
+sample_files/guest*
+sample_files/mixture_output.pdb
+sample_files/host.mol2
