@@ -48,6 +48,10 @@ The current primary authors are:
 
 However, this material also draws heavily (with permission) on content adapted from M. Scott Shell's ["Principles of modern molecular simulations"](https://engineering.ucsb.edu/~shell/che210d/assignments.html) course at UC Santa Barbara; when material is adapted from Shell, this will typically be noted in the content itself and he should be acknowledged if it is reused in any form.
 
+## License
+
+All written and graphical materials here are made available under a [CC-BY 4.0 license](LICENSE), and all source code/software is made available under an [MIT license](LICENSE_code). Both of these allow broad reuse with attribution.
+
 
 ## Acknowledgments
 
