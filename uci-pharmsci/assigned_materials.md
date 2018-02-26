@@ -64,3 +64,7 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 - Skim through the [Jupyter notebook](error_anlaysis_OpenMM_convergence.ipynb)
 - Try to get a sample density calculation running on your computer
 - If time allows, think about the optional exercise just following the density calculation
+
+## Before Lecture 14 ([Visualization](visualization)):
+- Skim through the slides on PyMol and VMD
+- If you plan on doing the visualization assignment, consult `assignments/visualization` to read about it, so that you know what to focus on during class. Pick whether you are going to do the assignment in PyMol or VMD (PyMol is marginally better for high quality movies of static structures; VMD is far superior for visualization of molecular simulations.)
