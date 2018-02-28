@@ -69,6 +69,9 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 - Skim through the slides on PyMol and VMD
 - If you plan on doing the visualization assignment, consult `assignments/visualization` to read about it, so that you know what to focus on during class. Pick whether you are going to do the assignment in PyMol or VMD (PyMol is marginally better for high quality movies of static structures; VMD is far superior for visualization of molecular simulations.)
 
-## Before Lecture 15 ([SMIRNOFF_simulations](SMIRNOFF_simulations)):
-- Skim through the slides on the OpenFF effort (`OpenFF_effort.pdf`)
-- Take a look at the Jupyter notebooks for mixture simulations and host-guest binding; ideally start working on some of the exercises in the mixture simulations case. 
+## Before Lecture 15 ([Simulations in OpenMM with the SMIRNOFF force field](SMIRNOFF_simulations)):
+- Skim through the slides on the OpenFF effort (`SMIRNOFF_simulations/OpenFF_effort.pdf`)
+- Take a look at the Jupyter notebooks for mixture simulations and host-guest binding; ideally start working on some of the exercises in the mixture simulations case.
+
+## Before Lecture 16 ([Free energy basics](free_energy_basics)):
+- Skim through the slides (PDF) in `free_energy_basics`.
