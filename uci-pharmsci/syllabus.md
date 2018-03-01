@@ -9,7 +9,7 @@ The instructor is David L. Mobley, and his office is 3134B Natural Sciences 1.
 
 ## Text
 
-**No textbook is currently required**; however, we *strongly recommend* Leach's Molecalar Modelling book, which all of you should have on hand or have access to (such as in the library):
+**No textbook is currently required**; however, we *strongly recommend* Leach's Molecular Modelling book, which all of you should have on hand or have access to (such as in the library):
     Molecular Modelling: Principles and Applications, 2nd Edition
     Andrew R. Leach, Prentice Hall, London, 2001
     ISBN: 0-582-38210-6
