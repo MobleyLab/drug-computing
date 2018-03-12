@@ -75,3 +75,16 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 
 ## Before Lecture 16 ([Free energy basics](free_energy_basics)):
 - Skim through the slides (PDF) in `free_energy_basics`.
+
+## Before Lecture 17 ([Clustering and visualization])(cluster_and_visualize)):
+- Skim through the slides (Introduction to MSMs.pdf in that directory)
+- Make sure you have the jupyter notebooks up and running
+
+## Before Lecture 18:
+- (No reading assignment for this lecture; in 2018 it was a guest lecture by Ioan Andricioaei)
+
+## Before Lecture 19 ([proteins](proteins))
+- Skim the slides on working with proteins (proteins.pdf in the relevant directory)
+
+## Before Lecture 20 (on high performance computing, with a server room tour)
+- No assignment
