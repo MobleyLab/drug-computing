@@ -86,8 +86,6 @@ conda install -c omnia openmm openforcefield parmed yank openmoltools pdbfixer s
 conda install -c OpenEye/label/Orion -c omnia oeommtools
 # Install plotting stuff and other prerequisites such as numerical libraries
 conda install -c conda-forge nb_conda mpld3 scikit-learn seaborn numpy matplotlib bokeh
-# Temporary fix due to https://github.com/arose/nglview/issues/726#issuecomment-356941250 -- use an older ipykernel for nglview
-conda install ipykernel=4.6.1
 # Interactive visualization in jupyter notebooks
 conda install -c bioconda nglview
 ```
