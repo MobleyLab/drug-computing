@@ -162,7 +162,7 @@ Output:
     OldPE = 1.e300
     while abs(PE - OldPE) > EFracTolCG * abs(PE):
         OldPE = PE
-        PE, Pos = LineSearch(Pos, Dir, dx, EFracTolLS)
+        PE, Pos = LineSearch(Pos, Dir, dx, M, L, Cut, EFracTolLS)
         OldForces = Forces.copy()
         PE, Forces = mclib.calcenergyforces(Pos, M, L, Cut, Forces)
         Gamma = np.sum((Forces - OldForces) * Forces) / np.sum(OldForces * OldForces)
