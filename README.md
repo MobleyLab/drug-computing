@@ -59,7 +59,7 @@ We would like to particularly acknowledge:
 - M. Scott Shell for his excellent course material (see [Authors](#authors))
 - OpenEye Scientific Software for extending a free academic license (which much of our content relies heavily on)
 - The previous students of PharmSci 275 for their contributions to this content and notes on what was unclear, etc.
-- James Haigh at OpenEye Scientific Software for answering many support questions over the years which helped me, both directly and indirectly, in developing the portions o fthis content utilizing OpenEye tools
+- James Haigh at OpenEye Scientific Software for answering many support questions over the years which helped me, both directly and indirectly, in developing the portions of this content utilizing OpenEye tools
 - John Chodera (MSKCC), from whom I (Mobley) learned a great deal when we were both at UCSF and afterwards. His contribution here is hard to quantify or even identify directly -- I've used so much of his code over the years, reading it, modifying it, repurposing it, and moving it around from one place to another that possibly some snippets from his code occur in some of the materials here without me realizing it. Certainly some of this material draws heavily on [openmoltools](http://github.com/choderalab/openmoltools) which Chodera and I and others have both contributed substantially to, and which draws on even earlier material we began preparing when we were both at UCSF.
 - The many contributors to [openmoltools](http://github.com/choderalab/openmoltools)
 
