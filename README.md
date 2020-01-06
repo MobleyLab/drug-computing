@@ -53,6 +53,9 @@ However, this material also draws heavily (with permission) on content adapted f
 All written and graphical materials here are made available under a [CC-BY 4.0 license](LICENSE), and all source code/software is made available under an [MIT license](LICENSE_code). Both of these allow broad reuse with attribution.
 
 
+## Other related content
+You may also wish to refer to the Volkamer lab's [TeachOpenCADD](https://github.com/volkamerlab/TeachOpenCADD) and associated [journal article](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-019-0351-x) which provides a fully open-source intro to CADD; many topics overlap. 
+
 ## Acknowledgments
 
 We would like to particularly acknowledge:
