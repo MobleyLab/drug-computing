@@ -54,7 +54,9 @@ All written and graphical materials here are made available under a [CC-BY 4.0 l
 
 
 ## Other related content
-You may also wish to refer to the Volkamer lab's [TeachOpenCADD](https://github.com/volkamerlab/TeachOpenCADD) and associated [journal article](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-019-0351-x) which provides a fully open-source intro to CADD; many topics overlap. 
+You may also wish to refer to the Volkamer lab's [TeachOpenCADD](https://github.com/volkamerlab/TeachOpenCADD) and associated [journal article](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-019-0351-x) which provides a fully open-source intro to CADD; many topics overlap.
+
+Oliver Beckstein's [Computational Methods in Physics](https://asu-compmethodsphysics-phy494.github.io/ASU-PHY494/overview/) course up online may also be helpful; notice it has a fairly extensive introduction to Python, debugging, NumPy, and various computational techniques. 
 
 ## Acknowledgments
 
