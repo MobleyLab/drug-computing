@@ -45,7 +45,7 @@ $HOME/anaconda3/bin/python
 ```
 To ensure it works, run the command `python` in a new terminal. Its output should look something like:
 ```
-Python 3.7.4 (default, Aug 13 2019, 20:35:49) 
+Python 3.7.4 (default, Aug 13 2019, 20:35:49)
 [GCC 7.3.0] :: Anaconda, Inc. on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
@@ -135,7 +135,7 @@ echo export OE_LICENSE="<PATHTOFILE>/oe_license.txt" >> ~/.bash_profile
 
 #Install the OpenEye package and toolkits and the oenotebook Jupyter helper
 pip install -i https://pypi.anaconda.org/OpenEye/simple OpenEye-toolkits
-pip install --pre --extra-index-url https://pypi.anaconda.org/OpenEye/channel/beta/simple OpenEye-oenotebook
+pip install --extra-index-url https://pypi.org/simple --extra-index-url https://pypi.anaconda.org/openeye/simple/ -i https://pypi.anaconda.org/openeye/label/oenotebook/simple openeye-oenotebook
 ```
 Verify the installation with:
 > oecheminfo.py
