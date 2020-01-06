@@ -26,32 +26,59 @@ Because of hardware differences, it is unlikely that the same installation (belo
 
 
 ### Anaconda Python
-Download the Anaconda installation file or Download it from the [website](https://www.continuum.io/downloads) or use (from the command prompt):
-Linux Intel:
-> wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-
-Linux AMD:
-> wget https://repo.continuum.io/archive/Anaconda3-5.0.0-Linux-ppc64le.sh
-
-OS X:
-> wget https://repo.continuum.io/archive/Anaconda3-5.0.1-MacOSX-x86_64.sh
-
+Download the Anaconda Python 3 installation file or download it from the [website](https://www.anaconda.com/distribution/) or use (from the command prompt):
+Linux/OSX
+> wget https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh
 
 Install Anaconda (this may take 15-30mins), filling in the "fill in the rest here" part with the appropriate name of the file you downloaded above (or run the interactive installer if you downloaded that):
 > bash Anaconda_fillintheresthere.sh -b
 
 Make sure the anaconda3 path is added to your `~/.bash_profile` (often this is automatically added by the installer, but make sure it ends up there), e.g. via:
->echo export PATH="$HOME/anaconda3/bin:$PATH" >> ~/.bash_profile
+>echo 'PATH="$HOME/anaconda3/bin:$PATH"' >> ~/.bash_profile
 
 When it asks you to add Anaconda to your bash shell PATH, select **YES**.
 
-Check that Anaconda installed properly by running the command `python`. Its output should look something like:
+Check that Anaconda installed properly by first running `which python`, which should show your newly installed python, e.g.:
 ```
-Python 3.6.0 |Anaconda 4.3.0 (64-bit)| (default, Dec 23 2016, 12:22:00)
-[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
+#: which python
+$HOME/anaconda3/bin/python
+```
+To ensure it works, run the command `python` in a new terminal. Its output should look something like:
+```
+Python 3.7.4 (default, Aug 13 2019, 20:35:49) 
+[GCC 7.3.0] :: Anaconda, Inc. on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
+
+Type `exit()` or ctrl-d ("control-d") to leave the python shell.
+
+** Troubleshooting python **
+
+If `which python` just gives a blank line, then it means it cannot find any python in your `$PATH`. Ensuring that `~/.bash_profile` was modified correctly, use `grep -c anaconda3/bin ~/.bash_profile` and check that it prints a number greater than 0 (0 means not found). If you do get 0, then go back and follow the above steps. Now, try to source it (`source ~/.bash_profile`) and repeat the checks above. If it works this time, it means your terminal is not sourcing `~/.bash_profile` automatically. Some OS e.g. certain linux distributions, will source `~/.bashrc` rather than `~/.bash_profile`, since `bash_profile` is only sourced for login shells (this is a technicality not important here). A common thing to do is put everything in bashrc, and have bash_profile source it, ensuring every terminal will work the same:
+```
+$: cat ~/.bash_profile
+# /etc/skel/.bash_profile
+
+# This file is sourced by bash for login shells.  The following line
+# runs your .bashrc and is recommended by the bash info pages.
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+```
+where `cat` is a program that prints the file. The last line is bash code for "if ~/.bashrc is a file, then source it" where `. ~/.bashrc` is short for `source ~/.bashrc` and `~` is short for `$HOME`.
+
+**Q: What if `which python` shows a python that is not from anaconda3?**
+Then another python is installed on your system, and you likely did not follow the above steps regarding modifying `$PATH`. If you prefer to not have anaconda load its own python for every terminal, you can add the following to your `~/.bashrc`:
+
+```
+alias miniconda="source ~/miniconda3/etc/profile.d/conda.sh; conda           activate base"
+```
+
+where `alias` is essentially a macro. The conda.sh is what is normally sourced by automatic vanilla installation, and will modify `$PATH` to give its own python first choice. This will then activate a "base" environment, which you may or may not want to use (see below in the next section).
+
+**Q: Anaconda versus miniconda?**
+The only difference is the inclusion of GUI (graphical user interface) and a lot of prepackaged software in the full Anaconda installation given above. You may opt to install miniconda instead, which provides the exact same terminal functionality, and only installs the basics (python, conda, etc.). As a quick comparison, Anaconda is ~500MB where miniconda is ~50MB. See [this thread](https://stackoverflow.com/questions/45421163/anaconda-vs-miniconda) for more discussion).
+
+Go to [https://conda.io/en/latest/miniconda.html] to download miniconda.
 
 ### Conda install requirements
 
@@ -63,7 +90,7 @@ Here we will use the `conda` package manager to install the software you need.
 - If you already have an extensive set of packages managed with `conda` and you want to ensure you do not break or modify your existing installation, you probably DO want to create a custom environment (`env`) for this course.
 
 If you are do not need an `env`, just proceed straight to installation.
-If you do need an `env`, [use this info](https://conda.io/docs/user-guide/tasks/manage-environments.html) to create a new Python 3.6 conda environment called `drugcomp` (e.g. `conda create -n drugcomp python=3.6`) and activate this environment (`source activate drugcomp`) before doing the installs discussed below.
+If you do need an `env`, [use this info](https://conda.io/docs/user-guide/tasks/manage-environments.html) to create a new Python 3.7 conda environment called `drugcomp` (e.g. `conda create -n drugcomp python=3.7`) and activate this environment (`source activate drugcomp`) before doing the installs discussed below.
 Whenever you do work for the class, you will need to activate this environment.
 
 **Then proceed to installation**:
@@ -155,12 +182,14 @@ mol = OEMol()
 ```
 and you should get no errors.
 
-If you have errors with your OpenEye installation and have verified that you have an OpenEye license file, it is in the correct place, and properly listed in your `~\.bash_profile` file, you may need to edit your `~/.bashrc` file to point to your `~/.bash_profile` file. Particularly, I have noticed that on USB installations of Ubuntu in some cases this step may be necessary. You would just add a line to the end of your `~/.bashrc` file that says `source ~/.bash_profile`
+If you have errors with your OpenEye installation and have verified that you have an OpenEye license file, it is in the correct place, and properly listed in your `~/.bash_profile` file, you may need to edit your `~/.bashrc` file to point to your `~/.bash_profile` file. Particularly, I have noticed that on USB installations of Ubuntu in some cases this step may be necessary. You would just add a line to the end of your `~/.bashrc` file that says `source ~/.bash_profile`
 
 ### Additions for Macintosh (OS X)
 For some of our assignments (energy minimization, MD, MC) we will use `f2py` to compile some fortran code for use in Python (to make some numerical operations fast).
 To use this on OS X, you will need to install XCode (developer tools) from the Mac App Store, and then on the terminal, execute `xcode-select --install` to install the XCode command-line tools.
 Without this you will get an error message relating to `limits.h` when attempting to execute f2py.
+
+A subtle problem arises if you install a compiler with conda (e.g. `gcc`) and have XCode installed as well. This can be a source of headache/confusion, so just be aware that multiple compilers will exist on your machine, and care must be taken to ensure only one is used at a time.
 
 ### One additional step
 
