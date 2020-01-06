@@ -109,8 +109,7 @@ conda install gcc libgfortran
 
 # Install OpenMM, openforcefield, yank, parmed, and openmoltools
 conda install -c omnia openmm openforcefield parmed yank openmoltools pdbfixer solvationtoolkit
-# Install oeommtools for interfacing OpenEye and OpenMM
-conda install -c OpenEye/label/Orion -c omnia oeommtools
+
 # Install plotting stuff and other prerequisites such as numerical libraries
 conda install -c conda-forge nb_conda mpld3 scikit-learn seaborn numpy matplotlib bokeh
 # Interactive visualization in jupyter notebooks
