@@ -30,6 +30,8 @@ Download the Anaconda Python 3 installation file or download it from the [websit
 Linux/OSX
 > wget https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh
 
+(**If you are on Windows in 2020, we suggest using Python3.6 rather than 3.7 or later**; folks have reported dependency problems with Python 3.7 in Windows becuase support is relatively newer.)
+
 Install Anaconda (this may take 15-30mins), filling in the "fill in the rest here" part with the appropriate name of the file you downloaded above (or run the interactive installer if you downloaded that):
 > bash Anaconda_fillintheresthere.sh -b
 
