@@ -101,7 +101,7 @@ The final exam is a written report analyzing a paper you select from the literat
 
 ## Grading
 
-Grading will be based on your homework assignments (75%), final report (15%) and participation (5%).
+Grading will be based on your homework assignments (75%), final report (15%) and participation (10%).
 In the undergraduate version of this course the grading scheme will be roughly as follows:
 - 90% and up: A
 - 80% to 90%: B
