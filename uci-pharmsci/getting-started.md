@@ -5,32 +5,47 @@ This document, which is a work in progress (contributions welcome), provides inf
 ## Prerequisites
 
 Before getting started, note that the below assumes at least some modest familiarity with the BASH shell and the idea of paths, file names, and basic Linux commands.
-If you do not have this familiarity, you may need to consult the [BASH cheat sheet](docs/bash_cheatsheet.jpg) and other sources of information (such as the [Linux/bash crash course](docs/linux_crashcourse.md) here) before proceeding.
+If you do not have this familiarity, you may need to consult the [BASH cheat sheet](docs/bash_cheatsheet.jpg) and other sources of information (such as the [Linux/bash crash course](docs/linux_crashcourse.md) here) before proceeding. (MIT's [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) provides a more complete and diverse introduction in the form of a full course.)
 
-## Setup and Installation
+## Setup and Installation - WINDOWS ONLY:
 
-### **(WINDOWS ONLY -- Skip to the "Anaconda Python" section if you're not on Windows)** Install BASH on Windows
-Follow the official guide linked [here](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
+### SPECIAL CONSIDERATIONS FOR WINDOWS:
+
+If you are on Windows, you basically have three options:
+1. Dual boot into Linux (best option, but requires some expertise and/or care to set up, and not something this course will help you do)
+2. Use Windows Subsystem for Linux (may work for much but likely not all of the software used in this course)
+3. Boot into Linux from a USB drive, e.g. a thumb drive with a persistent Linux distribution
+
+We discuss each of those in turn here:
+
+#### Dual boot (WINDOWS ONLY)
+
+This is your best option on Windows, but not one we can help you set up. It requires some level of technical expertise/proficiency, not because it is difficult, but because missteps can result in your computer becoming unbootable, e.g. "a brick". This is the best route if you can manage it, but this class cannot support you in going this route.
+
+### Windows Subsystem for Linux (WSL)
+
+**Install BASH on Windows**: Follow the official guide linked [here](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
 
 If the BASH terminal guide works and you can successfully use BASH commands (i.e `cd`, `ls`). Now, try performing the installation steps to see if we can get Anaconda/OpenEye installed on your local machine too.
 
-This feature is still in BETA and we have not tested extensively; we hope it will work on your machine.
-This is meant to replace command terminals like PuTTY so that your terminal can more closely mimic the command terminal found on Linux/MacOS machines or when you login to remote clusters.
+There may be some software we use in this course which does not work well on Windows (specifically, the Windows Subsystem for Linux (WSL) as discussed here) as Windows is not broadly used in scientific computing/our open source stack.
 
-**ALTERNATIVE**:
+### Boot to Linux from an USB drive (e.g. thumb drive)
 
-An alternative approach we are exploring is to distribute USB drives (e.g. thumb drives) with a persistent Linux distribution available pre-installed and you can boot from these/do your work from these for the purposes of this class.
-If needed, these should be available from Dr. Mobley for booting your own computer or for use on the computers in our classroom.
+In the past, we have on occasion explored an alternative approach involving bootable USB drives (e.g. thumb drives) with a persistent Linux distribution available pre-installed.
+If needed, we can explore this with Dr. Mobley, though it has not been attempted in several years.
 Because of hardware differences, it is unlikely that the same installation (below) will work both on a personal laptop and on the computers in the classroom, so you would need to pick one or the other and coordinate with Dr. Mobley.
 **If using the USB drive approach**, see [`docs/persistent-usb.md`](docs/persistent-usb.md) for additional information and instructions *before following the below instructions*.
 
+## Setup and Installation: For everyone
 
 ### Anaconda Python
 Download the Anaconda Python 3 installation file or download it from the [website](https://www.anaconda.com/distribution/) or use (from the command prompt):
-Linux/OSX
-> wget https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh
 
-(**If you are on Windows in 2020, we suggest using Python3.6 rather than 3.7 or later**; folks have reported dependency problems with Python 3.7 in Windows becuase support is relatively newer.)
+(Linux/OSX)
+> wget https://repo.anaconda.com/archive/Anaconda3-2021.05-MacOSX-x86_64.sh
+
+(You can get a related link for Windows or Linux and use a similar command.)
 
 Install Anaconda (this may take 15-30mins), filling in the "fill in the rest here" part with the appropriate name of the file you downloaded above (or run the interactive installer if you downloaded that):
 > bash Anaconda_fillintheresthere.sh -b
@@ -39,6 +54,7 @@ Make sure the anaconda3 path is added to your `~/.bash_profile` (often this is a
 >echo 'PATH="$HOME/anaconda3/bin:$PATH"' >> ~/.bash_profile
 
 When it asks you to add Anaconda to your bash shell PATH, select **YES**.
+(If you are using a different shell, you need to make a similar change to your shell's configuration.)
 
 Check that Anaconda installed properly by first running `which python`, which should show your newly installed python, e.g.:
 ```
@@ -47,15 +63,15 @@ $HOME/anaconda3/bin/python
 ```
 To ensure it works, run the command `python` in a new terminal. Its output should look something like:
 ```
-Python 3.7.4 (default, Aug 13 2019, 20:35:49)
-[GCC 7.3.0] :: Anaconda, Inc. on linux
+Python 3.8.8 (default, April 13 2021, 12:59:45)
+[Clang 10.0.0 ] :: Anaconda, Inc. on darwin
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
 Type `exit()` or ctrl-d ("control-d") to leave the python shell.
 
-** Troubleshooting python **
+**Troubleshooting python**
 
 If `which python` just gives a blank line, then it means it cannot find any python in your `$PATH`. Ensuring that `~/.bash_profile` was modified correctly, use `grep -c anaconda3/bin ~/.bash_profile` and check that it prints a number greater than 0 (0 means not found). If you do get 0, then go back and follow the above steps. Now, try to source it (`source ~/.bash_profile`) and repeat the checks above. If it works this time, it means your terminal is not sourcing `~/.bash_profile` automatically. Some OS e.g. certain linux distributions, will source `~/.bashrc` rather than `~/.bash_profile`, since `bash_profile` is only sourced for login shells (this is a technicality not important here). A common thing to do is put everything in bashrc, and have bash_profile source it, ensuring every terminal will work the same:
 ```
@@ -92,7 +108,7 @@ Here we will use the `conda` package manager to install the software you need.
 - If you already have an extensive set of packages managed with `conda` and you want to ensure you do not break or modify your existing installation, you probably DO want to create a custom environment (`env`) for this course.
 
 If you are do not need an `env`, just proceed straight to installation.
-If you do need an `env`, [use this info](https://conda.io/docs/user-guide/tasks/manage-environments.html) to create a new Python 3.7 conda environment called `drugcomp` (e.g. `conda create -n drugcomp python=3.7`) and activate this environment (`source activate drugcomp`) before doing the installs discussed below.
+If you do need an `env`, [use this info](https://conda.io/docs/user-guide/tasks/manage-environments.html) to create a new Python 3.8 conda environment called `drugcomp` (e.g. `conda create -n drugcomp python=3.8`) and activate this environment (`source activate drugcomp`) before doing the installs discussed below.
 Whenever you do work for the class, you will need to activate this environment.
 
 **Then proceed to installation**:

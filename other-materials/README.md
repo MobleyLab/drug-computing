@@ -11,3 +11,4 @@ It may be crosslinked from course content, etc.
 ## Other useful materials:
 - For very helpful material on Linux and Python relevant to our area, refer to [Oliver Beckstein's Computational Methods in Physics course](https://asu-compmethodsphysics-phy494.github.io/ASU-PHY494/overview/), which has sectionns on Linux/Unix, Python, git, etc.
 - For additional background information on Linux, check out [Code Academy's course](https://www.codecademy.com/learn/learn-the-command-line).
+- MIT has a nice course, [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) which covers the shell, shell tools/scripting, editors, data, command-line, version control, debugging and profiling, security and cryptography, and a variety of other topics.
