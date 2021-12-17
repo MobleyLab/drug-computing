@@ -121,18 +121,18 @@ cd drug-computing
 This checks out (obtains) a copy of this repository so you can work with it and the files in it, if you like (you'll be using this to access lecture content and other materials from this class.) (If you have trouble with this, you may want to try the https version of the command, `git clone https://github.com/MobleyLab/drug-computing.git`)
 
 Then do the following additional installs (**except** if you are using a USB stick Ubuntu installation in 2018, in which case you should replace the first `conda install gcc libgfortran` command with the information [here](docs/persistent-usb.md/#troubleshooting), then follow the rest of the commands after it):
+
 ```bash
-#Install the gcc and gfortran compilers
-conda install gcc libgfortran
-
-# Install OpenMM, openforcefield, yank, parmed, and openmoltools
-conda install -c omnia openmm openforcefield parmed yank openmoltools pdbfixer solvationtoolkit
-
-# Install plotting stuff and other prerequisites such as numerical libraries
-conda install -c conda-forge nb_conda mpld3 scikit-learn seaborn numpy matplotlib bokeh
-# Interactive visualization in jupyter notebooks
-conda install -c bioconda nglview
+conda install parmed --yes
+conda install -c conda-forge openff-toolkit pdbfixer nb_conda mpld3 scikit-learn seaborn numpy matplotlib bokeh nglview py3dmol --yes
+conda install -c openeye openeye-toolkits --yes
+conda install -c anaconda requests
+conda config --add channels conda-forge --yes
+conda install pyemma --yes
+conda install -c openeye/label/Orion oeommtools --yes
+conda install -c conda-forge libgfortran
 ```
+
 The above installs quite a variety of software packages and may take a reasonable chunk of time to complete, even on a fairly fast connection.
 
 Specific notebooks/assignments used in class may have additional requirements and in general these will be mentioned at the top of the notebook; you should set aside some extra time to install before using a particular notebook.
@@ -150,8 +150,7 @@ Then do the following:
 # (Here, replace <PATHTOFILE> with the path of the place you have put this file)
 echo export OE_LICENSE="<PATHTOFILE>/oe_license.txt" >> ~/.bash_profile
 
-#Install the OpenEye package and toolkits and the oenotebook Jupyter helper
-pip install -i https://pypi.anaconda.org/OpenEye/simple OpenEye-toolkits
+#Install the OpenEye oenotebook Jupyter helper
 pip install --extra-index-url https://pypi.org/simple --extra-index-url https://pypi.anaconda.org/openeye/simple/ -i https://pypi.anaconda.org/openeye/label/oenotebook/simple openeye-oenotebook
 ```
 Verify the installation with:
@@ -200,6 +199,9 @@ mol = OEMol()
 and you should get no errors.
 
 If you have errors with your OpenEye installation and have verified that you have an OpenEye license file, it is in the correct place, and properly listed in your `~/.bash_profile` file, you may need to edit your `~/.bashrc` file to point to your `~/.bash_profile` file. Particularly, I have noticed that on USB installations of Ubuntu in some cases this step may be necessary. You would just add a line to the end of your `~/.bashrc` file that says `source ~/.bash_profile`
+
+### For google collab users
+If you will be runnning notebooks on google collab, put the `oe_license.txt` file in the `oelicense/` directory (same directory that contains the `other-materials/` and `uci-pharmsci/` folders).
 
 ### Additions for Macintosh (OS X)
 For some of our assignments (energy minimization, MD, MC) we will use `f2py` to compile some fortran code for use in Python (to make some numerical operations fast).
