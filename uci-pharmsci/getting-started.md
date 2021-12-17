@@ -130,7 +130,7 @@ conda install -c anaconda requests
 conda config --add channels conda-forge --yes
 conda install pyemma --yes
 conda install -c openeye/label/Orion oeommtools --yes
-conda install -c conda-forge libgfortran
+conda install -c conda-forge libgfortran --yes
 ```
 
 The above installs quite a variety of software packages and may take a reasonable chunk of time to complete, even on a fairly fast connection.
