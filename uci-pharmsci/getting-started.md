@@ -141,7 +141,8 @@ Specific notebooks/assignments used in class may have additional requirements an
 ### Install OpenEye toolkits
 
 Download a copy of the `oe_license.txt` OpenEye license file from the course website, as you will need it for what follows.
-Put this somewhere safe, where you can find it again, and note the path (directory location) where you put it.
+If you will be runnning notebooks on google collab, put the `oe_license.txt` file in the `oelicense/` directory (same directory that contains the `other-materials/` and `uci-pharmsci/` folders).
+Otherwise, put the license file somewhere safe, where you can find it again, and note the path (directory location) where you put it.
 Then do the following:
 
 
@@ -200,8 +201,6 @@ and you should get no errors.
 
 If you have errors with your OpenEye installation and have verified that you have an OpenEye license file, it is in the correct place, and properly listed in your `~/.bash_profile` file, you may need to edit your `~/.bashrc` file to point to your `~/.bash_profile` file. Particularly, I have noticed that on USB installations of Ubuntu in some cases this step may be necessary. You would just add a line to the end of your `~/.bashrc` file that says `source ~/.bash_profile`
 
-### For google collab users
-If you will be runnning notebooks on google collab, put the `oe_license.txt` file in the `oelicense/` directory (same directory that contains the `other-materials/` and `uci-pharmsci/` folders).
 
 ### Additions for Macintosh (OS X)
 For some of our assignments (energy minimization, MD, MC) we will use `f2py` to compile some fortran code for use in Python (to make some numerical operations fast).

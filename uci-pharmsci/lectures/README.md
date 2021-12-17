@@ -14,7 +14,7 @@ Since the material will typically draw from external files, you are recommended 
 
 ## Instructional content
 
-1. Python, Linux, and vi(m): [Python_Linux_Vi](Python_linux_Vi): Lecture is Jupyter notebook (with RISE format slides)
+1. Python, Linux, and vi(m): [Python_Linux_Vi](Python_linux_Vi/): Lecture is Jupyter notebook (with RISE format slides)
 2. Energy minimization: [energy_minimization](energy_minimization): Lecture is Jupyter notebook (with RISE format slides)
 3. 3D structure and shape methods: [3D_structure_shape](3D_structure_shape): Lecture is Jupyter notebook (with RISE format slides)
 4. Quantum mechanics (QM): [QM](QM): Lecture is Powerpoint format, with a [supplemental Jupyter notebook](QM/psi4_example.ipynb) with example Psi4 usage.
@@ -28,7 +28,7 @@ Since the material will typically draw from external files, you are recommended 
 10. Ligand based design: [ligand_based_design](ligand_based_design): Includes a keynote/PDF of slides and a supplementary `ligand_based_design.ipynb` Jupyter notebook with supplemental materials.
 11. Physical property estimation: [empirical_physical_properties](empirical_physical_properties): Includes a Keynote/PDF of slides, as well as a minimal Jupyter notebook that sets the stage for the solubility prediction assignment. More extensive examples are provided in the solubility prediction assignment.
 12. Fluctuations, correlations and error analysis part 1: [fluctuations_correlations_error](fluctuations_correlations_error): Predominantly a lecture class; Keynote slides and a PDF are available.
-13. Error analysis, part 2: [fluctuations_correlations_error](fluctuations_correlations_error): Jupyter notebook format including activities and slides; alternate HTML format is also available. 
+13. Error analysis, part 2: [fluctuations_correlations_error](fluctuations_correlations_error): Jupyter notebook format including activities and slides; alternate HTML format is also available.
 14. Molecular visualization [visualization](visualization): Includes a keynote/PDF of slides and VMD example files.
 15. Proteins
 16. OpenMM, MDTraj, clustering and visualization: [cluster_and_visualize](cluster_and_visualize)
