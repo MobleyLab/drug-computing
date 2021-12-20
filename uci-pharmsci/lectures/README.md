@@ -14,14 +14,14 @@ Since the material will typically draw from external files, you are recommended 
 
 ## Instructional content
 
-1. Python, Linux, and vi(m): [Python_Linux_Vi](Python_linux_Vi/): Lecture is Jupyter notebook (with RISE format slides)
-2. Energy minimization: [energy_minimization](energy_minimization): Lecture is Jupyter notebook (with RISE format slides)
+1. Python, Linux, and vi(m): [Python_Linux_Vi](Python_Linux_Vi): Lecture is Jupyter notebook (with RISE format slides)
+2. Energy minimization: [energy_minimization](energy_minimization): Lecture is Jupyter notebook (with RISE format slides). Folder contains a .HTML version of the lecture.
 3. 3D structure and shape methods: [3D_structure_shape](3D_structure_shape): Lecture is Jupyter notebook (with RISE format slides)
 4. Quantum mechanics (QM): [QM](QM): Lecture is Powerpoint format, with a [supplemental Jupyter notebook](QM/psi4_example.ipynb) with example Psi4 usage.
 5. Molecular dynamics (MD): [MD](MD): Lecture is Keynote/PDF format
-   - Supplementary material: [MD/MD Sandbox.ipynb](MD/MMD Sandbox.ipynb) Jupyter notebook
+   - Supplementary material: [MD/MD_Sandbox.ipynb](MD/MD_Sandbox.ipynb) Jupyter notebook
 6. MD (part 2) and Monte Carlo (MC): [MC](MC): Lecture is Keynote/PDF format
-   - Supplementary material: [MC_sandbox](MC_sandbox)
+   - Supplementary material: [MC/MC_Sandbox.ipynb](MC/MC_Sandbox.ipynb) Jupyter notebook
 7. Solvation models: [solvation](solvation): Lecture is a Jupyter notebook (with RISE format slides)
 8. Docking, scoring, and pose prediction: [docking_scoring_pose](docking_scoring_pose): Lecture is a Jupyter notebook, `docking.ipynb`, plus a PDF of old slides (which need some updating and provide the latter part of the content because conversion to Jupyter notebook format is not yet complete). An asssociated `OEDocking.ipynb` provides a docking example.
 9. Library searching: [library_searching](library_searching): Includes Keynote/PDF of lecture slides, and a sandbox on library and lingo searching (Jupyter notebook format).
