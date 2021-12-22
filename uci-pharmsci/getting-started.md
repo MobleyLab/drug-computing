@@ -124,13 +124,15 @@ Then do the following additional installs (**except** if you are using a USB sti
 
 ```bash
 conda install parmed --yes
-conda install -c conda-forge openff-toolkit pdbfixer nb_conda mpld3 scikit-learn seaborn numpy matplotlib bokeh nglview py3dmol --yes
+conda install -c conda-forge openff-toolkit pdbfixer nb_conda mpld3 scikit-learn seaborn numpy matplotlib bokeh py3dmol --yes
 conda install -c openeye openeye-toolkits --yes
 conda install -c anaconda requests
 conda config --add channels conda-forge --yes
 conda install pyemma --yes
 conda install -c openeye/label/Orion oeommtools --yes
 conda install -c conda-forge libgfortran --yes
+# Optional (enables 3D movies in Jupyter notebooks, but can be finicky)
+conda install -c conda-forge nglview --yes
 ```
 
 The above installs quite a variety of software packages and may take a reasonable chunk of time to complete, even on a fairly fast connection.
@@ -212,3 +214,13 @@ A subtle problem arises if you install a compiler with conda (e.g. `gcc`) and ha
 ### One additional step
 
 After the above, please also use `jupyter-nbextension enable nglview --py --sys-prefix` on the command-line to enable the `nglview` extension for interactive visualization in Jupyter notebooks.
+
+
+# Instructor notes
+
+Many of the notebooks are formatted as RISE notebooks which can be presented as slides using the RISE plugin. To get this to work, I have needed to:
+- Install as normal (above)
+- `conda update notebook` (RISE needed more recent version)
+- `conda install -c conda-forge rise`
+- `python -m ipykernel install --user --name=drugcomp` (or whatever environment is being used above) to make sure this environment is activated in the notebook
+- Once installed, if a notebook with RISE slides is active, use option-R to enter the slideshow.
