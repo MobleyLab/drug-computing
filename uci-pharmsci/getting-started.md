@@ -1,15 +1,41 @@
 # Getting your computer ready for PharmSci 175/275
 
-This document, which is a work in progress (contributions welcome), provides information on what you need to install and how in order for your computer to be ready for PharmSci 175/275.
+This document, which is a work in progress (contributions welcome), provides information on preparing your computing environment for PharmSci 175/275.
 
-## Prerequisites
+This class involves using a considerable amount of Python and computational chemistry software. There are two main ways you can use this software, requiring rather different setup and requirements:
+1) Install and run in the cloud via Google Colab (minimal hardware requirements; may even work on tablets and/or phones)
+2) Install and run locally on your computer
+
+Here, we recommend and support the first approach, especially for novice users. The second approach is also documented, but historically poses major challenges for many Windows users (most scientific computing is done in a Linux-like environment, e.g. Mac or Linux) and/or those without significant computing/command-line experience.
+
+Thus, here, we first describe the **Google Colab approach** as recommended for all users, then discuss the local installation approach further down.
+
+The one major **downside of the Google Colab approach is that doing calculations requires your computer to be on, awake, and have internet access**. Some of the assignments in this course can run a few hours or more, so these will require planning (or running overnight) if you are using Google Colab.
+
+## Working on Google Colab
+
+For Google Colab, you will be running everything in the cloud ON Google Colab, which is free. If you plan to go this route (which we recommend unless you have a strong reason to run locally, though see caveat above about internet access) [this getting started notebook](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/Getting_Started.ipynb) can be opened in Colab and used to install/test out the requisite software.
+
+### Subsequent use of Google Colab
+
+Each time you begin using Google Colab, it's like beginning on a new computer. This means that **before every lecture or assignment, you will need to install the required software on Google Colab**, which takes just a few minutes. In other words, you will need to insert the commands from this [getting started notebook](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/Getting_Started.ipynb) at the beginning of the notebook you will be using on Colab, and run them.
+
+Notebooks we use in class will have pointers to this "getting started" content to remind you of this.
+
+**If you are using Colab, you do not need to read the remainder of this document.**
+
+## Local installation (not for the inexperienced and often problematic for Windows users)
+
+As noted, we can support Google Colab across platforms and even for novices. Local installation requires more expertise, and is often problematic for Windows users.
+
+### Prerequisites
 
 Before getting started, note that the below assumes at least some modest familiarity with the BASH shell and the idea of paths, file names, and basic Linux commands.
 If you do not have this familiarity, you may need to consult the [BASH cheat sheet](docs/bash_cheatsheet.jpg) and other sources of information (such as the [Linux/bash crash course](docs/linux_crashcourse.md) here) before proceeding. (MIT's [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/) provides a more complete and diverse introduction in the form of a full course.)
 
-## Setup and Installation - WINDOWS ONLY:
+### Setup and Installation - WINDOWS ONLY:
 
-### SPECIAL CONSIDERATIONS FOR WINDOWS:
+#### SPECIAL CONSIDERATIONS FOR WINDOWS:
 
 If you are on Windows, you basically have three options:
 1. Dual boot into Linux (best option, but requires some expertise and/or care to set up, and not something this course will help you do)
@@ -18,11 +44,11 @@ If you are on Windows, you basically have three options:
 
 We discuss each of those in turn here:
 
-#### Dual boot (WINDOWS ONLY)
+**Dual boot (WINDOWS ONLY)**:
 
-This is your best option on Windows, but not one we can help you set up. It requires some level of technical expertise/proficiency, not because it is difficult, but because missteps can result in your computer becoming unbootable, e.g. "a brick". This is the best route if you can manage it, but this class cannot support you in going this route.
+This is your best option on Windows, but not one we can help you set up. It requires some level of technical expertise/proficiency, not because it is difficult, but because missteps can result in your computer becoming unbootable, e.g. "a brick". This is the best route if you can manage it, but this class cannot support you in going this route, and if you decide to go this route, we are not responsible for any damage you might cause to your computer.
 
-### Windows Subsystem for Linux (WSL)
+**Windows Subsystem for Linux (WSL)**:
 
 **Install BASH on Windows**: Follow the official guide linked [here](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
 
@@ -30,16 +56,16 @@ If the BASH terminal guide works and you can successfully use BASH commands (i.e
 
 There may be some software we use in this course which does not work well on Windows (specifically, the Windows Subsystem for Linux (WSL) as discussed here) as Windows is not broadly used in scientific computing/our open source stack.
 
-### Boot to Linux from an USB drive (e.g. thumb drive)
+#### Boot to Linux from an USB drive (e.g. thumb drive)
 
 In the past, we have on occasion explored an alternative approach involving bootable USB drives (e.g. thumb drives) with a persistent Linux distribution available pre-installed.
 If needed, we can explore this with Dr. Mobley, though it has not been attempted in several years.
 Because of hardware differences, it is unlikely that the same installation (below) will work both on a personal laptop and on the computers in the classroom, so you would need to pick one or the other and coordinate with Dr. Mobley.
 **If using the USB drive approach**, see [`docs/persistent-usb.md`](docs/persistent-usb.md) for additional information and instructions *before following the below instructions*.
 
-## Setup and Installation: For everyone
+### Setup and Installation: For everyone
 
-### Anaconda Python
+#### Anaconda Python
 Download the Anaconda Python 3 installation file or download it from the [website](https://www.anaconda.com/distribution/) or use (from the command prompt):
 
 (Linux/OSX)
@@ -98,7 +124,7 @@ The only difference is the inclusion of GUI (graphical user interface) and a lot
 
 Go to [https://conda.io/en/latest/miniconda.html] to download miniconda.
 
-### Conda install requirements
+#### Conda install requirements
 
 Anaconda includes with it the `conda` environment/package manager, meaning that it can also install other software which you need.
 Here we will use the `conda` package manager to install the software you need.
@@ -140,7 +166,7 @@ The above installs quite a variety of software packages and may take a reasonabl
 Specific notebooks/assignments used in class may have additional requirements and in general these will be mentioned at the top of the notebook; you should set aside some extra time to install before using a particular notebook.
 
 
-### Install OpenEye toolkits
+#### Install OpenEye toolkits
 
 Download a copy of the `oe_license.txt` OpenEye license file from the course website, as you will need it for what follows.
 If you will be runnning notebooks on google collab, put the `oe_license.txt` file in the `oelicense/` directory (same directory that contains the `other-materials/` and `uci-pharmsci/` folders).
@@ -204,14 +230,14 @@ and you should get no errors.
 If you have errors with your OpenEye installation and have verified that you have an OpenEye license file, it is in the correct place, and properly listed in your `~/.bash_profile` file, you may need to edit your `~/.bashrc` file to point to your `~/.bash_profile` file. Particularly, I have noticed that on USB installations of Ubuntu in some cases this step may be necessary. You would just add a line to the end of your `~/.bashrc` file that says `source ~/.bash_profile`
 
 
-### Additions for Macintosh (OS X)
+#### Additions for Macintosh (OS X)
 For some of our assignments (energy minimization, MD, MC) we will use `f2py` to compile some fortran code for use in Python (to make some numerical operations fast).
 To use this on OS X, you will need to install XCode (developer tools) from the Mac App Store, and then on the terminal, execute `xcode-select --install` to install the XCode command-line tools.
 Without this you will get an error message relating to `limits.h` when attempting to execute f2py.
 
 A subtle problem arises if you install a compiler with conda (e.g. `gcc`) and have XCode installed as well. This can be a source of headache/confusion, so just be aware that multiple compilers will exist on your machine, and care must be taken to ensure only one is used at a time.
 
-### One additional step
+#### One additional step
 
 After the above, please also use `jupyter-nbextension enable nglview --py --sys-prefix` on the command-line to enable the `nglview` extension for interactive visualization in Jupyter notebooks.
 
@@ -224,3 +250,5 @@ Many of the notebooks are formatted as RISE notebooks which can be presented as 
 - `conda install -c conda-forge rise`
 - `python -m ipykernel install --user --name=drugcomp` (or whatever environment is being used above) to make sure this environment is activated in the notebook
 - Once installed, if a notebook with RISE slides is active, use option-R to enter the slideshow.
+
+Note that Google Colab and environments without RISE will strip out the RISE formatting from notebooks and make it necessary to re-add it.
