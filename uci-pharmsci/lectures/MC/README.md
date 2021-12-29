@@ -2,7 +2,7 @@
 
 ## Manifest:
 - `MD_MC`: `MD_MC.pdf` and `MD_MC.key`: PDF and Keynote version of lecture slides for additional molecular dynamics material plus Monte Carlo (MC) lecture, with material by David Mobley drawing on earlier content from M. Scott Shell (UCSB).
-- [`MC Sandbox.ipynb`](MC Sandbox.ipynb): Jupyter notebook with a couple simple MD exercises/examples (at opposite extremes) to try out.
+- [MC Sandbox.ipynb](MC Sandbox.ipynb): Jupyter notebook with a couple simple MD exercises/examples (at opposite extremes) to try out.
 - `completed_code.py`: Code which completes a user exercise in the MD sandbox. Not independently useful.
 - `mc_sandbox.f90`: Fortran library used by MD sandbox.
 
