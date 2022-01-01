@@ -5,7 +5,7 @@
 ### Course days, times, meeting location and office hours
 
 See course website on Canvas for full details.
-The instructor is David L. Mobley, and his office is 3134B Natural Sciences 1.
+The instructor is David L. Mobley, and his office is 3134C Natural Sciences 1.
 
 ## Text
 
@@ -18,9 +18,13 @@ Allen & Tildesley's Computer Simulations of Liquids and Frenkel and Smit's Under
 
 ## Other requirements
 
-A laptop computer running a recent version of OS X, Linux, or Windows (with the first two being preferable) on which you can install Anaconda's [Python distribution](https://www.anaconda.com/download) as well as other software tools, and get Jupyter notebooks working with the OpenEye toolkits.
-Basically, you should be able to successfully follow the instructions in [`getting-started.md`](getting_started.md) or you will have problems.
-If you have concerns, see me early to find out whether your laptop will suffice.
+A computer with web and internet access. Depending on which route for handling software you use, there will be further constraints:
+1) Google Colab: Computer hardware and operating system requirements are minimal, because it runs on Google's servers. However, you will need to be able to have your computer awake and connected to the internet for many hours in some cases in order to complete assignments.
+2) Local installation: You need a computer running a recent version of OS X, Linux, or Windows (with the first two being preferable) on which you can install Anaconda's [Python distribution](https://www.anaconda.com/download) as well as other software tools, and get Jupyter notebooks working with the OpenEye toolkits.
+
+In either case, you should be able to successfully follow the instructions in [`getting-started.md`](getting_started.md) or you will have problems.
+
+If you have concerns, see me early.
 **Do not wait until you are attempting to work on the first assignment.**
 
 ## Prerequisites
@@ -56,10 +60,11 @@ Exact due dates for assigned materials, and the schedule of lectures, will be po
 
 ## Class structure
 
-You should bring a laptop computer to class to allow for hands-on work and troubleshooting relating to the content being covered, unless you plan on using one of the computers in the classroom (in which case you should make prior arrangements with your instructor to ensure you have all the required software available).
-We will be using numerous Jupyter notebooks in class to allow you to try things out, including working on "sandboxes" and examples in class, so it is important you have a computer with you in class.
-Normally a tablet will NOT suffice.
+You should bring a laptop computer to class to allow for hands-on work and troubleshooting relating to the content being covered, unless you plan on using one of the computers in the classroom.
 
+We will be using numerous Jupyter notebooks in class to allow you to try things out, including working on "sandboxes" and examples in class, so it is important you have a computer with you in class.
+
+With Google Colab, a tablet MAY suffice, though you would likely need a keyboard.
 
 ## Homework
 
