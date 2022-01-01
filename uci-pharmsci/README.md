@@ -6,7 +6,8 @@ This will ultimately contain syllabus information, lecture notes and slides, req
 
 ## Manifest
 - [`getting-started.md`](getting-started.md): provides information on basic software requirements for the class and where to get started. Two major options are provided - using this content through Google Colab, or installing locally.
-- [`Getting_Started.ipynb`](Getting_started.ipynb): Jupyter notebook **for use on Google Colab** which can install most of the required software there.
+- [`Getting_Started.ipynb`](Getting_started.ipynb): Jupyter notebook **for use on Google Colab** which can install most of the required software there. The below notebook, using `condacolab`, is probably superior.
+- [`Getting_Started_condacolab.ipynb`](Getting_Started_condacolab.ipynb): Jupyter notebook **for use on Google Colab** which can install most of the required software there; works FASTER than `Getting_Started.ipynb` and is PROBABLY superior.
 - [`continuing.md`](continuing.md): Helpful tips for continuing on AFTER having followed getting started information
 - [`syllabus.md`](syllabus.md): Syllabus for PharmSci 175/275
 - [`assigned_materials.md`](assigned_materials.md): Assigned reading/instructional materials for the course, for use with the detailed schedule as posted on Canvas.

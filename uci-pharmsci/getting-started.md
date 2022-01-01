@@ -14,11 +14,11 @@ The one major **downside of the Google Colab approach is that doing calculations
 
 ## Working on Google Colab
 
-For Google Colab, you will be running everything in the cloud ON Google Colab, which is free. If you plan to go this route (which we recommend unless you have a strong reason to run locally, though see caveat above about internet access) [this getting started notebook](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/Getting_Started.ipynb) can be opened in Colab and used to install/test out the requisite software.
+For Google Colab, you will be running everything in the cloud ON Google Colab, which is free. If you plan to go this route (which we recommend unless you have a strong reason to run locally, though see caveat above about internet access) [this getting started notebook](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/Getting_Started_condacolab.ipynb) can be opened in Colab and used to install/test out the requisite software. (Two getting started notebooks for Colab are provided; the `condacolab` one is probably superior, but the other is a fallback option.)
 
 ### Subsequent use of Google Colab
 
-Each time you begin using Google Colab, it's like beginning on a new computer. This means that **before every lecture or assignment, you will need to install the required software on Google Colab**, which takes just a few minutes. In other words, you will need to insert the commands from this [getting started notebook](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/Getting_Started.ipynb) at the beginning of the notebook you will be using on Colab, and run them.
+Each time you begin using Google Colab, it's like beginning on a new computer. This means that **before every lecture or assignment, you will need to install the required software on Google Colab**, which takes just a few minutes. In other words, you will need to insert the commands from the [getting started notebook](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/Getting_Started_condacolab.ipynb) at the beginning of the notebook you will be using on Colab, and run them.
 
 Notebooks we use in class will have pointers to this "getting started" content to remind you of this.
 
