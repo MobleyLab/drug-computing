@@ -4,19 +4,21 @@ This details (and links to, when possible) materials covered in PharmSci 175/275
 
 Please note that materials which are specific to the undergraduate or graduate versions are indicated with (175) or (275) in parentheses, respectively, and materials which have no such indication are required for all students.
 
+**In general, try and come to class with the course content already working.** If you are using Google Colab, this means you will need to allow a few minutes before the start of class to run software installation, as each Google Colab session needs works in a separate "runtime" and needs software installed from scratch.
+
 ## Materials by lecture number
 
 ### Before the course starts
 Before the course starts, you should do the following:
 - Read [`docs/why_computing.md`](docs/why_computing.md), a brief background document on why we are starting where we are
-- Follow the steps in [`getting-started.md`](getting-started.md) to install the software you need, deviating to pick up background info on Linux/BASH if you need.
+- Read through and/or follow the steps in [`getting-started.md`](getting-started.md) to install the software you need, if you are installing locally (if you are using Google Colab, you will install each time you begin a session; allow extra time for this). Historically, use of Linux/bash scripts was quite important, but if you are using Google Colab here that will be less important (though still worthwhile if you're doing scientific computing in general).
 - Visit the [Python intro](../other-materials/python-intro/README.md) in [`../other-materials`](../other-materials) and check out the Jupyter notebooks and [Python crashcourse](../other-materials/python-intro/python_crashcourse.md) available there to make sure your Python is ready for the course.
-- Try out a [Jupyter notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html)
+- Try out a [Jupyter notebook](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html); do so on Google Colab if you plan on going that route. [Here's a great starting point on Google Colab which will work right in your web browser without any installation](https://colab.research.google.com/notebooks/basic_features_overview.ipynb).
 
 ### Before Lecture 1 ([Python and Linux](lectures/Python_Linux_Vi))
 To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 - Download the [course GitHub repository](https://github.com/mobleylab/drug-computing) from GitHub (download as a zip file if you like, or if you have used `git` before, feel free to clone the repository instead)
-- Take a quick look through the slides in `uci-pharmsci/lectures/Python_Linux_Vi`; try viewing as a Jupyter notebook via `jupyter notebook Lec1_Python_Linux_Vi.ipynb` (interactive) but if you have trouble with this, you can view the equivalent HTML file in your web browser
+- Take a quick look through the slides in `uci-pharmsci/lectures/Python_Linux_Vi`; view as a Jupyter notebook via `jupyter notebook Lec1_Python_Linux_Vi.ipynb` (interactive) if you are running locally, otherwise use Google Colab via the link in the notebook
 - Make note of any questions to bring up in class, and also visit the Python materials above as needed.
 - Ideally create a (free) GitHub account in case there are issues with the course materials that you want to bring up on the GitHub repository, which houses most of our course materials.
 
@@ -52,7 +54,7 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 
 ## Before Lecture 10 ([Ligand-based design](ligand_based_design)):
 - Skim the [PDF of the slides](lectures/ligand_based_design/ligand_based_design_slides.pdf)
-- Try out the Jupyter notebook, `ligand_based_design.ipynb`, in teh relevant directory.
+- Try out the Jupyter notebook, `ligand_based_design.ipynb`, in the relevant directory.
 
 ## Before Lecture 11 ([Empirical models/physical properties/QSAR](empirical_physical_properties)):
 - Skim the [PDF of the slides](lectures/empirical_physical_properties/physprops.pdf) and come with questions/comments
@@ -81,10 +83,10 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 - Make sure you have the jupyter notebooks up and running
 
 ## Before Lecture 18:
-- (No reading assignment for this lecture; in 2018 it was a guest lecture by Ioan Andricioaei)
+- (No reading assignment for this lecture; in the past it was a guest lecture by Ioan Andricioaei; hopefully it will be updated for 2022)
 
 ## Before Lecture 19 ([proteins](lectures/proteins))
 - Skim the slides on working with proteins (proteins.pdf in the relevant directory)
 
-## Before Lecture 20 (on high performance computing, with a server room tour)
+## Before Lecture 20 (on high performance computing, typically with a server room tour)
 - No assignment
