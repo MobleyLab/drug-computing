@@ -79,7 +79,7 @@ Exact due dates for homework are posted on Canvas.
 
 ### Homework at the undergraduate (175) level: Three of the following
 1.  **(required)** Energy minimization – simple energy minimization in Python on Lennard-Jones clusters. Not directly relevant to drug discovery – but provides a foundation for understanding many of the other techniques we talk about.
-2.  Implementing basic molecular dynamics simulations in Python on a simple model of a polymer. Helpful if you plan on using molecular dynamics simulations for your research – you’ll have a much better idea how they work.
+2.  Implementing basic molecular dynamics simulations in Python on a simple model of a polymer. Helpful if you plan on using molecular dynamics simulations for your research – you’ll have a much better idea how they work. **If you are doing this assignment, please get the solutions to the energy minimization assignment from your instructor**; in particular, you need a correct implementation of the `ConjugateGradient` function updated for this assignment.
 3.  Basic Monte Carlo in Python on the same system as #2.
 4.  3D structure generation and shape-overlays (ligand-based design)
 5.  Docking and scoring and library searching (best completed with #4 also)
@@ -89,7 +89,7 @@ Exact due dates for homework are posted on Canvas.
 
 ### Homework at the graduate (275) level: Five of the following
 1.  **(required)** Energy minimization – simple energy minimization in Python on Lennard-Jones clusters. Not directly relevant to drug discovery – but provides a foundation for understanding many of the other techniques we talk about.
-2.  Implementing basic molecular dynamics simulations in Python on a simple model of a polymer. Helpful if you plan on using molecular dynamics simulations for your research – you’ll have a much better idea how they work.
+2.  Implementing basic molecular dynamics simulations in Python on a simple model of a polymer. Helpful if you plan on using molecular dynamics simulations for your research – you’ll have a much better idea how they work. **If you are doing this assignment, please get the solutions to the energy minimization assignment from your instructor**; in particular, you need a correct implementation of the `ConjugateGradient` function updated for this assignment.
 3.  Basic Monte Carlo in Python on the same system as #2.
 4.  3D structure generation and shape-overlays (ligand-based design)
 5.  Docking and scoring and library searching (best completed with #4 also)
