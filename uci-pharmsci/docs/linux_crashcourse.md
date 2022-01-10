@@ -1,6 +1,6 @@
 # A crash course in Linux and Vi(m)
 
-The following information assumes that you are working in a bash shell environment, such as via running bash on Windows, or that you are working in a Linux/Unix environment on your own computer (such as on a Linux machine, or in Terminal/iTerm2/etc. under Mac OS X).
+The following information assumes that you are working in a bash shell environment, such as via running bash on Windows, or that you are working in a Linux/Unix environment on your own computer (such as on a Linux machine, or in Terminal/iTerm2/etc. under Mac OS X, though more recent versions of OS X default to zsh, which is similar but not identical.).
 
 A brief mention of formatting is warranted.
 When lengthy commands are given here they will often be included in a gray box, including the command prompt and in some cases the output.
