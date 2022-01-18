@@ -4,7 +4,7 @@ In this class, we plan to do some calculations.
 I want you to have some understanding of how the techniques you’ve learned about actually work, and there is no substitute for actually using them.
 But, for you to actually do anything with computational techniques, you need a bit more computer background than you pick up doing e-mail and browsing the web.
 
-The first key ingredient we need is some Linux (basically, command-line or BASH) background.
+The first key ingredient we need is some Linux (basically, command-line or shell -- e.g. BASH or zsh) background.
 Virtually all scientific computing takes place in the Linux environment (not Mac OS X or Windows, though both can be used to interface with it; Mac in particular is built on Linux foundations).
 This environment provides a lot of power, but it takes a bit of getting used to.
 You will often working with a command-line text prompt that asks you to enter what you want to do, rather than working with windows and drag-and-drop of files.
