@@ -68,7 +68,7 @@ Because of hardware differences, it is unlikely that the same installation (belo
 Here, you will need to complete several main steps in the install, each of which has its own section:
 1) Install Anaconda Python and get the repository
 2) (Optionally) Configure a conda environment if desired
-3) Use conda to install gfortran
+3) Use conda to install libgfortran
 4) Use f2py3 to compile libraries for lectures/assignments  (sometimes breaks if step (5) is done first)
 5) Use conda to finish installing prerequisites
 6) Install the OpenEye license
@@ -155,6 +155,8 @@ If you do need an `env`, [use this info](https://conda.io/docs/user-guide/tasks/
 Whenever you do work for the class, you will need to activate this environment.
 
 #### 3) Use conda to install gfortran
+
+(**2022 Apple M1 Silicon ONLY:** With Mac's M1 processors (Apple silicon) in 2022 we are having issues with gfortran/gcc which necessitate separate install. As of this writing, it seems that the standard Python installed above is for the `X86` architecture whereas you'll end up with an `ARM64` gfortran if you don't work around it. We've achieved best results by installing the generic (non-M1) gcc and gfortran from SourceForge, [http://hpc.sourceforge.net/](http://hpc.sourceforge.net/). So if you're on an M1 Mac in 2022, visit Sourceforge, download the non-M1 binaries linked at the top of the page, and follow the instructions there to install.)
 
 For some of our assignments/lectures (energy minimization, MD, MC) we will use `f2py3` to compile some fortran code for use in Python (to make some numerical operations fast), which requires a fortran compiler.
 
