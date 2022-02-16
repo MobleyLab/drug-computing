@@ -5,7 +5,7 @@
 # Author: Dr Gaetano Calabro'
 # University of California, Irvine
 # ver 0.0 06/23/2016
-# Adapted Nov. 2017 by David Mobley
+# Adapted Nov. 2017 and Feb. 2022 by David Mobley
 #--------------------------------------
 
 
@@ -31,9 +31,9 @@ import pandas as pd
 #trajectory file and jump straight into production
 skip_equilibration = False
 
-identifier = "phenol_toluene_cyclohexane_1_10_100"
+identifier = "phenol_toluene_cyclohexane"
 
-DATA_PATH = "mixtures/amber/"
+DATA_PATH = "mixtures/"
 RESULT_PATH = "density_simulation/"
 
 
