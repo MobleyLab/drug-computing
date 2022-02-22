@@ -12,4 +12,5 @@ As of the 2017-2018 school year we are shifting to primarily instructing on use 
 - `pymol_files`: Supplemental files relating to the PyMol lecture (e.g. sample movie files referenced therein)
 - `pymol_tutorial.md`: Tutorial content relating to PyMol, useful if you choose to use PyMol rather than VMD for the visualization assignment.
 - `BACE1.pdb`: PDB file from Lea El Khoury and Sukanya Sasmal (Mobley lab) of a BACE1 inhibitor bound to BACE, from the D3R 2018 grand challenge. Can be used with OpenEye's example code https://docs.eyesopen.com/toolkits/cookbook/python/visualization/activesitemaps.html to generate a 2D interaction map, as shown in the file `interaction_map.svg` here.
+- `visualize_interactions.ipynb`: Jupyter notebook to generate 2D interaction maps
 - `interaction_map.svg`: Sample interaction map, as noted in previous point.
