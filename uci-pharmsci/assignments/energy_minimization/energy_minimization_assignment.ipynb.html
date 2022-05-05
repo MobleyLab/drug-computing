@@ -1,0 +1,598 @@
+<html>
+<head>
+<title>energy_minimization_assignment.ipynb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #adbac7;}
+.s2 { color: #f47067;}
+.s3 { color: #adbac7;}
+.s4 { color: #6cb6ff;}
+.s5 { color: #96d0ff;}
+</style>
+</head>
+<body bgcolor="#22272e">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+energy_minimization_assignment.ipynb</font>
+</center></td></tr></table>
+<pre><span class="s0">#%% md 
+</span><span class="s1">[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/MobleyLab/drug-computing/blob/master/uci-pharmsci/assignments/energy_minimization/energy_minimization_assignment.ipynb) 
+</span><span class="s0">#%% md 
+</span><span class="s1"># Energy Minimization Assignment, PharmSci 175/275 
+##### By David Mobley (UCI), Jan. 2018 
+ 
+##### Adapted with permission from an assignment by M. Scott Shell (UCSB) 
+ 
+## Overview 
+In this assignment, you will begin with a provided template and several functions, as well as a Fortran library, and add additional code to perform a conjugate-gradient minimization. That is, you will write a conjugate-gradient minimizer. You will then apply this minimize to generate Lennard-Jones clusters with varying numbers of particles, and look at how the energy varies as a function of cluster size.   
+ 
+The Jupyter notebook for this assignment is laid out with action items YOU need to take labeled as Step 1-7. These are interspersed with background information on the problem, some examples, and a sandbox section to tinker with some of the functions. So read on, and watch for the sections which require your action. 
+ 
+## What are Lennard-Jones clusters? 
+ 
+Clusters are small, stable packings of (often spherical) particles. These particles could be colloidal particles, nanoparticles, etc. There has been considerable work spent studying these clusters over the years, from atomic sizes up to colloidal particles in the nanometer to micrometers scale. Cluster analysis is important to understanding a range of phenomena, including structures of solids, aggregation and precipitation of particles, the structure of nanomaterials, self-assembly behavior of synthetic and biomolecular systems, and diffusion in dense liquids. 
+ 
+A cluster can be characterized by the number and type of particles and the energetic interactions between them. Here, we will examine Lennard-Jones (LJ) clusters, which are clusters of simple attractive spherical particles with interactions modeled by the Lennard-Jones interaction.  
+ 
+For LJ clusters, there are cluster sizes of unusual stability. These are called magic number clusters and correspond to cluster sizes where the packing of atoms is particularly efficient, leading to very favorable energies and hence exceptional stability. The most stable such clusters are built from an icosahedral arrangement of particles, and the first few such **magic numbers** for cluster sizes of icosahedral geometries are 13, 19, 38, 55, and 75.  
+ 
+These clusters are still interesting from a basic physical chemistry point of view, but our interest here is mainly in (a) energy minimization algorithms, and (b) learning how to do non-trivial numerics in Python. 
+ 
+## Here, we will energy minimize Lennard-Jones clusters of different sizes 
+ 
+Here, we will examine different numbers of particles and attempt to find the minimum energy cluster for each number of particles. Our energy model will use the LJ potential in its dimensionless form (meaning that we have changed units so that all of the constants are hidden in the units). We denote this by putting a star on the potential: 
+ 
+\begin{equation} 
+U^* = \sum \limits_{i&lt;j} 4(r_{ij}^{-12} - r_{ij}^{-6}) 
+\end{equation} 
+ 
+We will start with a random initial configuration of particles, and try to use an energy minimization algorithm to find the most stable configuration of particles. But when there are more than just a few particles, there will be more than one local minimum, so there is no guarantee the energy minimizer will find the global minimum. In such cases, we will need to minimize from random initial configurations many times in order to ensure we locate the global minimum. 
+There is also the possibility of forming multiple separate clusters separated by a significant difference. This is not unlikely, since the LJ interaction is only very weakly attractive at large distances. So, to ensure we form single clusters, we will use a weak biasing potential to pull all of the particles towards the origin, biasing the system towards forming a single cluster. Otherwise, the LJ potential will tend to be too weak to pull together very distant particles in these tests. We will use a harmonic biasing potential, so that the total potential energy (“force field”) is: 
+ 
+\begin{equation} 
+U^* = \sum\limits_i \alpha |\mathbf{r}_i|^2 + \sum \limits_{i&lt;j} 4(r_{ij}^{-12} - r_{ij}^{-6}) 
+\end{equation} 
+ 
+Here we will use $\alpha = 0.0001 N^{-2/3}$ where $N$ is the number of particles; this will be a very small number. This particular form is selected so that the energy due to this term for a cluster of $N$ particles is, on average, constant regardless of $N$. 
+ 
+## Additional details 
+For this assignment, your job is to perform a conjugate-gradient minimization of Lennard-Jones particles which are initially randomly distributed in space. I am providing several items for you: 
+* A Fortran library (emlib) which you can use within Python to calculate energies and forces 
+* A Python library (pos_to_pdb.py) which you can use to output structures to your disk to visualize motion of your particles (for example with PyMol) if you so desire 
+* A template for your assignment (below) in iPython notebook format; this also will be posted on the class website in plain Python format in case my experiment with iPython notebooks fails here.  
+ * This template contains some code which will get you started, including code for a line search minimization.  
+ * It also contains places for you to write the functions (outlined below) you need to write to complete the assignment. 
+* Here we will be using position and force arrays to represent positions/forces on all of the atoms in the system. Make sure you are [comfortable with that notation](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/lectures/energy_minimization/energy_minimization.ipynb) before beginning. 
+  
+## A quick (but important) note on Notebook usage: 
+iPython notebooks such as this one often contain a variety of cells containing code. These are normally intended to be run, which you can when you have an individual cell selected, by hitting the button at the top with a 'play' symbol, or by typing shift-enter. If you do NOT do so on each of the cells defining variables/functions which will be used here, then you will encounter an error about undefined variables when you run the later cells.  
+  
+## Your step 1 for the assignment: Start by doing some file bookkeeping: 
+ * Find `emlib.f90` and optional utility `pos_to_pdb.py` in this directory. 
+ * In the command prompt navigate to that folder and type 'f2py -c -m emlib emlib.f90' which should compile the fortran library for use within python (For more on F2Py, refer to the [f2py documentation](https://docs.scipy.org/doc/numpy-dev/f2py/)). In OS X, this may require you to install the (free) XCode developer tools (available from the Mac App store) and the command-line developer tools first (the latter via `xcode-select --install`). In Linux it should just work. Windows would be a hurdle. 
+ * In your command prompt, start theis Jupyter notebook (in OSX this would be something like 'Jupyter notebook 272EnergyMinimization'), which should open it in your web browser; you're running it already unless you are looking at the HTML version of this file. 
+  
+Template Python code for the assignment is provided below. I suggest making a new notebook which is a copy of this one (perhaps containing your name in the filename) and working from there.  
+  
+  
+ ## Next, we prep Python for the work: 
+  
+ First we import the numpy numerical library we're going to need, as well as the compiled Fortran library emlib 
+</span><span class="s0">#%% md 
+</span><span class="s1">## Installing Packages 
+ 
+***If you are running this on Google Colab, please add the installation blocks from the [getting started notebook](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/Getting_Started.ipynb) or [condacolab](https://github.com/aakankschit/drug-computing/blob/master/uci-pharmsci/Getting_Started_condacolab.ipynb) here and then execute the code below*** 
+</span><span class="s0">#%% 
+</span><span class="s1">!f2py3 </span><span class="s2">-</span><span class="s1">c </span><span class="s2">-</span><span class="s1">m emlib emlib.f90</span>
+<span class="s0">#%% 
+</span><span class="s2">import </span><span class="s1">numpy </span><span class="s2">as </span><span class="s1">np</span>
+<span class="s2">import </span><span class="s1">emlib</span>
+<span class="s2">from </span><span class="s1">pos_to_pdb </span><span class="s2">import * </span>
+<span class="s0">#This would allow you to export coordinates if you want, later</span>
+<span class="s0">#%% md 
+</span><span class="s1">## Important technical note: Unit masses, etc. 
+ 
+Note that all of the following code will assume unit atomic masses, such that forces and accelerations are equal -- that is, instead of $F=ma$ we write $F=a$ assuming that $m=1$. We also drop most constants. This is a relatively common trick in physics when you are interested only in seeing how the basic equations work, and not in quantitative comparison with experimental numbers. It can be called using &quot;dimensionless units&quot;.  
+</span><span class="s0">#%% md 
+</span><span class="s1">## Then we define the LineSearch function: 
+</span><span class="s0">#%% md 
+</span><span class="s1">Here is the `LineSearch` function which is provided for you. Read the prototype (definition) and documentation to understand what it needs and what it will do (note that you do NOT need to read all the code): 
+</span><span class="s0">#%% 
+</span><span class="s2">def </span><span class="s1">LineSearch(Pos</span><span class="s3">, </span><span class="s1">Dir</span><span class="s3">, </span><span class="s1">dx</span><span class="s3">, </span><span class="s1">EFracTol</span><span class="s3">, </span><span class="s1">Accel </span><span class="s2">= </span><span class="s4">1.5</span><span class="s3">, </span><span class="s1">MaxInc </span><span class="s2">= </span><span class="s4">10.</span><span class="s3">,</span>
+               <span class="s1">MaxIter </span><span class="s2">= </span><span class="s4">10000</span><span class="s1">)</span><span class="s2">:</span>
+    <span class="s5">&quot;&quot;&quot;Performs a line search along direction Dir. 
+    Input: 
+       Pos: starting positions, (N,3) array 
+       Dir: (N,3) array of gradient direction 
+       dx: initial step amount, a float 
+       EFracTol: fractional energy tolerance 
+       Accel: acceleration factor 
+       MaxInc: the maximum increase in energy for bracketing 
+       MaxIter: maximum number of iteration steps 
+Output: 
+       PEnergy: value of potential energy at minimum along Dir 
+       PosMin: minimum energy (N,3) position array along Dir 
+&quot;&quot;&quot;</span>
+    <span class="s0">#start the iteration counter</span>
+    <span class="s1">Iter </span><span class="s2">= </span><span class="s4">0</span>
+
+    <span class="s0">#find the normalized direction</span>
+    <span class="s1">NormDir </span><span class="s2">= </span><span class="s1">Dir </span><span class="s2">/ </span><span class="s1">np.sqrt(np.sum(Dir </span><span class="s2">* </span><span class="s1">Dir))</span>
+
+    <span class="s0">#take the first two steps and compute energies</span>
+    <span class="s1">Dists </span><span class="s2">= </span><span class="s1">[</span><span class="s4">0.</span><span class="s3">, </span><span class="s1">dx]</span>
+    <span class="s1">PEs </span><span class="s2">= </span><span class="s1">[emlib.calcenergy(Pos </span><span class="s2">+ </span><span class="s1">NormDir </span><span class="s2">* </span><span class="s1">x) </span><span class="s2">for </span><span class="s1">x </span><span class="s2">in </span><span class="s1">Dists]</span>
+
+    <span class="s0">#if the second point is not downhill in energy, back</span>
+    <span class="s0">#off and take a shorter step until we find one</span>
+    <span class="s2">while </span><span class="s1">PEs[</span><span class="s4">1</span><span class="s1">] </span><span class="s2">&gt; </span><span class="s1">PEs[</span><span class="s4">0</span><span class="s1">]</span><span class="s2">:</span>
+        <span class="s1">Iter </span><span class="s2">+= </span><span class="s4">1</span>
+        <span class="s1">dx </span><span class="s2">= </span><span class="s1">dx </span><span class="s2">* </span><span class="s4">0.5</span>
+        <span class="s1">Dists[</span><span class="s4">1</span><span class="s1">] </span><span class="s2">= </span><span class="s1">dx</span>
+        <span class="s1">PEs[</span><span class="s4">1</span><span class="s1">] </span><span class="s2">= </span><span class="s1">emlib.calcenergy(Pos </span><span class="s2">+ </span><span class="s1">NormDir </span><span class="s2">* </span><span class="s1">dx)</span>
+
+    <span class="s0">#find a third point</span>
+    <span class="s1">Dists.append( </span><span class="s4">2. </span><span class="s2">* </span><span class="s1">dx )</span>
+    <span class="s1">PEs.append( emlib.calcenergy(Pos </span><span class="s2">+ </span><span class="s1">NormDir </span><span class="s2">* </span><span class="s4">2. </span><span class="s2">* </span><span class="s1">dx) )</span>
+
+    <span class="s0">#keep stepping forward until the third point is higher</span>
+    <span class="s0">#in energy; then we have bracketed a minimum</span>
+    <span class="s2">while </span><span class="s1">PEs[</span><span class="s4">2</span><span class="s1">] </span><span class="s2">&lt; </span><span class="s1">PEs[</span><span class="s4">1</span><span class="s1">]</span><span class="s2">:</span>
+        <span class="s1">Iter </span><span class="s2">+= </span><span class="s4">1</span>
+
+        <span class="s0">#find a fourth point and evaluate energy</span>
+        <span class="s1">Dists.append( Dists[</span><span class="s2">-</span><span class="s4">1</span><span class="s1">] </span><span class="s2">+ </span><span class="s1">dx )</span>
+        <span class="s1">PEs.append( emlib.calcenergy(Pos </span><span class="s2">+ </span><span class="s1">NormDir </span><span class="s2">* </span><span class="s1">Dists[</span><span class="s2">-</span><span class="s4">1</span><span class="s1">]) )</span>
+
+        <span class="s0">#check if we increased too much in energy; if so, back off</span>
+        <span class="s2">if </span><span class="s1">(PEs[</span><span class="s4">3</span><span class="s1">] </span><span class="s2">- </span><span class="s1">PEs[</span><span class="s4">0</span><span class="s1">]) </span><span class="s2">&gt; </span><span class="s1">MaxInc </span><span class="s2">* </span><span class="s1">(PEs[</span><span class="s4">0</span><span class="s1">] </span><span class="s2">- </span><span class="s1">PEs[</span><span class="s4">2</span><span class="s1">])</span><span class="s2">:</span>
+            <span class="s1">PEs </span><span class="s2">= </span><span class="s1">PEs[</span><span class="s2">:</span><span class="s4">3</span><span class="s1">]</span>
+            <span class="s1">Dists </span><span class="s2">= </span><span class="s1">Dists[</span><span class="s2">:</span><span class="s4">3</span><span class="s1">]</span>
+            <span class="s1">dx </span><span class="s2">= </span><span class="s1">dx </span><span class="s2">* </span><span class="s4">0.5</span>
+        <span class="s2">else:</span>
+            <span class="s0">#shift all of the points over</span>
+            <span class="s1">PEs </span><span class="s2">= </span><span class="s1">PEs[</span><span class="s2">-</span><span class="s4">3</span><span class="s2">:</span><span class="s1">]</span>
+            <span class="s1">Dists </span><span class="s2">= </span><span class="s1">Dists[</span><span class="s2">-</span><span class="s4">3</span><span class="s2">:</span><span class="s1">]</span>
+            <span class="s1">dx </span><span class="s2">= </span><span class="s1">dx </span><span class="s2">* </span><span class="s1">Accel    </span>
+                
+    <span class="s0">#we've bracketed a minimum; now we want to find it to high</span>
+    <span class="s0">#accuracy</span>
+    <span class="s1">OldPE3 </span><span class="s2">= </span><span class="s4">1.e300</span>
+    <span class="s2">while True:</span>
+        <span class="s1">Iter </span><span class="s2">+= </span><span class="s4">1</span>
+        <span class="s2">if </span><span class="s1">Iter </span><span class="s2">&gt; </span><span class="s1">MaxIter</span><span class="s2">:</span>
+            <span class="s1">print(</span><span class="s5">&quot;Warning: maximum number of iterations reached in line search.&quot;</span><span class="s1">)</span>
+            <span class="s2">break</span>
+
+        <span class="s0">#store distances for ease of code-reading</span>
+        <span class="s1">d0</span><span class="s3">, </span><span class="s1">d1</span><span class="s3">, </span><span class="s1">d2 </span><span class="s2">= </span><span class="s1">Dists</span>
+        <span class="s1">PE0</span><span class="s3">, </span><span class="s1">PE1</span><span class="s3">, </span><span class="s1">PE2 </span><span class="s2">= </span><span class="s1">PEs</span>
+
+        <span class="s0">#use a parobolic approximation to estimate the location</span>
+        <span class="s0">#of the minimum</span>
+        <span class="s1">d10 </span><span class="s2">= </span><span class="s1">d0 </span><span class="s2">- </span><span class="s1">d1</span>
+        <span class="s1">d12 </span><span class="s2">= </span><span class="s1">d2 </span><span class="s2">- </span><span class="s1">d1</span>
+        <span class="s1">Num </span><span class="s2">= </span><span class="s1">d12</span><span class="s2">*</span><span class="s1">d12</span><span class="s2">*</span><span class="s1">(PE0</span><span class="s2">-</span><span class="s1">PE1) </span><span class="s2">- </span><span class="s1">d10</span><span class="s2">*</span><span class="s1">d10</span><span class="s2">*</span><span class="s1">(PE2</span><span class="s2">-</span><span class="s1">PE1)</span>
+        <span class="s1">Dem </span><span class="s2">= </span><span class="s1">d12</span><span class="s2">*</span><span class="s1">(PE0</span><span class="s2">-</span><span class="s1">PE1) </span><span class="s2">- </span><span class="s1">d10</span><span class="s2">*</span><span class="s1">(PE2</span><span class="s2">-</span><span class="s1">PE1)</span>
+
+        <span class="s2">if </span><span class="s1">Dem </span><span class="s2">== </span><span class="s4">0</span><span class="s2">:</span>
+            <span class="s0">#parabolic extrapolation won't work; set new dist = 0</span>
+            <span class="s1">d3 </span><span class="s2">= </span><span class="s4">0</span>
+        <span class="s2">else:</span>
+            <span class="s0">#location of parabolic minimum</span>
+            <span class="s1">d3 </span><span class="s2">= </span><span class="s1">d1 </span><span class="s2">+ </span><span class="s4">0.5 </span><span class="s2">* </span><span class="s1">Num </span><span class="s2">/ </span><span class="s1">Dem</span>
+
+        <span class="s0">#compute the new potential energy</span>
+        <span class="s1">PE3 </span><span class="s2">= </span><span class="s1">emlib.calcenergy(Pos </span><span class="s2">+ </span><span class="s1">NormDir </span><span class="s2">* </span><span class="s1">d3)</span>
+
+        <span class="s0">#sometimes the parabolic approximation can fail;</span>
+        <span class="s0">#check if d3 is out of range &lt; d0 or &gt; d2 or the new energy is higher</span>
+        <span class="s2">if </span><span class="s1">d3 </span><span class="s2">&lt; </span><span class="s1">d0 </span><span class="s2">or </span><span class="s1">d3 </span><span class="s2">&gt; </span><span class="s1">d2 </span><span class="s2">or </span><span class="s1">PE3 </span><span class="s2">&gt; </span><span class="s1">PE0 </span><span class="s2">or </span><span class="s1">PE3 </span><span class="s2">&gt; </span><span class="s1">PE1 </span><span class="s2">or </span><span class="s1">PE3 </span><span class="s2">&gt; </span><span class="s1">PE2</span><span class="s2">:</span>
+            <span class="s0">#instead, just compute the new distance by bisecting two</span>
+            <span class="s0">#of the existing points along the line search</span>
+            <span class="s2">if </span><span class="s1">abs(d2 </span><span class="s2">- </span><span class="s1">d1) </span><span class="s2">&gt; </span><span class="s1">abs(d0 </span><span class="s2">- </span><span class="s1">d1)</span><span class="s2">:</span>
+                <span class="s1">d3 </span><span class="s2">= </span><span class="s4">0.5 </span><span class="s2">* </span><span class="s1">(d2 </span><span class="s2">+ </span><span class="s1">d1)</span>
+            <span class="s2">else:</span>
+                <span class="s1">d3 </span><span class="s2">= </span><span class="s4">0.5 </span><span class="s2">* </span><span class="s1">(d0 </span><span class="s2">+ </span><span class="s1">d1)</span>
+            <span class="s1">PE3 </span><span class="s2">= </span><span class="s1">emlib.calcenergy(Pos </span><span class="s2">+ </span><span class="s1">NormDir </span><span class="s2">* </span><span class="s1">d3)</span>
+
+        <span class="s0">#decide which three points to keep; we want to keep</span>
+        <span class="s0">#the three that are closest to the minimum</span>
+        <span class="s2">if </span><span class="s1">d3 </span><span class="s2">&lt; </span><span class="s1">d1</span><span class="s2">:</span>
+            <span class="s2">if </span><span class="s1">PE3 </span><span class="s2">&lt; </span><span class="s1">PE1</span><span class="s2">:</span>
+                <span class="s0">#get rid of point 2</span>
+                <span class="s1">Dists</span><span class="s3">, </span><span class="s1">PEs </span><span class="s2">= </span><span class="s1">[d0</span><span class="s3">, </span><span class="s1">d3</span><span class="s3">, </span><span class="s1">d1]</span><span class="s3">, </span><span class="s1">[PE0</span><span class="s3">, </span><span class="s1">PE3</span><span class="s3">, </span><span class="s1">PE1]</span>
+            <span class="s2">else:</span>
+                <span class="s0">#get rid of point 0</span>
+                <span class="s1">Dists</span><span class="s3">, </span><span class="s1">PEs </span><span class="s2">= </span><span class="s1">[d3</span><span class="s3">, </span><span class="s1">d1</span><span class="s3">, </span><span class="s1">d2]</span><span class="s3">, </span><span class="s1">[PE3</span><span class="s3">, </span><span class="s1">PE1</span><span class="s3">, </span><span class="s1">PE2]</span>
+        <span class="s2">else:</span>
+            <span class="s2">if </span><span class="s1">PE3 </span><span class="s2">&lt; </span><span class="s1">PE1</span><span class="s2">:</span>
+                <span class="s0">#get rid of point 0</span>
+                <span class="s1">Dists</span><span class="s3">, </span><span class="s1">PEs </span><span class="s2">= </span><span class="s1">[d1</span><span class="s3">, </span><span class="s1">d3</span><span class="s3">, </span><span class="s1">d2]</span><span class="s3">, </span><span class="s1">[PE1</span><span class="s3">, </span><span class="s1">PE3</span><span class="s3">, </span><span class="s1">PE2]</span>
+            <span class="s2">else:</span>
+                <span class="s0">#get rid of point 2</span>
+                <span class="s1">Dists</span><span class="s3">, </span><span class="s1">PEs </span><span class="s2">= </span><span class="s1">[d0</span><span class="s3">, </span><span class="s1">d1</span><span class="s3">, </span><span class="s1">d3]</span><span class="s3">, </span><span class="s1">[PE0</span><span class="s3">, </span><span class="s1">PE1</span><span class="s3">, </span><span class="s1">PE3]</span>
+
+        <span class="s0">#check how much we've changed</span>
+        <span class="s2">if </span><span class="s1">abs(OldPE3 </span><span class="s2">- </span><span class="s1">PE3) </span><span class="s2">&lt; </span><span class="s1">EFracTol </span><span class="s2">* </span><span class="s1">abs(PE3)</span><span class="s2">:</span>
+            <span class="s0">#the fractional change is less than the tolerance,</span>
+            <span class="s0">#so we are done and can exit the loop</span>
+            <span class="s2">break</span>
+        <span class="s1">OldPE3 </span><span class="s2">= </span><span class="s1">PE3</span>
+
+    <span class="s0">#return the position array at the minimum (point 1)</span>
+    <span class="s1">PosMin </span><span class="s2">= </span><span class="s1">Pos </span><span class="s2">+ </span><span class="s1">NormDir </span><span class="s2">* </span><span class="s1">Dists[</span><span class="s4">1</span><span class="s1">]</span>
+    <span class="s1">PEMin </span><span class="s2">= </span><span class="s1">PEs[</span><span class="s4">1</span><span class="s1">]</span>
+
+    <span class="s2">return </span><span class="s1">PEMin</span><span class="s3">, </span><span class="s1">PosMin</span>
+<span class="s0">#%% md 
+</span><span class="s1">## Step 2: Write a function to assign random initial positions to your atoms 
+ 
+We need a function that can randomly place N atoms in a box with sides of length L. Write a function based on a tool from the numpy 'random' module to do this. Some hints are in order: 
+ 
+* NumPy contains a ‘random’ module which is good for obtaining random numbers and/or arrays. For example, if you have imported numpy as np, then np.random.random(shape) returns a random array with the specified shape (i.e. ‘np.random.random(3)’ would be a 3x1 array) with elements randomly selected between 0 to 1. Try this out:  
+</span><span class="s0">#%% 
+</span><span class="s1">a </span><span class="s2">= </span><span class="s1">np.random.random(</span><span class="s4">3</span><span class="s1">)</span>
+<span class="s1">print(</span><span class="s5">&quot;a=</span><span class="s4">\n</span><span class="s5">&quot;</span><span class="s3">,</span><span class="s1">a)</span>
+<span class="s1">b </span><span class="s2">= </span><span class="s1">np.random.random((</span><span class="s4">2</span><span class="s3">,</span><span class="s4">3</span><span class="s1">))</span>
+<span class="s1">print(</span><span class="s5">&quot;b=</span><span class="s4">\n</span><span class="s5">&quot;</span><span class="s3">,</span><span class="s1">b)</span>
+<span class="s0">#%% md 
+</span><span class="s1">* Note that in your function, you want the numbers to run from 0 to L. You might try out what happens if you multiply 'a' and 'b' in the code above by some number. 
+ 
+Now, write your function. I've written the doc string and some comments for you, but you have to fill in its inner workings: 
+</span><span class="s0">#%% 
+</span><span class="s2">def </span><span class="s1">InitPositions(N</span><span class="s3">, </span><span class="s1">L)</span><span class="s2">:</span>
+    <span class="s5">&quot;&quot;&quot;Returns an array of initial positions of each atom, 
+placed randomly within a box of dimensions L. 
+Input: 
+    N: number of atoms 
+    L: box width 
+Output: 
+    Pos: (N,3) array of positions 
+&quot;&quot;&quot;</span>
+    <span class="s0">#### WRITE YOUR CODE HERE ####</span>
+    <span class="s0">## In my code, I can accomplish this function in 1 line </span>
+    <span class="s0">## using a numpy function.</span>
+    <span class="s0">## Yours can be longer if you want. It's more important that it be right than that it be short.</span>
+    <span class="s1">Pos </span><span class="s2">= </span><span class="s1">np.random.uniform(</span><span class="s4">0</span><span class="s3">,</span><span class="s1">L</span><span class="s3">,</span><span class="s1">(N</span><span class="s3">,</span><span class="s4">3</span><span class="s1">))</span>
+    <span class="s2">return </span><span class="s1">Pos</span>
+<span class="s0">#%% md 
+</span>
+<span class="s0">#%% md 
+</span><span class="s1">## Step 3: Write the Conjugate Gradient function described below 
+ 
+Fill in code for the ConjugateGradient function below based on the discussion in class and below, supplemented by your reading of Leach's book (and other online sources if needed). Some additional guidance and hints are warranted first. 
+ 
+### Hints for ConjugateGradient: 
+* As discussed/demonstrated above, a LineSearch function is already provided for you here 
+* You will need to remember that our force and position arrays give the force/position of all of the atoms in the system (x, y, and z components) as [introduced previously](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/lectures/energy_minimization/energy_minimization.ipynb). 
+* Keep careful track of which quantities you expect to be vectors/arrays versus scalars. You may wish to check that quantities are what you expect they are. 
+* You are going to want to keep doing line searches until the energy stops changing. Write a loop to do this, and store your evaluated energies as you go. 
+* A fortran library, `emlib`, is provided for you to calculate energies and forces. You should be able to ask for 'help(emlib)' for info on usage. You can also look directly at the Fortran code if you would like, though this may be less helpful. 
+* You can get the potential energy and forces using the provided library using functions from emlib. For example, if `Pos` is an array of positions: 
+ 
+   `PEnergy, Forces = emlib.calcenergyforces(Pos)` 
+ 
+   `Forces = emlib.calcforces( Pos )` 
+* Conjugate gradient does not specify an initial direction. Your initial search should be in the direction of the force. 
+* After the initial line search, subsequent line search directions $i$ should be found using this expression for $v_i$, the direction matrix: 
+ 
+   \begin{equation} 
+   \mathbf{v}_i^N = \mathbf{f}_i^N + \gamma_i \mathbf{v}_{i-1}^N 
+   \end{equation} 
+ 
+   where 
+ 
+   \begin{equation} 
+   \gamma_i = \frac{ (\mathbf{f}_i^N-\mathbf{f}_{i-1}^N) \mathbf{f}_i^N}{\mathbf{f}_{i-1}^N \mathbf{f}_{i-1}^N} 
+   \end{equation} 
+ 
+   Note that here, $\mathbf{f}_i^N$ denotes the force on the particles at step $i$ (and hence it has 3N dimensions - $x$, $y$, and $z$ for each particle) and $\mathbf{f}_{i-1}^N$ is the force at the last ($i-1$) step, [as discussed previously](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/lectures/energy_minimization/energy_minimization.ipynb). Note that the forces are a collection of vectors, one vector for the force on each particle. $\gamma_i$ should be just a number (scalar). Hint: Note that if you have a force array consisting of a set of vectors, the product you want inside the equation for $\gamma_i$ should be an element-by-element multiplication, not a dot or inner product.  **Be sure to see the helpful tips about how to calculate this which were given in the energy minimization lecture**! 
+ 
+* You want to end up at the point, in your code, where you can obtain the new direction by calculating something like `Dir = newForces + gamma * Dir` 
+* Continue successive line searches in your CG minimization until the fractional change in energy on subsequent searches is less than the tolerance. That is, you'll set it up to use an `EFracTolCG` variable and continue until this criteria is met (where $U_i$ is the potential energy at the present step): 
+\begin{equation} 
+\left|U_i-U_{i-1}\right| &lt; EFracTolCG \times \left| U_i\right| 
+\end{equation} 
+ 
+* To debug your code, you will probably want to initially use `print` statements in the minimization routine to monitor the energy as a function of step to make sure it's doing the right thing! 
+ 
+ 
+ 
+### Now actually write ConjugateGradient: 
+</span><span class="s0">#%% 
+</span><span class="s1">help(emlib)</span>
+<span class="s0">#%% 
+</span><span class="s2">def </span><span class="s1">ConjugateGradient(Pos</span><span class="s3">, </span><span class="s1">dx</span><span class="s3">, </span><span class="s1">EFracTolLS</span><span class="s3">, </span><span class="s1">EFracTolCG)</span><span class="s2">:</span>
+    <span class="s5">&quot;&quot;&quot;Performs a conjugate gradient search. 
+Input: 
+    Pos: starting positions, (N,3) array 
+    dx: initial step amount 
+    EFracTolLS: fractional energy tolerance for line search 
+    EFracTolCG: fractional energy tolerance for conjugate gradient 
+Output: 
+    PEnergy: value of potential energy at minimum 
+    Pos: minimum energy (N,3) position array 
+&quot;&quot;&quot;</span>
+    <span class="s0">#### WRITE YOUR CODE HERE ####</span>
+    <span class="s0">## In my code, I can accomplish this function in 10 lines ###</span>
+    <span class="s1">PE_old</span><span class="s3">,</span><span class="s1">force_old </span><span class="s2">= </span><span class="s1">emlib.calcenergyforces(Pos)</span>
+    <span class="s1">direction </span><span class="s2">= </span><span class="s1">force_old</span>
+    <span class="s2">while True:</span>
+        <span class="s1">PE_new</span><span class="s3">,</span><span class="s1">Pos_new </span><span class="s2">= </span><span class="s1">LineSearch(Pos</span><span class="s3">,</span><span class="s1">direction</span><span class="s3">,</span><span class="s1">dx</span><span class="s3">,</span><span class="s1">EFracTolLS)</span>
+        <span class="s0"># Estimate new Direction</span>
+        <span class="s1">force_new </span><span class="s2">= </span><span class="s1">emlib.calcforces(Pos_new)</span>
+        <span class="s1">gamma </span><span class="s2">= </span><span class="s1">sum(sum(np.multiply((force_new</span><span class="s2">-</span><span class="s1">force_old)</span><span class="s3">,</span><span class="s1">force_new)))</span><span class="s2">/</span><span class="s1">sum(sum(np.multiply(force_old</span><span class="s3">,</span><span class="s1">force_old)))</span>
+        <span class="s1">direction </span><span class="s2">= </span><span class="s1">force_new </span><span class="s2">+ </span><span class="s1">gamma</span><span class="s2">*</span><span class="s1">direction</span>
+        <span class="s0"># Update Positions, Energies and forces with new values</span>
+        <span class="s1">Pos </span><span class="s2">= </span><span class="s1">Pos_new</span>
+        <span class="s1">PE_old </span><span class="s2">= </span><span class="s1">PE_new</span>
+        <span class="s1">force_old</span><span class="s2">=</span><span class="s1">force_new</span>
+        <span class="s1">deltaEnergyTol </span><span class="s2">= </span><span class="s1">np.absolute((PE_new</span><span class="s2">-</span><span class="s1">PE_old)</span><span class="s2">/</span><span class="s1">PE_new)</span>
+        <span class="s2">if </span><span class="s1">deltaEnergyTol</span><span class="s2">&lt;</span><span class="s1">EFracTolCG</span><span class="s2">:</span>
+            <span class="s2">break</span>
+
+    <span class="s0">#A return statement you may/will use to finish things off</span>
+    <span class="s2">return </span><span class="s1">PE_new</span><span class="s3">, </span><span class="s1">Pos</span>
+<span class="s0">#%% 
+</span><span class="s1">Pos </span><span class="s2">= </span><span class="s1">InitPositions(</span><span class="s4">25</span><span class="s3">,</span><span class="s1">np.cbrt(</span><span class="s4">25</span><span class="s2">*</span><span class="s4">10</span><span class="s2">**</span><span class="s4">3</span><span class="s1">))</span>
+<span class="s1">dir</span><span class="s2">=</span><span class="s1">emlib.calcforces(Pos)</span>
+<span class="s1">EFracTolLS</span><span class="s2">=</span><span class="s4">10</span><span class="s2">**-</span><span class="s4">8</span>
+<span class="s1">EFracTolCG</span><span class="s2">=</span><span class="s4">10</span><span class="s2">**-</span><span class="s4">10</span>
+<span class="s1">dx</span><span class="s2">=</span><span class="s4">0.001</span>
+<span class="s1">PEnergy</span><span class="s3">,</span><span class="s1">Pos_min_LS</span><span class="s2">=</span><span class="s1">ConjugateGradient(Pos</span><span class="s3">,</span><span class="s1">dx</span><span class="s3">,</span><span class="s1">EFracTolLS</span><span class="s3">,</span><span class="s1">EFracTolCG)</span>
+<span class="s1">print(PEnergy)</span>
+<span class="s0">#%% md 
+</span><span class="s1">## Step 4: Energy minimize a variety of clusters, storing energies 
+ 
+Write code to use the functions you wrote above, plus the emlib module, to energy minimize clusters of various sizes. Loop over clusters from size N=2 to (and including) N=25. For each particle number, do the following: 
+* Perform K (to be specified below in the section on graphing) minimizations, each starting from a different random configuration of particles  
+* Store the K energies to a list  
+* Display the minimum, average, and standard deviation of the minimized energies for the trials. Note standard deviations can be calculated with the numpy.std function (`np.std()`) 
+* After doing this, you'll be tasked with making some plots.  
+ 
+Use the following settings: 
+* `dx = 0.001` 
+* `EFracTolCG = 1.0e-10` 
+* `EFracTolLS = 1.0e-8` 
+* And place the particles with L chosen such that the average number density of particles ($N/V$, where $V=L^3$) is $0.001$. That is, for every $N$, solve for $L$ such that $N/L^3 = 0.001$.  
+ 
+These are relatively typical settings for this kind of a system.  
+ 
+**I suggest you do this first for just one N and K to make sure it works**. Then set up a loop over N and perhaps (if you like) a loop over K as well.  Reserve the large K values until you are absolutely certain it’s working. Note that if the computational time becomes prohibitive (i.e. if it runs more than overnight, or your computer is having difficulties handling the lode) we can migrate your simulations to GreenPlanet.  
+ 
+You can easily add visualization of a trajectory by adding, within your ConjugateGradient function’s central loop, a call to the PosToPDB function of the pos_to_pdb module. Assuming you’ve done ‘from pos_to_pdb import *’ you’d add something like:  
+ 
+`PosToPDB( Pos, L, ‘mytrajectory.pdb’)` 
+ 
+within the loop inside your ConjugateGradient minimizer. This will write out each step of the minimization as a separate frame in a pdb file, which you can download with scp and view in PyMol to see exactly what’s going on.  
+Note that visualization (really, the file I/O and coordinate conversions) will slow things considerably, so I suggest you only do this in one specific case to check out what’s going on, or to troubleshoot if things don't appear to be working. It should also be possible to add interactive visualization via `nglview` here, though I've not done that for you. 
+ 
+* Hint: **You MAY want to use Python's pickle module to save out your data at the end of your calculations, since the next step involves plotting your data and you may want to easily be able to read it back in**. At the very least - whether you save it to disk or not - you'll want to store it (specifically, the minimum and average energies at each N) to variables for later reuse. If you had the variable `energies` containing all of the energies obtained at K = 10000 you might dump this using: 
+</span><span class="s0">#%% 
+</span><span class="s2">import </span><span class="s1">pickle</span>
+<span class="s1">file </span><span class="s2">= </span><span class="s1">open(</span><span class="s5">'energies.pickle'</span><span class="s3">, </span><span class="s5">&quot;w&quot;</span><span class="s1">)</span>
+<span class="s1">pickle.dump( energies</span><span class="s3">, </span><span class="s1">file) </span>
+<span class="s1">file.close()</span>
+<span class="s0">#To load again, use:</span>
+<span class="s0">#file = open(&quot;energies.pickle&quot;, &quot;r&quot;) </span>
+<span class="s0">#energies = pickle.load(file)</span>
+<span class="s0">#file.close()</span>
+<span class="s0">#%% md 
+</span><span class="s1">### Write your code here: 
+Disclaimer: I probably could have done this better with a for loop. 
+</span><span class="s0">#%% md 
+</span><span class="s1">#### K = 10 
+</span><span class="s0">#%% 
+#Your energy minimization code here</span>
+<span class="s0">#This will be the longest code you write in this assignment</span>
+<span class="s0">## For k = 10</span>
+<span class="s1">Pos_config </span><span class="s2">= </span><span class="s1">[]</span>
+<span class="s1">Pos_min_config</span><span class="s2">=</span><span class="s1">[]</span>
+<span class="s1">PEnergy_min_config</span><span class="s2">=</span><span class="s1">[]</span>
+<span class="s1">PEnergy_av </span><span class="s2">= </span><span class="s1">[]</span>
+<span class="s1">PEnergy_std </span><span class="s2">= </span><span class="s1">[]</span>
+<span class="s1">PEnergy_min </span><span class="s2">= </span><span class="s1">[]</span>
+<span class="s0">#k=np.array(10,100,1000,10000)</span>
+<span class="s1">N</span><span class="s2">=</span><span class="s1">list(range(</span><span class="s4">2</span><span class="s3">,</span><span class="s4">25</span><span class="s3">,</span><span class="s4">1</span><span class="s1">)) </span><span class="s0"># Number of particles</span>
+<span class="s2">for </span><span class="s1">n </span><span class="s2">in </span><span class="s1">N</span><span class="s2">:</span>
+    <span class="s1">Pos_min_config_k</span><span class="s2">=</span><span class="s1">[]</span>
+    <span class="s1">PEnergy_min_config_k</span><span class="s2">=</span><span class="s1">[]</span>
+    <span class="s2">for </span><span class="s1">i </span><span class="s2">in </span><span class="s1">range(</span><span class="s4">0</span><span class="s3">,</span><span class="s4">10</span><span class="s1">)</span><span class="s2">:</span>
+        <span class="s1">Pos </span><span class="s2">= </span><span class="s1">InitPositions(n</span><span class="s3">,</span><span class="s1">np.cbrt(n</span><span class="s2">*</span><span class="s4">10</span><span class="s2">**</span><span class="s4">3</span><span class="s1">))</span><span class="s0"># Changes the configuration and the number of particles</span>
+        <span class="s1">PEnergy</span><span class="s3">,</span><span class="s1">Pos_min</span><span class="s2">=</span><span class="s1">ConjugateGradient(Pos</span><span class="s3">,</span><span class="s4">0.001</span><span class="s3">,</span><span class="s4">1</span><span class="s2">**-</span><span class="s4">8</span><span class="s3">,</span><span class="s4">1</span><span class="s2">**-</span><span class="s4">10</span><span class="s1">)</span>
+        <span class="s1">PEnergy_min_config_k.append(PEnergy)</span>
+        <span class="s1">Pos_min_config_k.append(Pos_min)</span>
+    <span class="s1">Pos_min_config.append(Pos_min_config_k)</span>
+    <span class="s1">PEnergy_min_config.append(PEnergy_min_config_k)</span>
+    <span class="s1">PEnergy_std.append(np.std(PEnergy_min_config_k))</span>
+    <span class="s1">PEnergy_min.append(np.amin(PEnergy_min_config_k))</span>
+    <span class="s1">PEnergy_av.append(np.mean(PEnergy_min_config_k))</span>
+<span class="s2">import </span><span class="s1">pandas </span><span class="s2">as </span><span class="s1">pd</span>
+<span class="s1">PEnergy_Dataframe_k10 </span><span class="s2">= </span><span class="s1">pd.DataFrame()</span>
+<span class="s1">PEnergy_Dataframe_k10[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s2">=</span><span class="s1">N</span>
+<span class="s1">PEnergy_Dataframe_k10[</span><span class="s5">'Average_Energy'</span><span class="s1">] </span><span class="s2">= </span><span class="s1">PEnergy_av</span>
+<span class="s1">PEnergy_Dataframe_k10[</span><span class="s5">'Std_Dev'</span><span class="s1">]</span><span class="s2">=</span><span class="s1">PEnergy_std</span>
+<span class="s1">PEnergy_Dataframe_k10[</span><span class="s5">'Min_Energy'</span><span class="s1">]</span><span class="s2">=</span><span class="s1">PEnergy_min</span>
+
+<span class="s0">#%% md 
+</span><span class="s1">#### K=100 
+</span><span class="s0">#%% 
+</span><span class="s1">Pos_config </span><span class="s2">= </span><span class="s1">[]</span>
+<span class="s1">Pos_min_config</span><span class="s2">=</span><span class="s1">[]</span>
+<span class="s1">PEnergy_min_config</span><span class="s2">=</span><span class="s1">[]</span>
+<span class="s1">PEnergy_av </span><span class="s2">= </span><span class="s1">[]</span>
+<span class="s1">PEnergy_std </span><span class="s2">= </span><span class="s1">[]</span>
+<span class="s1">PEnergy_min </span><span class="s2">= </span><span class="s1">[]</span>
+<span class="s0">#k=np.array(10,100,1000,10000)</span>
+<span class="s1">N</span><span class="s2">=</span><span class="s1">list(range(</span><span class="s4">2</span><span class="s3">,</span><span class="s4">25</span><span class="s3">,</span><span class="s4">1</span><span class="s1">)) </span><span class="s0"># Number of particles</span>
+<span class="s2">for </span><span class="s1">n </span><span class="s2">in </span><span class="s1">N</span><span class="s2">:</span>
+    <span class="s1">Pos_min_config_k</span><span class="s2">=</span><span class="s1">[]</span>
+    <span class="s1">PEnergy_min_config_k</span><span class="s2">=</span><span class="s1">[]</span>
+    <span class="s2">for </span><span class="s1">i </span><span class="s2">in </span><span class="s1">range(</span><span class="s4">0</span><span class="s3">,</span><span class="s4">100</span><span class="s1">)</span><span class="s2">:</span>
+        <span class="s1">Pos </span><span class="s2">= </span><span class="s1">InitPositions(n</span><span class="s3">,</span><span class="s1">np.cbrt(n</span><span class="s2">*</span><span class="s4">10</span><span class="s2">**</span><span class="s4">3</span><span class="s1">))</span><span class="s0"># Changes the configuration and the number of particles</span>
+        <span class="s1">PEnergy</span><span class="s3">,</span><span class="s1">Pos_min</span><span class="s2">=</span><span class="s1">ConjugateGradient(Pos</span><span class="s3">,</span><span class="s4">0.001</span><span class="s3">,</span><span class="s4">1</span><span class="s2">**-</span><span class="s4">8</span><span class="s3">,</span><span class="s4">1</span><span class="s2">**-</span><span class="s4">10</span><span class="s1">)</span>
+        <span class="s1">PEnergy_min_config_k.append(PEnergy)</span>
+        <span class="s1">Pos_min_config_k.append(Pos_min)</span>
+    <span class="s1">Pos_min_config.append(Pos_min_config_k)</span>
+    <span class="s1">PEnergy_min_config.append(PEnergy_min_config_k)</span>
+    <span class="s1">PEnergy_std.append(np.std(PEnergy_min_config_k))</span>
+    <span class="s1">PEnergy_min.append(np.amin(PEnergy_min_config_k))</span>
+    <span class="s1">PEnergy_av.append(np.mean(PEnergy_min_config_k))</span>
+<span class="s2">import </span><span class="s1">pandas </span><span class="s2">as </span><span class="s1">pd</span>
+<span class="s1">PEnergy_Dataframe_k100 </span><span class="s2">= </span><span class="s1">pd.DataFrame()</span>
+<span class="s1">PEnergy_Dataframe_k100[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s2">=</span><span class="s1">N</span>
+<span class="s1">PEnergy_Dataframe_k100[</span><span class="s5">'Average_Energy'</span><span class="s1">] </span><span class="s2">= </span><span class="s1">PEnergy_av</span>
+<span class="s1">PEnergy_Dataframe_k100[</span><span class="s5">'Std_Dev'</span><span class="s1">]</span><span class="s2">=</span><span class="s1">PEnergy_std</span>
+<span class="s1">PEnergy_Dataframe_k100[</span><span class="s5">'Min_Energy'</span><span class="s1">]</span><span class="s2">=</span><span class="s1">PEnergy_min</span>
+<span class="s0">#%% md 
+</span><span class="s1">#### K=10000 
+</span><span class="s0">#%% 
+</span><span class="s1">Pos_config </span><span class="s2">= </span><span class="s1">[]</span>
+<span class="s1">Pos_min_config</span><span class="s2">=</span><span class="s1">[]</span>
+<span class="s1">PEnergy_min_config</span><span class="s2">=</span><span class="s1">[]</span>
+<span class="s1">PEnergy_av </span><span class="s2">= </span><span class="s1">[]</span>
+<span class="s1">PEnergy_std </span><span class="s2">= </span><span class="s1">[]</span>
+<span class="s1">PEnergy_min </span><span class="s2">= </span><span class="s1">[]</span>
+<span class="s0">#k=np.array(10,100,1000,10000)</span>
+<span class="s1">N</span><span class="s2">=</span><span class="s1">list(range(</span><span class="s4">2</span><span class="s3">,</span><span class="s4">25</span><span class="s3">,</span><span class="s4">1</span><span class="s1">)) </span><span class="s0"># Number of particles</span>
+<span class="s2">for </span><span class="s1">n </span><span class="s2">in </span><span class="s1">N</span><span class="s2">:</span>
+    <span class="s1">Pos_min_config_k</span><span class="s2">=</span><span class="s1">[]</span>
+    <span class="s1">PEnergy_min_config_k</span><span class="s2">=</span><span class="s1">[]</span>
+    <span class="s2">for </span><span class="s1">i </span><span class="s2">in </span><span class="s1">range(</span><span class="s4">0</span><span class="s3">,</span><span class="s4">10000</span><span class="s1">)</span><span class="s2">:</span>
+        <span class="s1">Pos </span><span class="s2">= </span><span class="s1">InitPositions(n</span><span class="s3">,</span><span class="s1">np.cbrt(n</span><span class="s2">*</span><span class="s4">10</span><span class="s2">**</span><span class="s4">3</span><span class="s1">))</span><span class="s0"># Changes the configuration and the number of particles</span>
+        <span class="s1">PEnergy</span><span class="s3">,</span><span class="s1">Pos_min</span><span class="s2">=</span><span class="s1">ConjugateGradient(Pos</span><span class="s3">,</span><span class="s4">0.001</span><span class="s3">,</span><span class="s4">1</span><span class="s2">**-</span><span class="s4">8</span><span class="s3">,</span><span class="s4">1</span><span class="s2">**-</span><span class="s4">10</span><span class="s1">)</span>
+        <span class="s1">PEnergy_min_config_k.append(PEnergy)</span>
+        <span class="s1">Pos_min_config_k.append(Pos_min)</span>
+    <span class="s1">Pos_min_config.append(Pos_min_config_k)</span>
+    <span class="s1">PEnergy_min_config.append(PEnergy_min_config_k)</span>
+    <span class="s1">PEnergy_std.append(np.std(PEnergy_min_config_k))</span>
+    <span class="s1">PEnergy_min.append(np.amin(PEnergy_min_config_k))</span>
+    <span class="s1">PEnergy_av.append(np.mean(PEnergy_min_config_k))</span>
+<span class="s2">import </span><span class="s1">pandas </span><span class="s2">as </span><span class="s1">pd</span>
+<span class="s1">PEnergy_Dataframe_k10K </span><span class="s2">= </span><span class="s1">pd.DataFrame()</span>
+<span class="s1">PEnergy_Dataframe_k10K[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s2">=</span><span class="s1">N</span>
+<span class="s1">PEnergy_Dataframe_k10K[</span><span class="s5">'Average_Energy'</span><span class="s1">] </span><span class="s2">= </span><span class="s1">PEnergy_av</span>
+<span class="s1">PEnergy_Dataframe_k10K[</span><span class="s5">'Std_Dev'</span><span class="s1">]</span><span class="s2">=</span><span class="s1">PEnergy_std</span>
+<span class="s1">PEnergy_Dataframe_k10K[</span><span class="s5">'Min_Energy'</span><span class="s1">]</span><span class="s2">=</span><span class="s1">PEnergy_min</span>
+<span class="s0">#%% md 
+</span><span class="s1">#### Concerns- 
+ 
+**The code ran nearly instantly for K=10000, which definitely makes me believe that there is some issue associated with the Conjugate gradient method that I wrote. However, I am not able to identify the source of the issue.** 
+ 
+I have also not used the pickle module here since the code runs so quickly there seems to be no need to store the objects in a file. 
+</span><span class="s0">#%% md 
+</span><span class="s1">## Step 5: Graph your findings 
+</span><span class="s0">#%% md 
+</span><span class="s1">Plot the minimum and average energies as a function of N for each of K=100, 1000, and 10000. The last case may be fairly time consuming (i.e. several hours) and should be done without output of pdb files for visualization (since this can slow it down). 
+ 
+Use matplotlib/PyLab to make these plots. 
+ 
+**Hint: If your minimizations are proceeding extremely slowly, it may mean you have an error in calculation of gamma**, such that even K=100 or K=10 could take a very long time. Ensure you have implemented the equation for gamma correctly. Even with a correct gamma value, this will take considerable time for the larger N values. 
+</span><span class="s0">#%% md 
+</span><span class="s1">#### Plot of Average Energies 
+</span><span class="s0">#%% 
+#Your code for this here</span>
+<span class="s2">import </span><span class="s1">matplotlib.pyplot </span><span class="s2">as </span><span class="s1">plt</span>
+<span class="s1">fig1</span><span class="s3">, </span><span class="s1">ax1 </span><span class="s2">= </span><span class="s1">plt.subplots()</span>
+<span class="s1">ax1.plot(PEnergy_Dataframe_k10[</span><span class="s5">'Average_Energy'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PEnergy_Dataframe_k10[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">label</span><span class="s2">=</span><span class="s5">&quot;k=10&quot;</span><span class="s1">)</span>
+<span class="s1">ax1.plot(PEnergy_Dataframe_k100[</span><span class="s5">'Average_Energy'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PEnergy_Dataframe_k100[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">label</span><span class="s2">=</span><span class="s5">&quot;k=100&quot;</span><span class="s1">)</span>
+<span class="s1">ax1.plot(PEnergy_Dataframe_k10K[</span><span class="s5">'Average_Energy'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PEnergy_Dataframe_k10K[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">label</span><span class="s2">=</span><span class="s5">&quot;k=10K&quot;</span><span class="s1">)</span>
+<span class="s1">plt.xlabel(</span><span class="s5">&quot;Average Energy&quot;</span><span class="s1">)</span>
+<span class="s1">plt.ylabel(</span><span class="s5">&quot;Number of Particles&quot;</span><span class="s1">)</span>
+<span class="s1">plt.title(</span><span class="s5">&quot;Average Energies Plot&quot;</span><span class="s1">)</span>
+<span class="s1">plt.legend(loc</span><span class="s2">=</span><span class="s5">&quot;upper left&quot;</span><span class="s1">)</span>
+<span class="s0">#%% md 
+</span><span class="s1">#### Plot of Minimum Energies 
+</span><span class="s0">#%% 
+</span><span class="s1">fig2</span><span class="s3">, </span><span class="s1">ax2 </span><span class="s2">= </span><span class="s1">plt.subplots()</span>
+<span class="s1">ax2.plot(PEnergy_Dataframe_k10[</span><span class="s5">'Min_Energy'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PEnergy_Dataframe_k10[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">label</span><span class="s2">=</span><span class="s5">&quot;k=10&quot;</span><span class="s1">)</span>
+<span class="s1">ax2.plot(PEnergy_Dataframe_k100[</span><span class="s5">'Min_Energy'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PEnergy_Dataframe_k100[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">label</span><span class="s2">=</span><span class="s5">&quot;k=100&quot;</span><span class="s1">)</span>
+<span class="s1">ax2.plot(PEnergy_Dataframe_k10K[</span><span class="s5">'Min_Energy'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PEnergy_Dataframe_k10K[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">label</span><span class="s2">=</span><span class="s5">&quot;k=10K&quot;</span><span class="s1">)</span>
+<span class="s1">plt.xlabel(</span><span class="s5">&quot;Minimum Energy&quot;</span><span class="s1">)</span>
+<span class="s1">plt.ylabel(</span><span class="s5">&quot;Number of Particles&quot;</span><span class="s1">)</span>
+<span class="s1">plt.title(</span><span class="s5">&quot;Minimum Energies Plot&quot;</span><span class="s1">)</span>
+<span class="s1">plt.legend(loc</span><span class="s2">=</span><span class="s5">&quot;upper left&quot;</span><span class="s1">)</span>
+<span class="s0">#%% md 
+</span><span class="s1">## Step 6: Compare with what's expected 
+ 
+Compare your results (your minimum energy at each N value) with the known global minimum energies, via a plot and by commenting on the results. These are from ( Leary, J. Global Optimization 11:35 (1997)). Add this curve to your graph. Why might your results be higher? 
+ 
+&lt;img src=&quot;https://github.com/aakankschit/drug-computing/blob/master/uci-pharmsci/assignments/energy_minimization/Leary_table.png?raw=1&quot; width=500&gt; 
+ 
+</span><span class="s0">#%% 
+#Write code here to add these to your graph</span>
+<span class="s0"># Define a dataframe with expected data</span>
+<span class="s1">PE_Expected  </span><span class="s2">= </span><span class="s1">pd.DataFrame()</span>
+<span class="s1">PE_Expected[</span><span class="s5">&quot;Number_Particles&quot;</span><span class="s1">]</span><span class="s2">=</span><span class="s1">list(range(</span><span class="s4">2</span><span class="s3">,</span><span class="s4">26</span><span class="s1">))</span>
+<span class="s1">PE_Expected[</span><span class="s5">&quot;Expected_Energies&quot;</span><span class="s1">]</span><span class="s2">= </span><span class="s1">np.array([</span><span class="s2">-</span><span class="s4">1</span><span class="s3">,</span><span class="s2">-</span><span class="s4">3</span><span class="s3">,</span><span class="s2">-</span><span class="s4">6</span><span class="s3">,</span><span class="s2">-</span><span class="s4">9</span><span class="s3">,</span><span class="s2">-</span><span class="s4">12.710</span><span class="s3">,</span><span class="s2">-</span><span class="s4">16.5</span><span class="s3">,</span><span class="s2">-</span><span class="s4">19.8</span><span class="s3">,</span><span class="s2">-</span><span class="s4">24.1</span><span class="s3">,</span><span class="s2">-</span><span class="s4">28.4</span><span class="s3">,</span><span class="s2">-</span><span class="s4">32.7</span><span class="s3">,</span><span class="s2">-</span><span class="s4">37.96</span><span class="s3">,</span><span class="s2">-</span><span class="s4">44.32</span><span class="s3">,</span><span class="s2">-</span><span class="s4">47.8</span><span class="s3">,</span><span class="s2">-</span><span class="s4">52.32</span><span class="s3">,</span><span class="s2">-</span><span class="s4">56.81</span><span class="s3">,</span><span class="s2">-</span><span class="s4">61.31</span><span class="s3">,</span><span class="s2">-</span><span class="s4">66.5</span><span class="s3">,</span><span class="s2">-</span><span class="s4">72.65</span><span class="s3">,</span><span class="s2">-</span><span class="s4">77.17</span><span class="s3">,</span><span class="s2">-</span><span class="s4">81.68</span><span class="s3">,</span><span class="s2">-</span><span class="s4">86.8</span><span class="s3">,</span><span class="s2">-</span><span class="s4">92.84</span><span class="s3">,</span><span class="s2">-</span><span class="s4">97.34</span><span class="s3">,</span><span class="s2">-</span><span class="s4">102.37</span><span class="s1">])</span>
+<span class="s0">#%% 
+</span><span class="s1">fig1</span><span class="s3">, </span><span class="s1">ax1 </span><span class="s2">= </span><span class="s1">plt.subplots()</span>
+<span class="s1">ax1.plot(PEnergy_Dataframe_k10[</span><span class="s5">'Average_Energy'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PEnergy_Dataframe_k10[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">label</span><span class="s2">=</span><span class="s5">&quot;k=10&quot;</span><span class="s1">)</span>
+<span class="s1">ax1.plot(PEnergy_Dataframe_k100[</span><span class="s5">'Average_Energy'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PEnergy_Dataframe_k100[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">label</span><span class="s2">=</span><span class="s5">&quot;k=100&quot;</span><span class="s1">)</span>
+<span class="s1">ax1.plot(PEnergy_Dataframe_k10K[</span><span class="s5">'Average_Energy'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PEnergy_Dataframe_k10K[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">label</span><span class="s2">=</span><span class="s5">&quot;k=10K&quot;</span><span class="s1">)</span>
+<span class="s1">ax1.plot(PE_Expected[</span><span class="s5">&quot;Expected_Energies&quot;</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PE_Expected[</span><span class="s5">&quot;Number_Particles&quot;</span><span class="s1">]</span><span class="s3">,</span><span class="s1">label</span><span class="s2">=</span><span class="s5">&quot;Expected&quot;</span><span class="s1">)</span>
+<span class="s1">plt.xlabel(</span><span class="s5">&quot;Average Energy&quot;</span><span class="s1">)</span>
+<span class="s1">plt.ylabel(</span><span class="s5">&quot;Number of Particles&quot;</span><span class="s1">)</span>
+<span class="s1">plt.title(</span><span class="s5">&quot;Average Energies Plot&quot;</span><span class="s1">)</span>
+<span class="s1">plt.legend(loc</span><span class="s2">=</span><span class="s5">&quot;upper left&quot;</span><span class="s1">)</span>
+<span class="s0">#%% md 
+</span><span class="s1">## Step 7: Fit a curve to the data  
+ 
+(**For undergraduates, this section is optional.**) 
+ 
+Based on macroscopic arguments, the energy of a cluster could scale with both surface area (via a surface tension) and volume (via an energy density for bulk) of the cluster. So we could model the minimum energy as depending on the cluster size in this way: 
+\begin{equation} 
+U_{min} \propto a + b N^{2/3} +cN 
+\end{equation} 
+ 
+Fit this equation to your data in the K=10000 case. You can do this using a least-squares fit, for example using fitting functions within SciPy (`optimize.leastsq`, for example, or similar functions in `scipy.stats`. A fairly dated tutorial is [here](http://www.tau.ac.il/~kineret/amit/scipy_tutorial) (sec 5.4), or see [stack overflow](https://stackoverflow.com/questions/19791581/how-to-use-leastsq-function-from-scipy-optimize-in-python-to-fit-both-a-straight). 
+ 
+**Once you perform the fit, plot the difference between the true minimum energy and the expected energy from this equation as a function of N. Can you identify the magic numbers from this curve?** 
+</span><span class="s0">#%% 
+#Your code here</span>
+<span class="s2">from </span><span class="s1">scipy.optimize </span><span class="s2">import </span><span class="s1">curve_fit</span>
+<span class="s2">def </span><span class="s1">obj_fun(N</span><span class="s3">,</span><span class="s1">a</span><span class="s3">,</span><span class="s1">b</span><span class="s3">,</span><span class="s1">c)</span><span class="s2">:</span>
+    <span class="s2">return </span><span class="s1">a </span><span class="s2">+ </span><span class="s1">b</span><span class="s2">*</span><span class="s1">N</span><span class="s2">**</span><span class="s1">(</span><span class="s4">2</span><span class="s2">/</span><span class="s4">3</span><span class="s1">) </span><span class="s2">+ </span><span class="s1">c</span><span class="s2">*</span><span class="s1">N</span>
+<span class="s0"># fit</span>
+<span class="s1">popt</span><span class="s3">, </span><span class="s1">pcov </span><span class="s2">= </span><span class="s1">curve_fit(obj_fun</span><span class="s3">,</span><span class="s1">PEnergy_Dataframe_k10K[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PEnergy_Dataframe_k10K[</span><span class="s5">'Average_Energy'</span><span class="s1">])</span>
+<span class="s0">#%% 
+</span><span class="s1">a</span><span class="s3">,</span><span class="s1">b</span><span class="s3">,</span><span class="s1">c </span><span class="s2">= </span><span class="s1">popt</span>
+<span class="s1">PE_fit </span><span class="s2">= </span><span class="s1">obj_fun(PEnergy_Dataframe_k10K[</span><span class="s5">'Number_Particles'</span><span class="s1">]</span><span class="s3">,</span><span class="s1">a</span><span class="s3">,</span><span class="s1">b</span><span class="s3">,</span><span class="s1">c)</span>
+<span class="s1">PE_fit_df </span><span class="s2">= </span><span class="s1">pd.DataFrame()</span>
+<span class="s1">PE_fit_df[</span><span class="s5">&quot;Fitted_Energy&quot;</span><span class="s1">]</span><span class="s2">=</span><span class="s1">PE_fit</span>
+<span class="s1">PE_fit_df[</span><span class="s5">&quot;Number_Particles&quot;</span><span class="s1">]</span><span class="s2">=</span><span class="s1">N</span>
+<span class="s1">plt.plot(PE_Expected[</span><span class="s5">&quot;Expected_Energies&quot;</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PE_Expected[</span><span class="s5">&quot;Number_Particles&quot;</span><span class="s1">]</span><span class="s3">,</span><span class="s1">label</span><span class="s2">=</span><span class="s5">&quot;Expected&quot;</span><span class="s1">)</span>
+<span class="s1">plt.plot(PE_fit_df[</span><span class="s5">&quot;Fitted_Energy&quot;</span><span class="s1">]</span><span class="s3">,</span><span class="s1">PE_fit_df[</span><span class="s5">&quot;Number_Particles&quot;</span><span class="s1">]</span><span class="s3">,</span><span class="s1">label</span><span class="s2">=</span><span class="s5">&quot;fit&quot;</span><span class="s1">)</span>
+<span class="s1">plt.xlabel(</span><span class="s5">&quot;Average Energy&quot;</span><span class="s1">)</span>
+<span class="s1">plt.ylabel(</span><span class="s5">&quot;Number of Particles&quot;</span><span class="s1">)</span>
+<span class="s1">plt.title(</span><span class="s5">&quot;Average Energies Plot&quot;</span><span class="s1">)</span>
+<span class="s1">plt.legend(loc</span><span class="s2">=</span><span class="s5">&quot;upper left&quot;</span><span class="s1">)</span>
+<span class="s0">#%% md 
+</span><span class="s1">## Step 8: Submit your results 
+ 
+Submit (via Canvas) your graphs, with axes and curves labeled. Also attach a copy of your Python code (this notebook or, if you prefer, a separate script). Specifically, you should be including: 
+* Your Python code 
+* A graph (or graphs) of minimum and average energies as a function of N for K=100, 1000, and 10000. (Note you can use savefig to save graphs). These can be included in this notebook, or saved separately. 
+* A graph comparing your results for the K=10000 case with the expected results from Leary, as a function of N, overlaid with a fitted curve using the equation above (Step 7); undergrads can omit the fit if desired as this is optional. Provide the parameters determined in your fit. 
+* Give brief discussion of why your results might be higher than those of Leary. Comment on the magic numbers (step 7).   
+ 
+### Please give clear answers to questions given above, ideally in a box below or a separate report 
+ 
+Specifically, explain whether you can identify the magic numbers, how you can tell what they are, etc. If you are not certain whether your results are right, explain any reservations you have and why, discuss where you think you might have gone wrong, etc. Basically, be sure to answer all my questions AND give a very brief discussion of your results. The main ways to lose points on this assignment are to: 
+- not finish 
+- submit late 
+- not discuss your results 
+I tend to be generous with partial credit for people whose work is mostly correct/mostly complete. 
+</span><span class="s0">#%% md 
+</span><span class="s1">### Discussion 
+ 
+Looking at the graphs for Minimum and average energies calculated, I am positively sure that something went wrong in my calculations. The energies calculated for greater values of N were much higher compared to Leary's expected values. The effect of loop iterations (Higher values of K) can be observed since the curves become slightly smoother with higher values of K. 
+ 
+Given that my results are incorrect, I would make an educated guess that the results would be higher since we are sort of simplifying inter-molecular interactions. At smaller values of N, there are more forces acting on each particle that we are not accounting for. 
+</span><span class="s0">#%% 
+</span></pre>
+</body>
+</html>

@@ -1,4 +1,5 @@
-#MD Exercise Template for PharmSci 175/275
+#MD Exercise Template for PharmSci 275
+#This is just MD.py with the prototypes for InitVelocities and RescaleVelocities removed so that these can be defined within the iPython notebook.
 
 #import python modules
 import numpy as np
@@ -47,13 +48,13 @@ Output:
     #start the iteration counter
     Iter = 0
 
-    #find the normalized direction
+    #find the normalized direction    
     NormDir = Dir / np.sqrt(np.sum(Dir * Dir))
 
-    #take the first two steps and compute energies
+    #take the first two steps and compute energies    
     Dists = [0., dx]
     PEs = [mdlib.calcenergy(Pos + NormDir * x, M, L, Cut) for x in Dists]
-
+    
     #if the second point is not downhill in energy, back
     #off and take a shorter step until we find one
     while PEs[1] > PEs[0]:
@@ -61,16 +62,16 @@ Output:
         dx = dx * 0.5
         Dists[1] = dx
         PEs[1] = mdlib.calcenergy(Pos + NormDir * dx, M, L, Cut)
-
+        
     #find a third point
     Dists = Dists + [2. * dx]
     PEs = PEs + [mdlib.calcenergy(Pos + NormDir * 2. * dx, M, L, Cut)]
-
+    
     #keep stepping forward until the third point is higher
     #in energy; then we have bracketed a minimum
     while PEs[2] < PEs[1]:
         Iter += 1
-
+            
         #find a fourth point and evaluate energy
         Dists = Dists + [Dists[-1] + dx]
         PEs = PEs + [mdlib.calcenergy(Pos + NormDir * Dists[-1], M, L, Cut)]
@@ -85,7 +86,7 @@ Output:
             PEs = PEs[-3:]
             Dists = Dists[-3:]
             dx = dx * Accel
-
+            
     #we've bracketed a minimum; now we want to find it to high
     #accuracy
     OldPE3 = 1.e300
@@ -94,7 +95,7 @@ Output:
         if Iter > MaxIter:
             print("Warning: maximum number of iterations reached in line search.")
             break
-
+            
         #store distances for ease of code-reading
         d0, d1, d2 = Dists
         PE0, PE1, PE2 = PEs
@@ -106,15 +107,15 @@ Output:
         Num = d12*d12*(PE0-PE1) - d10*d10*(PE2-PE1)
         Dem = d12*(PE0-PE1) - d10*(PE2-PE1)
         if Dem == 0:
-            #parabolic extrapolation won't work; set new dist = 0
+            #parabolic extrapolation won't work; set new dist = 0 
             d3 = 0
         else:
             #location of parabolic minimum
             d3 = d1 + 0.5 * Num / Dem
-
+            
         #compute the new potential energy
         PE3 = mdlib.calcenergy(Pos + NormDir * d3, M, L, Cut)
-
+        
         #sometimes the parabolic approximation can fail;
         #check if d3 is out of range < d0 or > d2 or the new energy is higher
         if d3 < d0 or d3 > d2 or PE3 > PE0 or PE3 > PE1 or PE3 > PE2:
@@ -125,7 +126,7 @@ Output:
             else:
                 d3 = 0.5 * (d0 + d1)
             PE3 = mdlib.calcenergy(Pos + NormDir * d3, M, L, Cut)
-
+            
         #decide which three points to keep; we want to keep
         #the three that are closest to the minimum
         if d3 < d1:
@@ -142,7 +143,7 @@ Output:
             else:
                 #get rid of point 2
                 Dists, PEs = [d0, d1, d3], [PE0, PE1, PE3]
-
+                
         #check how much we've changed
         if abs(OldPE3 - PE3) < EFracTol * abs(PE3):
             #the fractional change is less than the tolerance,
@@ -150,7 +151,7 @@ Output:
             break
         OldPE3 = PE3
 
-    #return the position array at the minimum (point 1)
+    #return the position array at the minimum (point 1)        
     PosMin = Pos + NormDir * Dists[1]
     PEMin = PEs[1]
 
@@ -162,10 +163,10 @@ Output:
         else:
             #initialize the visualization window
             atomvis.Init(PosMin)
-
+        
     return PEMin, PosMin
 
-
+        
 def ConjugateGradient(Pos, dx, EFracTolLS, EFracTolCG, M, L, Cut):
     """Performs a conjugate gradient search.
 Input:
@@ -178,12 +179,18 @@ Input:
     Cut: Cutoff
 Output:
     PEnergy: value of potential energy at minimum
-    Pos: minimum energy (N,3) position array
+    Pos: minimum energy (N,3) position array 
 """
-    # You will have to fill in your function from the energy minimization assignment here.
-    # If you did not get it correct, or if you are not sure you got it correct, contact me
-    # for solutions.
-
+    PE, Forces = mdlib.calcenergyforces(Pos, M, L, Cut, np.zeros_like(Pos))
+    Dir = Forces
+    OldPE = 1.e300
+    while abs(PE - OldPE) > EFracTolCG * abs(PE):
+        OldPE = PE
+        PE, Pos = LineSearch(Pos, Dir, dx, EFracTolLS, M, L, Cut)
+        OldForces = Forces.copy()
+        PE, Forces = mdlib.calcenergyforces(Pos, M, L, Cut, Forces)
+        Gamma = np.sum((Forces - OldForces) * Forces) / np.sum(OldForces * OldForces)
+        Dir = Forces + Gamma *  Dir
     return PE, Pos
 
 
