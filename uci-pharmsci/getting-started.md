@@ -77,9 +77,9 @@ Here, you will need to complete several main steps in the install, each of which
 Download the Anaconda Python 3 installation file or download it from the [website](https://www.anaconda.com/distribution/) or use (from the command prompt):
 
 (Linux/OSX)
-> wget https://repo.anaconda.com/archive/Anaconda3-2021.05-MacOSX-x86_64.sh
+> wget https://repo.anaconda.com/archive/Anaconda3-2022.10-MacOSX-arm64.sh
 
-(You can get a related link for Windows or Linux and use a similar command.)
+(You can get a [related link for Windows or Linux](https://repo.anaconda.com/archive/) and use a similar command.) Note if you are on a Mac, the arm64 package is for M1/M2 Macs and the x86_64 one for older, Intel-based ones.
 
 Install Anaconda (this may take 15-30mins), filling in the "fill in the rest here" part with the appropriate name of the file you downloaded above (or run the interactive installer if you downloaded that):
 > bash Anaconda_fillintheresthere.sh -b
@@ -102,6 +102,7 @@ Python 3.8.8 (default, April 13 2021, 12:59:45)
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
+(yours may list a different, more recent Python version.)
 
 Type `exit()` or ctrl-d ("control-d") to leave the python shell.
 
