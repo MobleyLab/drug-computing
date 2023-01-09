@@ -7,7 +7,7 @@ from simtk import unit, openmm
 from simtk.openmm import app
 import netCDF4 as netcdf
 from tempfile import TemporaryDirectory
-import yank
+import yank #Note before using this you should install yank
 import mdtraj
 from yank.experiment import *
 import textwrap

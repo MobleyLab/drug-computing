@@ -1,6 +1,6 @@
 # Solvation free energy calculations with Yank
 
-This provides example materials for solvation free energy calculations with implicit and explicit solvent in Yank.
+This provides example materials for solvation free energy calculations with implicit and explicit solvent in Yank. You would need to install Yank first.
 Demonstrations are set up for hydration free energy calculations on FreeSolv and/or FreeSolvMini.
 
 I validated this, in the implicit solvent case, for phenol from IUPAC name, SMILES, and FreeSolv (mobley_20524.mol2) and get consistent values -- basically -10.08+/-0.01 kT in all cases. 
