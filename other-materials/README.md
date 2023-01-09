@@ -6,7 +6,7 @@ It may be crosslinked from course content, etc.
 
 ## Manifest
 - `python-intro`: Directory containing introductory material on Python; see [`python-intro/README.md`](python-intro/README.md). See also the Beckstein material linked below.
-- `solvation-free-energies`: Directory containing example materials for hydration free energy calculations with Yank; see [`solvation-free-energies/README.md`][solvation-free-energies/README.md]i
+- `solvation-free-energies`: Directory containing example materials for hydration free energy calculations with Yank; see [`solvation-free-energies/README.md`][solvation-free-energies/README.md]; Yank would need to be installed first, and support for it is not currently very good, so hopefully we can improve on this soon.
 
 ## Other useful materials:
 - For very helpful material on Linux and Python relevant to our area, refer to [Oliver Beckstein's Computational Methods in Physics course](https://asu-compmethodsphysics-phy494.github.io/ASU-PHY494/overview/), which has sectionns on Linux/Unix, Python, git, etc.

@@ -66,20 +66,29 @@ Because of hardware differences, it is unlikely that the same installation (belo
 ### Setup and Installation: For everyone (except Google Colab)
 
 Here, you will need to complete several main steps in the install, each of which has its own section:
-1) Install Anaconda Python and get the repository
+1) Install Anaconda Python and get the repository (inserting a step before this if you're on a Mac with an M1/M2 chip)
 2) (Optionally) Configure a conda environment if desired
-3) Use conda to install libgfortran
+3) Install gfortran
 4) Use f2py3 to compile libraries for lectures/assignments  (sometimes breaks if step (5) is done first)
 5) Use conda to finish installing prerequisites
 6) Install the OpenEye license
 
+#### 0. For M1/M2 (Apple Silicon) Macs in 2023
+
+If you are on a Mac with an M1/M2 chip in 2023, you need to add an additional step before beginning. Essentailly, since Apple's migration to their own chips, not all software has been packaged for these chips yet, so we need to set up our Macs to install using Intel emulation instead. This involves two parts:
+a) Install Rosetta. Open a Terminal (e.g. "Terminal" or, I prefer, iTerm) and run `softwareupdate --install-rosetta. Rosetta is used for running x86 code on an M1/M2 Mac. 
+b) Use an Intel/x86 Terminal: Open your Applications folder, make a copy of your preferred terminal application, right click it, choose "get info", and check the "open with Rosetta" box. I suggest renaming this application to have `x86` in its name so you can easily recognize it.
+
+**In everything to follow, you will use the x86 version of the terminal application**, which will ensure you get x86/Intel code which will work consistently.
+
 #### 1. Install Anaconda Python
-Download the Anaconda Python 3 installation file or download it from the [website](https://www.anaconda.com/distribution/) or use (from the command prompt):
+
+Download the Anaconda Python 3 installation file or download it from the [website](https://www.anaconda.com/distribution/) or use (from the command prompt); if you are experienced, you can also substitute a Miniconda installation or similar:
 
 (Linux/OSX)
-> wget https://repo.anaconda.com/archive/Anaconda3-2021.05-MacOSX-x86_64.sh
+> wget https://repo.anaconda.com/archive/Anaconda3-2022.10-MacOSX-x86_64.sh
 
-(You can get a related link for Windows or Linux and use a similar command.)
+(You can get a [related link for Windows or Linux](https://repo.anaconda.com/archive/) and use a similar command.) Note if you are on a Mac, you want the x86_64 one as of 2023 even if you're on an ARM-based Mac..
 
 Install Anaconda (this may take 15-30mins), filling in the "fill in the rest here" part with the appropriate name of the file you downloaded above (or run the interactive installer if you downloaded that):
 > bash Anaconda_fillintheresthere.sh -b
@@ -102,6 +111,7 @@ Python 3.8.8 (default, April 13 2021, 12:59:45)
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
+(yours may list a different, more recent Python version, though you will likely need to end up using python 3.8 or 3.9.)
 
 Type `exit()` or ctrl-d ("control-d") to leave the python shell.
 
@@ -141,9 +151,11 @@ cd drug-computing
 ```
 This checks out (obtains) a copy of this repository so you can work with it and the files in it, if you like (you'll be using this to access lecture content and other materials from this class.) (If you have trouble with this, you may want to try the https version of the command, `git clone https://github.com/MobleyLab/drug-computing.git`)
 
-#### 2. (Optionally) Configure a conda environment if desired
+#### 2. Configure a conda environment if desired; do this if on OS X
 
-Anaconda includes with it the `conda` environment/package manager, meaning that it can also install other software which you need.
+Short version: Run `conda create -n drugcomp python=3.8` on the command-line to create a new environment called `drugcomp` then activate this (using `conda activate drugcomp`) whenever you are working on the course.
+
+Long version: Anaconda includes with it the `conda` environment/package manager, meaning that it can also install other software which you need.
 Here we will use the `conda` package manager to install the software you need.
 
 **First, you need to decide whether or not to use a conda environment (`env`) for the course**:
@@ -154,19 +166,11 @@ If you are do not need an `env`, just proceed straight to installation.
 If you do need an `env`, [use this info](https://conda.io/docs/user-guide/tasks/manage-environments.html) to create a new Python 3.8 conda environment called `drugcomp` (e.g. `conda create -n drugcomp python=3.8`) and activate this environment (`source activate drugcomp`) before doing the installs discussed below.
 Whenever you do work for the class, you will need to activate this environment.
 
-#### 3) Use conda to install gfortran
-
-(**2022 Apple M1 Silicon ONLY:** With Mac's M1 processors (Apple silicon) in 2022 we are having issues with gfortran/gcc which necessitate separate install. As of this writing, it seems that the standard Python installed above is for the `X86` architecture whereas you'll end up with an `ARM64` gfortran if you don't work around it. We've achieved best results by installing the generic (non-M1) gcc and gfortran from SourceForge, [http://hpc.sourceforge.net/](http://hpc.sourceforge.net/). So if you're on an M1 Mac in 2022, visit Sourceforge, download the non-M1 binaries linked at the top of the page, and follow the instructions there to install.)
+#### 3) Install gfortran
 
 For some of our assignments/lectures (energy minimization, MD, MC) we will use `f2py3` to compile some fortran code for use in Python (to make some numerical operations fast), which requires a fortran compiler.
 
-We do this step first because in some cases, we're seeing that other packages cause problems for gfortran.
-
-**Proceed to installation**:
-
-```bash
-conda install -c conda-forge libgfortran --yes
-```
+(**2023 Apple M1/M2 Silicon ONLY:** With Mac's M1/M2 processors (Apple silicon) in 2023 we are having issues with gfortran/gcc which necessitate separate install. As of this writing, most packages are available for Apple Silicon, but a couple important packages still are not. This means that we can't get a uniform conda installation to work nicely. The work-around is to conda install everything but gfortran *with the x86 terminal introduced above* then use SourceForge to install an Intel-based gfortran. Specifically, instal the generic (non-M1) gcc and gfortran from SourceForge, [http://hpc.sourceforge.net/](http://hpc.sourceforge.net/). So if you're on an M1/M2 Mac in 2023, visit Sourceforge, download the non-M1 binaries linked at the top of the page (something like `gfortran-11.2-bin.tar.gz`, and follow the instructions there to install).
 
 **If on Mac OS, you also need XCode's command-line tools**:
 
@@ -192,19 +196,18 @@ Using the command-line, pre-compile the relevant libraries listed here:
 
 To compile each, navigate to the relevant directory (which you will have checked out to your local computer from GitHub) and use the command `f2py3 -c -m mclib mclib.f90`, for example (for the MC library); the first argument is the final name of the module and the second argument is the name of the .f90 file. You would execute the above in the `MC` directory, then do a similar thing for the MD assignment/library, energy_minimization assignment/library, and the MC and MD lectures. You should end up with a total of five files, each in the appropriate directory.
 
-(If you fail to pre-compile these libraries, you can fix this issue by creating a clean conda environment later, installing only gfortran, then compiling the libraries. Then you can use them back in your original conda environment.)
+(If you fail to pre-compile these libraries, usually this causes no problem and you can compile them later. However, in some cases later installations cause library problems that make this fail. If you encounter problems later, you can fix this issue by creating a clean conda environment later, installing only gfortran, then compiling the libraries. Then you can use them back in your original conda environment.)
 
 #### 5) Use conda to finish installing prerequisites
 
 **Proceed to finish installation**:
 ```bash
-conda config --add channels conda-forge --yes
+conda config --add channels conda-forge 
 conda install parmed --yes
 conda install openff-toolkit pdbfixer nb_conda mpld3 scikit-learn seaborn bokeh py3dmol --yes
 conda install -c openeye openeye-toolkits --yes
 conda install -c anaconda requests
 conda install pyemma --yes
-conda install -c openeye/label/Orion oeommtools --yes
 # Optional (enables 3D movies in Jupyter notebooks, but can be finicky)
 conda install -c conda-forge nglview --yes
 ```
@@ -213,11 +216,9 @@ The above installs quite a variety of software packages and may take a reasonabl
 
 Specific notebooks/assignments used in class may have additional requirements and in general these will be mentioned at the top of the notebook; you should set aside some extra time to install before using a particular notebook.
 
-**Also install the OpenEye oenotebook Jupyter helper**, IF it installs OK in your environment (this is handy, but nonessential):
+Finally, make sure your environment is activated as a kernel for Jupyter notebooks:
+`python -m ipykernel install --user --name=drugcomp` (or whatever environment name is being used above) to make sure this environment is activated in the notebook
 
-```bash
-pip install --extra-index-url https://pypi.org/simple --extra-index-url https://pypi.anaconda.org/openeye/simple/ -i https://pypi.anaconda.org/openeye/label/oenotebook/simple openeye-oenotebook
-```
 
 #### 6) Install the OpenEye license
 
@@ -295,8 +296,8 @@ After the above, please also use `jupyter-nbextension enable nglview --py --sys-
 
 Many of the notebooks are formatted as RISE notebooks which can be presented as slides using the RISE plugin. To get this to work, I have needed to:
 - Install as normal (above)
-- `conda update notebook` (RISE needed more recent version)
-- `conda install -c conda-forge rise`
+- `conda install -c conda-forge rise` (2023 I had to pip install RISE)
+- `conda install git-lfs` for large files
 - `python -m ipykernel install --user --name=drugcomp` (or whatever environment is being used above) to make sure this environment is activated in the notebook
 - Once installed, if a notebook with RISE slides is active, use option-R to enter the slideshow.
 
