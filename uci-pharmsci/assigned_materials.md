@@ -42,8 +42,11 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 - Skim through the PDF of the MD (part II)/MC slides in the `MC` directory, noting any questions for discussion in class
 - Review the MC sandbox Jupyter notebook in the same directory
 
-## Before Lecture 7 ([Solvation](lectures/solvation)):
-- Read the Jupyter notebook in the `solvation` directory under lectures.
+## Before Lecture 7 ([ChEMBL database work](https://github.com/volkamerlab/teachopencadd/tree/master/teachopencadd/talktorials/T001_query_chembl)
+- For this lecture we draw on the [TeachOpenCADD](https://github.com/volkamerlab/teachopencadd) repo
+- Clone or download the GitHub repo, or at least the content of the `T001_query_chembl` directory from the `talktorials` directory 
+- Skim the content in the `talktorial.ipynb` notebook
+- Install chembl_webresource_client, which is conda-installable
 
 ## Before Lecture 8 ([Docking, scoring and pose prediction](lectures/docking_scoring_pose)):
 - Read the `docking.ipynb` Jupyter notebook in the relevant directory and `old_slides.pdf` there, from the slide numbered 11 (bottom left corner) onwards.

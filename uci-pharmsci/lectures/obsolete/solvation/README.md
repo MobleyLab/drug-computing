@@ -1,6 +1,7 @@
 # Solvation models
 
 This provides materials for the lecture on solvation models.
+As of 2023 we are (at least temporarily) removing this lecture because OpenFF at present doesn't work with GB models.
 
 ## Manifest
 ### Primary files

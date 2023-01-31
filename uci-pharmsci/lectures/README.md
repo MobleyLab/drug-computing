@@ -22,7 +22,8 @@ Since the material will typically draw from external files, you are recommended 
    - Supplementary material: [MD/MD_Sandbox.ipynb](MD/MD_Sandbox.ipynb) Jupyter notebook
 6. MD (part 2) and Monte Carlo (MC): [MC](MC): Lecture is Keynote/PDF format
    - Supplementary material: [MC/MC_Sandbox.ipynb](MC/MC_Sandbox.ipynb) Jupyter notebook
-7. Solvation models: [solvation](solvation): Lecture is a Jupyter notebook (with RISE format slides)
+7. ChEMBL - database querying: Use [TeachOpenCADD talktorial 1](https://github.com/volkamerlab/teachopencadd/tree/master/teachopencadd/talktorials/T001_query_chembl); for this, install `chembl_webresource_client` which is conda-installable. 
+. 
 8. Docking, scoring, and pose prediction: [docking_scoring_pose](docking_scoring_pose): Lecture is a Jupyter notebook, `docking.ipynb`, plus a PDF of old slides (which need some updating and provide the latter part of the content because conversion to Jupyter notebook format is not yet complete). An asssociated `OEDocking.ipynb` provides a docking example.
 9. Library searching: [library_searching](library_searching): Includes Keynote/PDF of lecture slides, and a sandbox on library and lingo searching (Jupyter notebook format).
 10. Ligand based design: [ligand_based_design](ligand_based_design): Includes a keynote/PDF of slides and a supplementary `ligand_based_design.ipynb` Jupyter notebook with supplemental materials.
@@ -36,4 +37,8 @@ Since the material will typically draw from external files, you are recommended 
 17. (b) Mixture simulations: [mixtures](mixtures)
 18. Free energy calculations and the drug discovery process
 
-Usually we also have one guest lecture/tour by Nathan Crawford, who discusses high performance computing and takes us on a tour of the server room.
+Usually we also have one guest lecture/tour by a UCI computing leader, who discusses high performance computing and takes us on a tour of the server room.
+
+## Obsolete, removed, or suspended content
+- Solvation models: [obsolete/solvation](obsolete/solvation): Lecture is a Jupyter notebook (with RISE format slides)
+- 
