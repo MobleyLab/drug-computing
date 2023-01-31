@@ -46,6 +46,7 @@ To prepare for Lecture 1, on Python, Linux, text editors, and GitHub, please:
 - For this lecture we draw on the [TeachOpenCADD](https://github.com/volkamerlab/teachopencadd) repo
 - Clone or download the GitHub repo, or at least the content of the `T001_query_chembl` directory from the `talktorials` directory 
 - Skim the content in the `talktorial.ipynb` notebook
+- Install chembl_webresource_client, which is conda-installable
 
 ## Before Lecture 8 ([Docking, scoring and pose prediction](lectures/docking_scoring_pose)):
 - Read the `docking.ipynb` Jupyter notebook in the relevant directory and `old_slides.pdf` there, from the slide numbered 11 (bottom left corner) onwards.

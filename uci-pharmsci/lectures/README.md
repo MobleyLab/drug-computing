@@ -22,7 +22,7 @@ Since the material will typically draw from external files, you are recommended 
    - Supplementary material: [MD/MD_Sandbox.ipynb](MD/MD_Sandbox.ipynb) Jupyter notebook
 6. MD (part 2) and Monte Carlo (MC): [MC](MC): Lecture is Keynote/PDF format
    - Supplementary material: [MC/MC_Sandbox.ipynb](MC/MC_Sandbox.ipynb) Jupyter notebook
-7. ChEMBL - database querying: Use [TeachOpenCADD talktorial 1](https://github.com/volkamerlab/teachopencadd/tree/master/teachopencadd/talktorials/T001_query_chembl) 
+7. ChEMBL - database querying: Use [TeachOpenCADD talktorial 1](https://github.com/volkamerlab/teachopencadd/tree/master/teachopencadd/talktorials/T001_query_chembl); for this, install `chembl_webresource_client` which is conda-installable. 
 . 
 8. Docking, scoring, and pose prediction: [docking_scoring_pose](docking_scoring_pose): Lecture is a Jupyter notebook, `docking.ipynb`, plus a PDF of old slides (which need some updating and provide the latter part of the content because conversion to Jupyter notebook format is not yet complete). An asssociated `OEDocking.ipynb` provides a docking example.
 9. Library searching: [library_searching](library_searching): Includes Keynote/PDF of lecture slides, and a sandbox on library and lingo searching (Jupyter notebook format).
