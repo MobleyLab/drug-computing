@@ -124,6 +124,8 @@ After installing xcode's tools, do
 ``mamba install gfortran``
 and accept in order to install.
 
+In 2025, also ``mamba install meson``; apparently gfortran recently switched platforms so this is required.
+
 A subtle problem arises if you install a compiler with mamba/conda (e.g. `gcc`) and have XCode installed as well. This can be a source of headache/confusion, so just be aware that multiple compilers will exist on your machine, and care must be taken to ensure only one is used at a time.
 
 #### 4) Use f2py to compile the fortran libraries for the course
