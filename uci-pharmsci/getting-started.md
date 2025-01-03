@@ -120,6 +120,10 @@ For some of our assignments/lectures (energy minimization, MD, MC) we will use `
 To use this on OS X, you will need to install the XCode command-line tools via something like `xcode-select --install` from the command-line.
 Without this you will get an error message relating to libraries or includes (perhaps `limits.h`) when attempting to execute f2py.
 
+After installing xcode's tools, do
+``mamba install gfortran``
+and accept in order to install.
+
 A subtle problem arises if you install a compiler with mamba/conda (e.g. `gcc`) and have XCode installed as well. This can be a source of headache/confusion, so just be aware that multiple compilers will exist on your machine, and care must be taken to ensure only one is used at a time.
 
 #### 4) Use f2py to compile the fortran libraries for the course
