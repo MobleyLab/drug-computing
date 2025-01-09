@@ -25,7 +25,7 @@ Please begin by reading the beginning portion of [`getting-started.md`](getting-
 
 
 #### Cheatsheets and dotfiles
-Under the **uci-pharmasci/docs/** directory, we have included some useful command cheat sheets for [BASH](https://github.com/nathanmlim/blues-apps/tree/master/docs/bash_cheatsheet.jpg) and [vi](https://github.com/nathanmlim/blues-apps/tree/master/docs/vi_cheatsheet.pdf) (on OS X, zsh is becoming default instead, but in general it is similar.).
+Under the **uci-pharmasci/docs/** directory, we have included some useful command cheat sheets for [BASH](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/docs/bash_cheatsheet.jpg) and [vi](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/docs/vi_cheatsheet.pdf) (on OS X, zsh is becoming default instead, but in general it is similar.).
 
 You may also want to check out the [CodeAcademy Github](https://www.codecademy.com/learn/learn-git) tutorial.
 
