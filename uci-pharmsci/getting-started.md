@@ -16,6 +16,8 @@ The one major **downside of the Google Colab approach is that doing calculations
 
 For Google Colab, you will be running everything in the cloud ON Google Colab, which is free. If you plan to go this route (which we recommend unless you have a strong reason to run locally, though see caveat above about internet access) [this getting started notebook](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/Getting_Started.ipynb) can be opened in Colab and used to install/test out the requisite software.
 
+Typical notebooks here contain an "Open in Google Colab" button you can use, so e.g. click on the notebook on GitHub, open a preview of it, then click "Open in Google Colab". Occasionally, on some browser configurations, however, the GitHub preview will not load, so you need another mechanism to access the notebook. For this, use [NBViewer](https://nbviewer.org/). It allows you to enter a URL of any Jupyter notebook (such as one on GitHub as in this course) and it will display it to you in the browser, then you can click through to Colab. Alternatively, you can download the Jupyter notebook from GitHub and upload it Colab yourself. 
+
 ### Subsequent use of Google Colab
 
 Each time you begin using Google Colab, it's like beginning on a new computer. This means that **before every lecture or assignment, you will need to install the required software on Google Colab**, which takes just a few minutes. In other words, you will need to insert the commands from the [getting started notebook](https://github.com/MobleyLab/drug-computing/blob/master/uci-pharmsci/Getting_Started.ipynb) at the beginning of the notebook you will be using on Colab, and run them.
