@@ -36,9 +36,9 @@ excluded points are drawn as hollow markers.
 ## Method notes
 
 - **Response** is `luci_norm`: (`luci` − plate negative-control mean) / (positive-control window), so the
-  negative-control level is 0 and the positive-control level is 1 (dimensionless). I checked that it is exactly
-  linear in `luci` on every plate of all three source files. The positive-control wells themselves are not in
-  the files. Raw RLU (`luci`) is kept in the TSVs. **Concentration** is in µM.
+  negative-control level is 0 and the positive-control level is 1 (dimensionless). It is exactly
+  linear in `luci` on every plate of all three source files (verified). The positive-control wells themselves
+  are not in the files. Raw RLU (`luci`) is kept in the TSVs. **Concentration** is in µM.
 - **4PL fit** in log₁₀(µM) space, bounded least squares with several starts, identical code in both notebooks;
   pEC₅₀ = −log₁₀(EC₅₀ / M). Only the settings differ:
 
